@@ -1,0 +1,31 @@
+package bg.softuni.movieapp.model.enums;
+
+public enum TVSeriesGenre {
+    ACTION,
+    ADVENTURE,
+    ANIMATION,
+    ANIME,
+    COMEDY,
+    CARTOON,
+    CRIME,
+    DOCUMENTARY,
+    DRAMA,
+    DANCE,
+    EDUCATION,
+    FAMILY,
+    FANTASY,
+    HISTORICAL,
+    HORROR,
+    INSTRUCTIONAL,
+    MUSICAL,
+    MYSTERY,
+    POLITICAL,
+    REALITY_TV,
+    ROMANCE,
+    SCIENCE_FICTION,
+    SPORTS,
+    SUSPENSE,
+    SUPERNATURAL,
+    THRILLER,
+    WESTERN
+}
