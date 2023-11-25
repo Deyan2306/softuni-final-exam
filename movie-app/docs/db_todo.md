@@ -1,0 +1,12 @@
+Some stuff, that i need to finish today :D
+- [ ] Finish The Models
+  - [ ] Do some refactoring over the names
+  - [ ] Make it more `abstract` using some inheritance, no repeatable code
+  - [ ] Hibernate validations
+- [ ] Repositories
+  - [ ] Implement make the repositories
+  - [ ] Check if the uuid is working
+- [ ] Services
+  - [ ] Create the services templates
+- [ ] Controllers
+  - [ ] Create the controller templates
