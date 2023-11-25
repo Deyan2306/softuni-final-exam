@@ -1,4 +1,23 @@
 package bg.softuni.movieapp.model.entity;
 
-public class Studio {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.*;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@Builder
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "studios")
+public class Studio extends BaseEntity {
+
+    private String name;
+    private LocalDate established;
+    private List<Movie> movies;
+    private String studioPictureURI;
+
 }

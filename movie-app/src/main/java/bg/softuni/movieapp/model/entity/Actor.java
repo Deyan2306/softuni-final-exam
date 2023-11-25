@@ -26,5 +26,7 @@ public class Actor extends BaseEntity {
     private List<String> alternativeNames;
     private List<ActorRole> roles;
     private List<Comment> comments;
+    private List<User> liked;
+    private List<User> disliked;
 
 }

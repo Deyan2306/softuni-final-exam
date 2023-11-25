@@ -1,6 +1,7 @@
 package bg.softuni.movieapp.model.entity;
 
 import bg.softuni.movieapp.model.entity.interfaces.Reviewable;
+import bg.softuni.movieapp.model.enums.Language;
 import bg.softuni.movieapp.model.enums.MovieGenre;
 import bg.softuni.movieapp.model.enums.PGRating;
 import jakarta.persistence.Entity;
@@ -34,5 +35,6 @@ public class Movie extends BaseEntity implements Reviewable {
     private String storyline;
     private List<Quote> quotes;
     private Studio studio;
+    private Language language;
 
 }
