@@ -1,12 +1,18 @@
 Some stuff, that i need to finish today :D
 - [ ] Finish The Models
-  - [ ] Do some refactoring over the names
-  - [ ] Make it more `abstract` using some inheritance, no repeatable code
-  - [ ] Hibernate validations
+  - [X] Do some refactoring over the names
+  - [X] Make it more `abstract` using some inheritance, no repeatable code
+  - [X] Hibernate validations
+  - [ ] Finish the relations
 - [ ] Repositories
-  - [ ] Implement make the repositories
+  - [X] Implement make the repositories
   - [ ] Check if the uuid is working
 - [ ] Services
   - [ ] Create the services templates
 - [ ] Controllers
   - [ ] Create the controller templates
+  - [ ] Put the appropriate information in the controllers
+- [ ] Security
+  - [ ] Implement Spring Security
+- [ ] Image Paths
+  - [ ] Make so the images are saved in appropriate paths and displayed 
