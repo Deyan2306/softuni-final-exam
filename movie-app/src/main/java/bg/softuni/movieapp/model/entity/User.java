@@ -1,5 +1,6 @@
 package bg.softuni.movieapp.model.entity;
 
+import bg.softuni.movieapp.model.entity.base.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;

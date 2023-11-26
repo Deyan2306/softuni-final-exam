@@ -1,5 +1,6 @@
 package bg.softuni.movieapp.model.entity;
 
+import bg.softuni.movieapp.model.entity.base.Likeable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;

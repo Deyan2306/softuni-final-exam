@@ -1,6 +1,7 @@
 package bg.softuni.movieapp.model.entity;
 
-import bg.softuni.movieapp.model.entity.interfaces.Reviewable;
+import bg.softuni.movieapp.model.entity.base.Article;
+import bg.softuni.movieapp.model.entity.base.Watchable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
@@ -15,14 +16,13 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "tv_series_episodes")
-public class TVSeriesEpisode extends Likeable implements Reviewable {
+public class TVSeriesEpisode extends Watchable {
 
     private String title;
     private String summary;
     private LocalDate releaseDate;
     private String titleImageURI;
     private List<Rating> ratings;
-    private List<Comment> comments;
     private Integer episode;
     private Integer season;
 

@@ -1,6 +1,7 @@
 package bg.softuni.movieapp.model.entity;
 
-import bg.softuni.movieapp.model.entity.interfaces.Reviewable;
+import bg.softuni.movieapp.model.entity.base.Article;
+import bg.softuni.movieapp.model.entity.base.Watchable;
 import bg.softuni.movieapp.model.enums.Language;
 import bg.softuni.movieapp.model.enums.MovieGenre;
 import bg.softuni.movieapp.model.enums.PGRating;
@@ -18,7 +19,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "movies")
-public class Movie extends Likeable implements Reviewable {
+public class Movie extends Watchable {
 
     private String title;
     private String titlePictureURI;

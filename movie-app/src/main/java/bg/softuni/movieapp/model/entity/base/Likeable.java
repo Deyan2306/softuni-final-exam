@@ -1,5 +1,6 @@
-package bg.softuni.movieapp.model.entity;
+package bg.softuni.movieapp.model.entity.base;
 
+import bg.softuni.movieapp.model.entity.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToMany;

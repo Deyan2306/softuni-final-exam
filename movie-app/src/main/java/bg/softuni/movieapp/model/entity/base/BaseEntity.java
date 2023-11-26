@@ -1,4 +1,4 @@
-package bg.softuni.movieapp.model.entity;
+package bg.softuni.movieapp.model.entity.base;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
