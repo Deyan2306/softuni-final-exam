@@ -2,6 +2,7 @@ package bg.softuni.movieapp.model.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -46,8 +47,10 @@ public class User extends BaseEntity {
     @Column(name = "discord_username")
     private String discordUsername;
 
+    @OneToMany
     private List<Movie> watchedMovies;
 
+    @OneToMany
     private List<TVSeries> watchedTVSeries;
 
 

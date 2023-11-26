@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "directors")
-public class Director extends BaseEntity {
+public class Director extends Likeable {
 
     private String firstName;
     private String lastName;

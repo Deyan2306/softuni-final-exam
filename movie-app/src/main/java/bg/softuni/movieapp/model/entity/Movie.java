@@ -18,7 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "movies")
-public class Movie extends BaseEntity implements Reviewable {
+public class Movie extends Likeable implements Reviewable {
 
     private String title;
     private String titlePictureURI;

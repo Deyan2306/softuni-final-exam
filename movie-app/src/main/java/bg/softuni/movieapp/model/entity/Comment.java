@@ -14,11 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "comments")
-public class Comment extends BaseEntity {
+public class Comment extends Likeable {
     private User user;
     private String content;
-    private List<User> liked;
-    private List<User> disliked;
     private Commentable commentArticle;
     private LocalDate commentedAt;
 }

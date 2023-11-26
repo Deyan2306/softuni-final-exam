@@ -12,9 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "quotes")
-public class Quote extends BaseEntity {
+public class Quote extends Likeable {
     private Movie quoteFor;
     private String content;
-    private List<User> liked;
-    private List<User> disliked;
 }

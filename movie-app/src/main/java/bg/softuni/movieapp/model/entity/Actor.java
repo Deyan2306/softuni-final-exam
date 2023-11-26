@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "authors")
-public class Actor extends BaseEntity {
+public class Actor extends Likeable {
 
     private String firstName;
     private String lastName;
@@ -26,7 +26,5 @@ public class Actor extends BaseEntity {
     private List<String> alternativeNames;
     private List<ActorRole> roles;
     private List<Comment> comments;
-    private List<User> liked;
-    private List<User> disliked;
 
 }

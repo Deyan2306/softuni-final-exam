@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "studios")
-public class Studio extends BaseEntity {
+public class Studio extends Likeable {
 
     private String name;
     private LocalDate established;

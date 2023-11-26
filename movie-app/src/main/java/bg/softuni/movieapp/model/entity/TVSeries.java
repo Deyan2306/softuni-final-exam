@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "tv_series")
-public class TVSeries extends BaseEntity implements Reviewable {
+public class TVSeries extends Likeable implements Reviewable {
 
     private String title;
     private String titlePictureURI;
