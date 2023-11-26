@@ -2,6 +2,7 @@ package bg.softuni.movieapp.model.entity;
 
 import bg.softuni.movieapp.model.entity.base.BaseEntity;
 import bg.softuni.movieapp.model.entity.base.Commentable;
+import bg.softuni.movieapp.model.entity.base.Watchable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -21,6 +22,11 @@ public class ActorRole extends Commentable {
     @Column(name = "actor")
     private Actor realActor;
 
+    @OneToMany
+    private Watchable roleFor;
+
+    // TODO: Fix the relation
+
     @Size(min = 2, max = 100)
     @Column(name = "character_first_name", nullable = false)
     private String characterFirstName;
@@ -36,7 +42,6 @@ public class ActorRole extends Commentable {
     @Column(name = "character_bio", columnDefinition = "TEXT")
     private String characterBio;
 
-    @Column(name = "character_profile_picture_uri", unique = true)
-    private String characterPictureURI;
+
 
 }

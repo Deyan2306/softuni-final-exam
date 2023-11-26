@@ -1,6 +1,7 @@
 package bg.softuni.movieapp.model.entity;
 
 import bg.softuni.movieapp.model.entity.base.Article;
+import bg.softuni.movieapp.model.entity.base.Watchable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -27,7 +28,7 @@ public class Studio extends Article {
     private LocalDate established;
 
     @OneToMany
-    private List<Movie> movies;
+    private List<Watchable> movies;
 
     @Column(name = "studio_picture_uri")
     private String studioPictureURI;

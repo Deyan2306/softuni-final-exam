@@ -44,7 +44,7 @@ public class Actor extends Commentable {
     @Column(name = "height")
     private Integer height;
 
-    @OneToMany
+    @ManyToMany
     @Column(name = "roles", nullable = false)
     private List<ActorRole> roles;
 

@@ -6,6 +6,7 @@ import bg.softuni.movieapp.model.enums.Language;
 import bg.softuni.movieapp.model.enums.PGRating;
 import bg.softuni.movieapp.model.enums.TVSeriesGenre;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -59,12 +60,16 @@ public class TVSeries extends Watchable {
     @ManyToOne
     private Director director;
 
+    @Min(value = 0)
     @Column(name = "length_in_minutes")
     private Integer lengthInMinutes;
 
-
     private List<Actor> cast;
+
+    @OneToMany
     private List<Quote> quotes;
+
+    @ManyToOne
     private Studio studio;
 
     @Enumerated(EnumType.STRING)

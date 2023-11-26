@@ -6,6 +6,7 @@ import bg.softuni.movieapp.model.enums.Language;
 import bg.softuni.movieapp.model.enums.MovieGenre;
 import bg.softuni.movieapp.model.enums.PGRating;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -20,22 +21,48 @@ import java.util.Set;
 @Table(name = "movies")
 public class Movie extends Watchable {
 
+    @Column(name = "title", nullable = false, unique = true)
     private String title;
+
+    @Column(name = "title_picture_uri")
     private String titlePictureURI;
+
+    @Enumerated(EnumType.STRING)
     private List<MovieGenre> genre;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "pg_rating", nullable = false)
     private PGRating pgRating;
-    private String shortDescription;
+
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String summary;
+
+    @OneToMany
     private List<Rating> ratings;
 
     @ManyToMany(mappedBy = "watchedMovies")
     private List<User> watchedBy;
+
+    @Column(name = "youtube_trailer_id", nullable = false)
     private String youtubeTrailerID;
+
+    @Column(name = "release_date")
     private LocalDate releaseDate;
+
+    @ManyToOne
     private Director director;
-    private Long length;
+
+    @Min(value = 0)
+    @Column(nullable = false)
+    private Integer length;
+
+    // TODO: Fix the relation
     private List<Actor> cast;
-    private String storyline;
+
+    @OneToMany
     private List<Quote> quotes;
+
+    @ManyToOne
     private Studio studio;
 
     @Enumerated(EnumType.STRING)
