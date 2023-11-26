@@ -1,10 +1,7 @@
 package bg.softuni.movieapp.model.entity;
 
 import bg.softuni.movieapp.model.entity.base.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -26,8 +23,8 @@ public class User extends BaseEntity {
     private String password; // TODO: Encrypt
     // TODO: Implement roles
 
-    @Column(name = "avatar")
-    private String avatarPictureURI; // Relative path to the avatar
+    @Column(name = "avatar_picutre_uri")
+    private String avatarPictureURI;
 
     @Size(min = 2, max = 100)
     @Column(name = "first_name")
@@ -45,13 +42,27 @@ public class User extends BaseEntity {
     @Column(name = "location")
     private String location;
 
+    @OneToMany
+    @Column(name = "created_ratings")
+    private List<Rating> createdRatings;
+
     @Column(name = "discord_username")
     private String discordUsername;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name = "user_watched_movies",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id")
+    )
     private List<Movie> watchedMovies;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name = "user_watched_tv_series",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "tv_series_id")
+    )
     private List<TVSeries> watchedTVSeries;
 
 
