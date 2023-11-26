@@ -1,7 +1,6 @@
 package bg.softuni.movieapp.model.entity;
 
 import bg.softuni.movieapp.model.entity.base.Commentable;
-import bg.softuni.movieapp.model.entity.base.Likeable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -46,6 +45,6 @@ public class Actor extends Commentable {
 
     @ManyToMany
     @Column(name = "roles", nullable = false)
-    private List<ActorRole> roles;
+    private List<Role> roles;
 
 }
