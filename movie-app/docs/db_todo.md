@@ -8,7 +8,8 @@ Some stuff, that i need to finish today :D
   - [X] Implement make the repositories
   - [ ] Check if the uuid is working
 - [ ] Services
-  - [ ] Create the services templates
+  - [X] Create the services templates
+  - [ ] Do the actual stuff in the services
 - [ ] Controllers
   - [ ] Create the controller templates
   - [ ] Put the appropriate information in the controllers
