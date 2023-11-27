@@ -1,6 +1,7 @@
 package bg.softuni.movieapp.model.entity.base;
 
 import bg.softuni.movieapp.model.entity.Comment;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToMany;
 import lombok.*;
@@ -13,7 +14,7 @@ import java.util.List;
 @MappedSuperclass
 public class Commentable extends Likeable {
 
-    @OneToMany
+    @OneToMany(mappedBy = "commentable", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
 }

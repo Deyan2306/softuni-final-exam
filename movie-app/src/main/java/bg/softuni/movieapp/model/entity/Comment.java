@@ -2,6 +2,7 @@ package bg.softuni.movieapp.model.entity;
 
 import bg.softuni.movieapp.model.entity.base.Article;
 import bg.softuni.movieapp.model.entity.base.Likeable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -15,16 +16,17 @@ import java.time.LocalDate;
 @Table(name = "comments")
 public class Comment extends Likeable {
 
-    @OneToOne
-    @Column(name = "commented_by", nullable = false)
-    private User commentedBy;
-
     @Size(min = 10, max = 500)
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    @OneToOne
-    @Column(name = "article_from", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User commentedBy;
+
+    @ManyToOne
+    @JoinColumn(name = "comment_id")
+    @JsonIgnoreProperties({"comments"})
     private Article articleFrom;
 
     @Column(name = "commented_at", nullable = false)

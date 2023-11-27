@@ -48,6 +48,9 @@ public class User extends BaseEntity {
     @Column(name = "discord_username")
     private String discordUsername;
 
+    @OneToMany(mappedBy = "commentedBy")
+    private List<Comment> createdComments;
+
     @ManyToMany
     @JoinTable(
             name = "user_watched_movies",
@@ -63,6 +66,5 @@ public class User extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "tv_series_id")
     )
     private List<TVSeries> watchedTVSeries;
-
 
 }
