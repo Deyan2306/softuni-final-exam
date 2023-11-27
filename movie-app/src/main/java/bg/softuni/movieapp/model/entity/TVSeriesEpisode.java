@@ -31,10 +31,6 @@ public class TVSeriesEpisode extends Watchable {
     @Column(name = "title_image_uri", nullable = false, unique = true)
     private String titleImageURI;
 
-    @OneToMany
-    @Column(name = "ratings")
-    private List<Rating> ratings;
-
     @Column(name = "episode_num", unique = true, nullable = false)
     private Integer episode;
 

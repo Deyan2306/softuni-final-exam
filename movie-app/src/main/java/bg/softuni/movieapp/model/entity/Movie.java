@@ -36,9 +36,6 @@ public class Movie extends Watchable {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String summary;
 
-    @OneToMany
-    private List<Rating> ratings;
-
     @ManyToMany(mappedBy = "watchedMovies")
     private List<User> watchedBy;
 

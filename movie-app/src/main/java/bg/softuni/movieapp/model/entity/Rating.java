@@ -2,10 +2,7 @@ package bg.softuni.movieapp.model.entity;
 
 import bg.softuni.movieapp.model.entity.base.Article;
 import bg.softuni.movieapp.model.entity.base.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import lombok.*;
 
@@ -22,8 +19,8 @@ public class Rating extends BaseEntity {
     @Column(name = "rated_by", nullable = false)
     private User user;
 
-    @OneToOne
-    @Column(name = "article", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "article_id")
     private Article rated;
 
     @DecimalMin(value = "0.00")
