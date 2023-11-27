@@ -1,6 +1,6 @@
 package bg.softuni.movieapp.services.impl;
 
-import bg.softuni.movieapp.repository.CommentRepository;
+import bg.softuni.movieapp.repository.objects.CommentRepository;
 import bg.softuni.movieapp.services.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

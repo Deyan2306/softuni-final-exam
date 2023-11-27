@@ -1,9 +1,9 @@
 Some stuff, that i need to finish today :D
-- [ ] Finish The Models
+- [X] Finish The Models
   - [X] Do some refactoring over the names
   - [X] Make it more `abstract` using some inheritance, no repeatable code
   - [X] Hibernate validations
-  - [ ] Finish the relations
+  - [X] Finish the relations
 - [ ] Repositories
   - [X] Implement make the repositories
   - [ ] Check if the uuid is working
@@ -18,3 +18,5 @@ Some stuff, that i need to finish today :D
   - [ ] Switch the user login from Session scope to Spring security
 - [ ] Image Paths
   - [ ] Make so the images are saved in appropriate paths and displayed 
+- [ ] Unit tests (60% Coverage)
+  - [ ] Unit tests for the services

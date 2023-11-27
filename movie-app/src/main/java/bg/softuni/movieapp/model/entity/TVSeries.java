@@ -58,14 +58,6 @@ public class TVSeries extends Likeable {
     @OneToMany(mappedBy = "series")
     private List<TVSeriesEpisode> episodes;
 
-    @ManyToMany
-    @JoinTable(
-            name = "tv_series_actor_roles",
-            joinColumns = @JoinColumn(name = "tv_series_id"),
-            inverseJoinColumns = @JoinColumn(name = "actor_role_id")
-    )
-    private List<Actor> tvSeriesCast;
-
     @Column(name = "title_picture_uri", unique = true)
     private String titlePictureURI;
 
@@ -80,5 +72,13 @@ public class TVSeries extends Likeable {
 
     @OneToOne
     private RatingSection ratingSection;
+
+    @ManyToMany
+    @JoinTable(
+            name = "tv_series_actor_roles",
+            joinColumns = @JoinColumn(name = "tv_series_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_role_id")
+    )
+    private List<ActorRole> tvSeriesCast;
 
 }

@@ -52,14 +52,6 @@ public class Movie extends Likeable {
     @Column(nullable = false)
     private Integer length;
 
-    @ManyToMany
-    @JoinTable(
-            name = "movie_actor_roles",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "actor_role_id")
-    )
-    private List<ActorRole> movieCast;
-
     @ManyToOne
     private Studio studio;
 
@@ -71,5 +63,13 @@ public class Movie extends Likeable {
 
     @OneToOne
     private RatingSection ratingSection;
+
+    @ManyToMany
+    @JoinTable(
+            name = "movie_actor_roles",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_role_id")
+    )
+    private List<ActorRole> movieCast;
 
 }

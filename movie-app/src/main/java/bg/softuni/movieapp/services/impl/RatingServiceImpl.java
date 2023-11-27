@@ -1,6 +1,6 @@
 package bg.softuni.movieapp.services.impl;
 
-import bg.softuni.movieapp.repository.RatingRepository;
+import bg.softuni.movieapp.repository.objects.RatingRepository;
 import bg.softuni.movieapp.services.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

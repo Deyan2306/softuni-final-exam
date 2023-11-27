@@ -1,4 +1,4 @@
-package bg.softuni.movieapp.repository;
+package bg.softuni.movieapp.repository.objects;
 
 import bg.softuni.movieapp.model.entity.objects.Rating;
 import org.springframework.data.jpa.repository.JpaRepository;
