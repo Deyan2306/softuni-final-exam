@@ -8,12 +8,11 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.util.UUID;
 
-@Builder
 @Getter @Setter
 @MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class BaseEntity {
+public class BaseEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")

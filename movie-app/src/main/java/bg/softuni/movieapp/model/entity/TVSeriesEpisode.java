@@ -10,7 +10,6 @@ import javax.xml.stream.events.Comment;
 import java.time.LocalDate;
 import java.util.List;
 
-@Builder
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor

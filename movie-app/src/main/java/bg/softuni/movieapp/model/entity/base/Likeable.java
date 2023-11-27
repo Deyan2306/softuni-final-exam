@@ -8,12 +8,11 @@ import lombok.*;
 
 import java.util.List;
 
-@Builder
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
-public abstract class Likeable extends BaseEntity {
+public class Likeable extends BaseEntity {
 
     @OneToMany
     @Column(name = "liked_by")

@@ -7,12 +7,11 @@ import lombok.*;
 
 import java.util.List;
 
-@Builder
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
-public abstract class Commentable extends Likeable {
+public class Commentable extends Likeable {
 
     @OneToMany
     private List<Comment> comments;
