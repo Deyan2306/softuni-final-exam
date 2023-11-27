@@ -1,6 +1,7 @@
 package bg.softuni.movieapp.model.entity;
 
 import bg.softuni.movieapp.model.entity.base.Article;
+import bg.softuni.movieapp.model.entity.base.Commentable;
 import bg.softuni.movieapp.model.entity.base.Likeable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -27,7 +28,7 @@ public class Comment extends Likeable {
     @ManyToOne
     @JoinColumn(name = "comment_id")
     @JsonIgnoreProperties({"comments"})
-    private Article articleFrom;
+    private Commentable commentFrom;
 
     @Column(name = "commented_at", nullable = false)
     private LocalDate commentedAt;
