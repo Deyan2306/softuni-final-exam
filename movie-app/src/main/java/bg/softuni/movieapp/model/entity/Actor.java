@@ -45,6 +45,6 @@ public class Actor extends Commentable {
 
     @ManyToMany
     @Column(name = "roles", nullable = false)
-    private List<Role> roles;
+    private List<ActorRole> roles;
 
 }

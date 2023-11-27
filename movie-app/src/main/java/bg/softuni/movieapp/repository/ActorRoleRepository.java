@@ -1,11 +1,11 @@
 package bg.softuni.movieapp.repository;
 
-import bg.softuni.movieapp.model.entity.Role;
+import bg.softuni.movieapp.model.entity.ActorRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, UUID> {
+public interface ActorRoleRepository extends JpaRepository<ActorRole, UUID> {
 }

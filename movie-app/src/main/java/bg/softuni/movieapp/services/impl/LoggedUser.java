@@ -1,4 +1,4 @@
-package bg.softuni.movieapp.services;
+package bg.softuni.movieapp.services.impl;
 
 // TODO: Use spring security
 

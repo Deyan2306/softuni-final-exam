@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "actor_roles")
-public class Role extends Commentable {
+public class ActorRole extends Commentable {
 
     @OneToOne
     @Column(name = "actor")
