@@ -15,8 +15,8 @@ import java.math.BigDecimal;
 @Table(name = "ratings")
 public class Rating extends BaseEntity {
 
-    @OneToOne
-    @Column(name = "rated_by", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne

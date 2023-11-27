@@ -41,8 +41,7 @@ public class User extends BaseEntity {
     @Column(name = "location")
     private String location;
 
-    @OneToMany
-    @Column(name = "created_ratings")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Rating> createdRatings;
 
     @Column(name = "discord_username")
