@@ -63,9 +63,6 @@ public class Movie extends Watchable {
     )
     private List<ActorRole> movieCast;
 
-    @OneToMany
-    private List<Quote> quotes;
-
     @ManyToOne
     private Studio studio;
 

@@ -13,7 +13,7 @@ import lombok.*;
 public class Quote extends Likeable {
 
     @ManyToOne
-    @Column(name = "quote_from")
+    @JoinColumn(name = "watchable_id")
     private Watchable quoteFrom;
 
     @Column(columnDefinition = "TEXT")

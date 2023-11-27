@@ -71,9 +71,6 @@ public class TVSeries extends Watchable {
     )
     private List<Actor> tvSeriesCast;
 
-    @OneToMany
-    private List<Quote> quotes;
-
     @ManyToOne
     private Studio studio;
 
