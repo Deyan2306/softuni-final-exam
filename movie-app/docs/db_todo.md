@@ -14,5 +14,6 @@ Some stuff, that i need to finish today :D
   - [ ] Put the appropriate information in the controllers
 - [ ] Security
   - [ ] Implement Spring Security
+  - [ ] Switch the user login from Session scope to Spring security
 - [ ] Image Paths
   - [ ] Make so the images are saved in appropriate paths and displayed 
