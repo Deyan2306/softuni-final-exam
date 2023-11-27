@@ -42,14 +42,11 @@ public class Actor extends Commentable {
     @Column(name = "height")
     private Integer height;
 
-    @ManyToMany
-    @Column(name = "roles", nullable = false)
+//    @ManyToMany
+//    @Column(name = "roles", nullable = false)
+
+    @OneToMany
+    @JoinColumn(name = "actor_role_id")
     private List<ActorRole> roles;
-
-    @ManyToMany(mappedBy = "actors")
-    private List<TVSeries> tvSeriesWhereActedAt;
-
-    @ManyToMany(mappedBy = "actors")
-    private List<Movie> moviesWhereActedAt;
 
 }

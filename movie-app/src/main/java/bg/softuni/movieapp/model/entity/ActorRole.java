@@ -16,8 +16,8 @@ import java.time.LocalDate;
 @Table(name = "actor_roles")
 public class ActorRole extends Commentable {
 
-    @ManyToMany(mappedBy = "movieCast")
-    private List<Actor> actors;
+    @ManyToOne
+    private Actor actor;
 
     @ManyToMany(mappedBy = "movieCast")
     private List<Movie> movieRolesPlayedAt;
