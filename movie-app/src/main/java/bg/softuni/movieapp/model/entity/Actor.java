@@ -1,6 +1,7 @@
 package bg.softuni.movieapp.model.entity;
 
-import bg.softuni.movieapp.model.entity.base.Commentable;
+import bg.softuni.movieapp.model.entity.base.BaseEntity;
+import bg.softuni.movieapp.model.entity.base.Likeable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -13,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "authors")
-public class Actor extends Commentable {
+public class Actor extends Likeable {
 
     @Size(min = 2, max = 100)
     @Column(name = "first_name", nullable = false)

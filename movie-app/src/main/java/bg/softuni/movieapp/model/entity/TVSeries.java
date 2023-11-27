@@ -1,7 +1,8 @@
 package bg.softuni.movieapp.model.entity;
 
-import bg.softuni.movieapp.model.entity.base.Article;
-import bg.softuni.movieapp.model.entity.base.Watchable;
+import bg.softuni.movieapp.model.entity.base.Likeable;
+import bg.softuni.movieapp.model.entity.sections.QuoteSection;
+import bg.softuni.movieapp.model.entity.sections.RatingSection;
 import bg.softuni.movieapp.model.enums.Language;
 import bg.softuni.movieapp.model.enums.PGRating;
 import bg.softuni.movieapp.model.enums.TVSeriesGenre;
@@ -18,20 +19,20 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "tv_series")
-public class TVSeries extends Watchable {
+public class TVSeries extends Likeable {
 
     @Column(name = "title", nullable = false, unique = true)
     private String title;
 
-    @Column(name = "title_picture_uri", unique = true)
-    private String titlePictureURI;
-
-    @OneToMany(mappedBy = "series")
-    private List<TVSeriesEpisode> episodes;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "genres", nullable = false)
     private List<TVSeriesGenre> genres;
+
+    @ManyToOne
+    private Studio studio;
+
+    @Enumerated(EnumType.STRING)
+    private Language language;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "pg_rating", nullable = false)
@@ -40,12 +41,6 @@ public class TVSeries extends Watchable {
     @Size(min = 20, max = 1500)
     @Column(columnDefinition = "TEXT", nullable = false)
     private String summary;
-
-    @ManyToMany(mappedBy = "watchedTVSeries")
-    private List<User> completedBy;
-
-    @Column(name = "youtube_trailer_id", nullable = false)
-    private String youtubeTrailerID;
 
     @Column(name = "release_date")
     private LocalDate releaseDate;
@@ -60,6 +55,9 @@ public class TVSeries extends Watchable {
     @Column(name = "length_in_minutes")
     private Integer lengthInMinutes;
 
+    @OneToMany(mappedBy = "series")
+    private List<TVSeriesEpisode> episodes;
+
     @ManyToMany
     @JoinTable(
             name = "tv_series_actor_roles",
@@ -68,10 +66,19 @@ public class TVSeries extends Watchable {
     )
     private List<Actor> tvSeriesCast;
 
-    @ManyToOne
-    private Studio studio;
+    @Column(name = "title_picture_uri", unique = true)
+    private String titlePictureURI;
 
-    @Enumerated(EnumType.STRING)
-    private Language language;
+    @Column(name = "youtube_trailer_id", nullable = false)
+    private String youtubeTrailerID;
+
+    @ManyToMany(mappedBy = "watchedTVSeries")
+    private List<User> completedBy;
+
+    @OneToOne
+    private QuoteSection quoteSection;
+
+    @OneToOne
+    private RatingSection ratingSection;
 
 }

@@ -1,7 +1,8 @@
 package bg.softuni.movieapp.model.entity;
 
-import bg.softuni.movieapp.model.entity.base.Article;
-import bg.softuni.movieapp.model.entity.base.Watchable;
+import bg.softuni.movieapp.model.entity.base.Likeable;
+import bg.softuni.movieapp.model.entity.sections.QuoteSection;
+import bg.softuni.movieapp.model.entity.sections.RatingSection;
 import bg.softuni.movieapp.model.enums.Language;
 import bg.softuni.movieapp.model.enums.MovieGenre;
 import bg.softuni.movieapp.model.enums.PGRating;
@@ -11,14 +12,13 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "movies")
-public class Movie extends Watchable {
+public class Movie extends Likeable {
 
     @Column(name = "title", nullable = false, unique = true)
     private String title;
@@ -65,5 +65,11 @@ public class Movie extends Watchable {
 
     @Enumerated(EnumType.STRING)
     private Language language;
+
+    @OneToOne
+    private QuoteSection quoteSection;
+
+    @OneToOne
+    private RatingSection ratingSection;
 
 }

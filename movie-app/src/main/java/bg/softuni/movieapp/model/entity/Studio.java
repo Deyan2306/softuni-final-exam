@@ -1,7 +1,6 @@
 package bg.softuni.movieapp.model.entity;
 
-import bg.softuni.movieapp.model.entity.base.Article;
-import bg.softuni.movieapp.model.entity.base.Watchable;
+import bg.softuni.movieapp.model.entity.base.Likeable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -17,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "studios")
-public class Studio extends Article {
+public class Studio extends Likeable {
 
     @Size(min = 2, max = 100)
     @Column(name = "name")
@@ -27,7 +26,10 @@ public class Studio extends Article {
     private LocalDate established;
 
     @OneToMany
-    private List<Watchable> movies;
+    private List<Movie> movies;
+
+    @OneToMany
+    private List<TVSeries> tvSeries;
 
     @Column(name = "studio_picture_uri")
     private String studioPictureURI;

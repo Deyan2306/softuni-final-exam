@@ -1,6 +1,6 @@
 package bg.softuni.movieapp.repository;
 
-import bg.softuni.movieapp.model.entity.Rating;
+import bg.softuni.movieapp.model.entity.objects.Rating;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

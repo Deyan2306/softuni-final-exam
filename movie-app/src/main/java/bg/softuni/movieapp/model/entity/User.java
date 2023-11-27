@@ -1,6 +1,8 @@
 package bg.softuni.movieapp.model.entity;
 
 import bg.softuni.movieapp.model.entity.base.BaseEntity;
+import bg.softuni.movieapp.model.entity.objects.Comment;
+import bg.softuni.movieapp.model.entity.objects.Rating;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -49,6 +51,22 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "commentedBy")
     private List<Comment> createdComments;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_upvoted_comments",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "upvoted_comment_id")
+    )
+    private List<Comment> upVotedComments;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_downvoted_comments",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "downvoted_comment_id")
+    )
+    private List<Comment> downVotedComments;
 
     @ManyToMany
     @JoinTable(

@@ -1,7 +1,7 @@
 package bg.softuni.movieapp.model.entity;
 
-import bg.softuni.movieapp.model.entity.base.Commentable;
-import bg.softuni.movieapp.model.entity.base.Watchable;
+import bg.softuni.movieapp.model.entity.base.BaseEntity;
+import bg.softuni.movieapp.model.entity.base.Likeable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "actor_roles")
-public class ActorRole extends Commentable {
+public class ActorRole extends Likeable {
 
     @ManyToOne
     private Actor actor;

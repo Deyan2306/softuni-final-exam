@@ -1,7 +1,7 @@
-package bg.softuni.movieapp.model.entity;
+package bg.softuni.movieapp.model.entity.objects;
 
+import bg.softuni.movieapp.model.entity.sections.QuoteSection;
 import bg.softuni.movieapp.model.entity.base.Likeable;
-import bg.softuni.movieapp.model.entity.base.Watchable;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,10 +12,11 @@ import lombok.*;
 @Table(name = "quotes")
 public class Quote extends Likeable {
 
-    @ManyToOne
-    @JoinColumn(name = "watchable_id")
-    private Watchable quoteFrom;
 
     @Column(columnDefinition = "TEXT")
     private String content;
+    
+    @ManyToOne
+    @JoinColumn(name = "quote_section_id")
+    private QuoteSection quoteSection;
 }

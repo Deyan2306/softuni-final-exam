@@ -1,21 +1,20 @@
 package bg.softuni.movieapp.model.entity;
 
-import bg.softuni.movieapp.model.entity.base.Article;
-import bg.softuni.movieapp.model.entity.base.Watchable;
+import bg.softuni.movieapp.model.entity.base.Likeable;
+import bg.softuni.movieapp.model.entity.sections.QuoteSection;
+import bg.softuni.movieapp.model.entity.sections.RatingSection;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
-import javax.xml.stream.events.Comment;
 import java.time.LocalDate;
-import java.util.List;
 
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "tv_series_episodes")
-public class TVSeriesEpisode extends Watchable {
+public class TVSeriesEpisode extends Likeable {
 
     @Size(min = 2)
     @Column(name = "title", nullable = false, unique = true)
@@ -28,9 +27,6 @@ public class TVSeriesEpisode extends Watchable {
     @Column(name = "release_date")
     private LocalDate releaseDate;
 
-    @Column(name = "title_image_uri", nullable = false, unique = true)
-    private String titleImageURI;
-
     @Column(name = "episode_num", unique = true, nullable = false)
     private Integer episode;
 
@@ -39,5 +35,15 @@ public class TVSeriesEpisode extends Watchable {
 
     @ManyToOne
     private TVSeries series;
+
+    @Column(name = "title_image_uri", nullable = false, unique = true)
+    private String titleImageURI;
+
+    @OneToOne
+    private QuoteSection quoteSection;
+
+    @OneToOne
+    private RatingSection ratingSection;
+
 
 }
