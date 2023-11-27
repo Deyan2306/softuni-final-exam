@@ -11,7 +11,7 @@ import java.util.List;
 
 @Getter @Setter
 @NoArgsConstructor
-@Entity
+@MappedSuperclass
 public class Commentable extends Likeable {
 
     @OneToMany(mappedBy = "commentFrom", cascade = CascadeType.ALL)
