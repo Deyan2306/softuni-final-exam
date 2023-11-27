@@ -56,8 +56,13 @@ public class Movie extends Watchable {
     @Column(nullable = false)
     private Integer length;
 
-    // TODO: Fix the relation
-    private List<Actor> cast;
+    @ManyToMany
+    @JoinTable(
+            name = "movie_actor_roles",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_role_id")
+    )
+    private List<ActorRole> movieCast;
 
     @OneToMany
     private List<Quote> quotes;

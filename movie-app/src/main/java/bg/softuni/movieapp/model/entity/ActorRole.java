@@ -5,6 +5,7 @@ import bg.softuni.movieapp.model.entity.base.Watchable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import java.util.List;
 
 import java.time.LocalDate;
 
@@ -16,14 +17,14 @@ import java.time.LocalDate;
 @Table(name = "actor_roles")
 public class ActorRole extends Commentable {
 
-    @OneToOne
-    @Column(name = "actor")
-    private Actor realActor;
+    @ManyToMany(mappedBy = "movieCast")
+    private List<Actor> actors;
 
-    @OneToMany
-    private Watchable roleFor;
+    @ManyToMany(mappedBy = "movieCast")
+    private List<Movie> movieRolesPlayedAt;
 
-    // TODO: Fix the relation
+    @ManyToMany(mappedBy = "tvSeriesCast")
+    private List<TVSeries> tvSeriesPlayedAt;
 
     @Size(min = 2, max = 100)
     @Column(name = "character_first_name", nullable = false)

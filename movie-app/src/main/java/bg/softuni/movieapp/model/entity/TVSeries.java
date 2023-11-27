@@ -64,7 +64,13 @@ public class TVSeries extends Watchable {
     @Column(name = "length_in_minutes")
     private Integer lengthInMinutes;
 
-    private List<Actor> cast;
+    @ManyToMany
+    @JoinTable(
+            name = "tv_series_actor_roles",
+            joinColumns = @JoinColumn(name = "tv_series_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_role_id")
+    )
+    private List<Actor> tvSeriesCast;
 
     @OneToMany
     private List<Quote> quotes;

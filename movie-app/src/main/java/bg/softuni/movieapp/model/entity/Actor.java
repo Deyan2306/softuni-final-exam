@@ -47,4 +47,10 @@ public class Actor extends Commentable {
     @Column(name = "roles", nullable = false)
     private List<ActorRole> roles;
 
+    @ManyToMany(mappedBy = "actors")
+    private List<TVSeries> tvSeriesWhereActedAt;
+
+    @ManyToMany(mappedBy = "actors")
+    private List<Movie> moviesWhereActedAt;
+
 }
