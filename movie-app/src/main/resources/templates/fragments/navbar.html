@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>MovieApp - Home</title>
@@ -26,6 +28,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">TV Series</a>
                 </li>
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <form th:method="POST"
+                              th:action="@{/users/logout}">
+                            <input type="submit" class="btn btn-link" value="Logout"/>
+                        </form>
+                    </li>
+                </th:block>
             </ul>
         </div>
     </nav>
