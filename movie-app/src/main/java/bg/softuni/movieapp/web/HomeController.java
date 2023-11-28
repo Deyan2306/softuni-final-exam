@@ -9,21 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 
-    private final LoggedUser loggedUser;
-
-    @Autowired
-    public HomeController(LoggedUser loggedUser) {
-        this.loggedUser = loggedUser;
-    }
-
     @GetMapping("/")
     public ModelAndView index() {
         return new ModelAndView("index");
     }
 
-    @GetMapping("/hello") // TODO: Delete this later
-    public ModelAndView hello() { return new ModelAndView("hello"); }
-
-    @GetMapping("/login")
-    public ModelAndView login() { return new ModelAndView("login"); }
 }

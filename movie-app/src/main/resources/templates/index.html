@@ -8,23 +8,23 @@
 </head>
 <body>
 
-<div th:replace="fragments/navbar :: navbar"></div>
+    <div th:replace="fragments/navbar :: navbar"></div>
 
-<div class="container">
-    <div class="jumbotron text-center">
-        <h1>Welcome to MovieApp</h1>
-        <p>Discover and explore your favorite movies and TV series!</p>
-        <div class="mt-4">
-            <a th:href="@{/login}" class="btn btn-primary mr-2">Login</a>
-            <a th:href="@{/register}" class="btn btn-secondary">Register</a>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Welcome to MovieApp</h1>
+            <p>Discover and explore your favorite movies and TV series!</p>
+            <div class="mt-4">
+                <a th:href="@{/login}" class="btn btn-primary mr-2">Login</a>
+                <a th:href="@{/register}" class="btn btn-secondary">Register</a>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Include Bootstrap JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
