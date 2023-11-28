@@ -13,7 +13,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "roles")
 @Entity
-public class UserRoleEntity extends BaseEntity {
+public class UserRoleEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
