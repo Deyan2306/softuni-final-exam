@@ -55,6 +55,14 @@ public class UserEntity extends BaseEntity {
     @OneToMany(mappedBy = "commentedBy")
     private List<Comment> createdComments;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<UserRoleEntity> roles = new ArrayList<>();
+
     @ManyToMany
     @JoinTable(
             name = "user_upvoted_comments",

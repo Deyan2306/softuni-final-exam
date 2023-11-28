@@ -21,6 +21,9 @@ spring:
     mode: HTML
     encoding: UTF-8
     prefix: file:src/main/resources/templates/
+  sql:
+    init:
+      mode: never
 logging:
   level:
     org:
