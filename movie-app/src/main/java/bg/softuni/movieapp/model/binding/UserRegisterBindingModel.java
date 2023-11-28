@@ -17,6 +17,6 @@ public class UserRegisterBindingModel {
     @Length(min = 8, max = 200)
     private String password;
 
-    private String repeatPassword;
+    private String confirmPassword;
 
 }

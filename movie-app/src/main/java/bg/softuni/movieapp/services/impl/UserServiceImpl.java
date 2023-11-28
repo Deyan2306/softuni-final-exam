@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import static bg.softuni.movieapp.util.FilePaths.DEFAULT_PROFILE_PICTURE_URI;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -31,7 +33,7 @@ public class UserServiceImpl implements UserService {
             return false;
         }
 
-        if (!userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getRepeatPassword())) {
+        if (!userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())) {
             return false;
         }
 
@@ -39,6 +41,7 @@ public class UserServiceImpl implements UserService {
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(userRegisterBindingModel.getPassword()));
         user.setEmail(userRegisterBindingModel.getEmail());
+        user.setAvatarPictureURI(DEFAULT_PROFILE_PICTURE_URI);
 
         this.userRepository.save(user);
 
