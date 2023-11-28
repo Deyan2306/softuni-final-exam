@@ -16,13 +16,15 @@ import java.util.List;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    @Size(min = 5, max = 100)
+    @Size(min = 4, max = 100)
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @Column(name = "password", nullable = false)
-    private String password; // TODO: Encrypt
-    // TODO: Implement roles
+    private String password;
+
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
     @Column(name = "avatar_picutre_uri")
     private String avatarPictureURI;
