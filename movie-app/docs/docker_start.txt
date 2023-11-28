@@ -1,1 +1,1 @@
-docker run --name movie_app_db -p 5502:3306 -e MYSQL_ROOT_PASSWORD=12345 -d mysql:latest
+sudo docker run --name movie_app -p 5502:3306 -e MYSQL_ROOT_PASSWORD=12345 -d mysql:latest

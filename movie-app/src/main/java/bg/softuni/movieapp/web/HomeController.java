@@ -1,4 +1,4 @@
-package bg.softuni.movieapp.controller;
+package bg.softuni.movieapp.web;
 
 import bg.softuni.movieapp.services.impl.LoggedUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,4 +20,10 @@ public class HomeController {
     public ModelAndView index() {
         return new ModelAndView("index");
     }
+
+    @GetMapping("/hello") // TODO: Delete this later
+    public ModelAndView hello() { return new ModelAndView("hello"); }
+
+    @GetMapping("/login")
+    public ModelAndView login() { return new ModelAndView("login"); }
 }
