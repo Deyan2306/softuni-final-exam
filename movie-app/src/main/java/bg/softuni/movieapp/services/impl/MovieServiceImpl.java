@@ -9,11 +9,9 @@ import org.springframework.stereotype.Service;
 public class MovieServiceImpl implements MovieService {
 
     private final MovieRepository movieRepository;
-    private final LoggedUser loggedUser;
 
     @Autowired
-    public MovieServiceImpl(MovieRepository movieRepository, LoggedUser loggedUser) {
+    public MovieServiceImpl(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
-        this.loggedUser = loggedUser;
     }
 }

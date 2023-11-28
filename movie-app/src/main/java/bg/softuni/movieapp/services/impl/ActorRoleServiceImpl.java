@@ -9,11 +9,9 @@ import org.springframework.stereotype.Service;
 public class ActorRoleServiceImpl implements ActorRoleService {
 
     private final ActorRoleRepository actorRoleRepository;
-    private final LoggedUser loggedUser;
 
     @Autowired
-    public ActorRoleServiceImpl(ActorRoleRepository actorRoleRepository, LoggedUser loggedUser) {
+    public ActorRoleServiceImpl(ActorRoleRepository actorRoleRepository) {
         this.actorRoleRepository = actorRoleRepository;
-        this.loggedUser = loggedUser;
     }
 }

@@ -8,12 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class QuoteSectionServiceImpl implements QuoteSectionService {
 
-    private final LoggedUser loggedUser;
     private final QuoteSectionRepository quoteSectionRepository;
 
     @Autowired
-    public QuoteSectionServiceImpl(LoggedUser loggedUser, QuoteSectionRepository quoteSectionRepository) {
-        this.loggedUser = loggedUser;
+    public QuoteSectionServiceImpl(QuoteSectionRepository quoteSectionRepository) {
         this.quoteSectionRepository = quoteSectionRepository;
     }
 }

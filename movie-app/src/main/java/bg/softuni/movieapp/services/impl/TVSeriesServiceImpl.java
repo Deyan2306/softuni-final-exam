@@ -9,11 +9,9 @@ import org.springframework.stereotype.Service;
 public class TVSeriesServiceImpl implements TVSeriesEpisodeService {
 
     private final TVSeriesEpisodeRepository tvSeriesEpisodeRepository;
-    private final LoggedUser loggedUser;
 
     @Autowired
-    public TVSeriesServiceImpl(TVSeriesEpisodeRepository tvSeriesEpisodeRepository, LoggedUser loggedUser) {
+    public TVSeriesServiceImpl(TVSeriesEpisodeRepository tvSeriesEpisodeRepository) {
         this.tvSeriesEpisodeRepository = tvSeriesEpisodeRepository;
-        this.loggedUser = loggedUser;
     }
 }

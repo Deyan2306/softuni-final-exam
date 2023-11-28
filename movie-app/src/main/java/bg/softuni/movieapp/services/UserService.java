@@ -4,4 +4,5 @@ import bg.softuni.movieapp.model.binding.UserRegisterBindingModel;
 
 public interface UserService {
     boolean register(UserRegisterBindingModel userRegisterBindingModel);
+
 }

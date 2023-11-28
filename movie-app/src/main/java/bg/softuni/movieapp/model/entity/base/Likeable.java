@@ -1,6 +1,6 @@
 package bg.softuni.movieapp.model.entity.base;
 
-import bg.softuni.movieapp.model.entity.User;
+import bg.softuni.movieapp.model.entity.UserEntity;
 import bg.softuni.movieapp.model.entity.sections.CommentSection;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
@@ -18,11 +18,11 @@ public class Likeable extends BaseEntity {
 
     @OneToMany
     @Column(name = "liked_by")
-    private List<User> likedBy;
+    private List<UserEntity> likedBy;
 
     @OneToMany
     @Column(name = "disliked_by")
-    private List<User> dislikedBy;
+    private List<UserEntity> dislikedBy;
 
     @OneToOne
     private CommentSection commentSection;

@@ -37,7 +37,7 @@ public class Movie extends Likeable {
     private String summary;
 
     @ManyToMany(mappedBy = "watchedMovies")
-    private List<User> watchedBy;
+    private List<UserEntity> watchedBy;
 
     @Column(name = "youtube_trailer_id", nullable = false)
     private String youtubeTrailerID;

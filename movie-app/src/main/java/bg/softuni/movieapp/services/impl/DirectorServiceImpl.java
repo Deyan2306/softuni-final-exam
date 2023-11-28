@@ -9,11 +9,9 @@ import org.springframework.stereotype.Service;
 public class DirectorServiceImpl implements DirectorService {
 
     private final DirectorRepository directorRepository;
-    private final LoggedUser loggedUser;
 
     @Autowired
-    public DirectorServiceImpl(DirectorRepository directorRepository, LoggedUser loggedUser) {
+    public DirectorServiceImpl(DirectorRepository directorRepository) {
         this.directorRepository = directorRepository;
-        this.loggedUser = loggedUser;
     }
 }

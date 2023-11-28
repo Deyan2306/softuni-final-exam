@@ -65,7 +65,7 @@ public class TVSeries extends Likeable {
     private String youtubeTrailerID;
 
     @ManyToMany(mappedBy = "watchedTVSeries")
-    private List<User> completedBy;
+    private List<UserEntity> completedBy;
 
     @OneToOne
     private QuoteSection quoteSection;

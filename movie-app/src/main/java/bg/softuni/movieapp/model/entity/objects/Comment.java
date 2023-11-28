@@ -2,8 +2,7 @@ package bg.softuni.movieapp.model.entity.objects;
 
 import bg.softuni.movieapp.model.entity.base.BaseEntity;
 import bg.softuni.movieapp.model.entity.sections.CommentSection;
-import bg.softuni.movieapp.model.entity.User;
-import bg.softuni.movieapp.model.entity.base.Likeable;
+import bg.softuni.movieapp.model.entity.UserEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -24,7 +23,7 @@ public class Comment extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User commentedBy;
+    private UserEntity commentedBy;
 
     @Column(name = "commented_at", nullable = false)
     private LocalDate commentedAt;
@@ -34,9 +33,9 @@ public class Comment extends BaseEntity {
     private CommentSection commentSection;
 
     @ManyToMany(mappedBy = "upVotedComments")
-    private List<User> upVotedBy;
+    private List<UserEntity> upVotedBy;
 
     @ManyToMany(mappedBy = "downVotedComments")
-    private List<User> downVotedBy;
+    private List<UserEntity> downVotedBy;
 
 }

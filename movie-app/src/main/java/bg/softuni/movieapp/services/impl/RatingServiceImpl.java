@@ -9,11 +9,9 @@ import org.springframework.stereotype.Service;
 public class RatingServiceImpl implements RatingService {
 
     private final RatingRepository ratingRepository;
-    private final LoggedUser loggedUser;
 
     @Autowired
-    public RatingServiceImpl(RatingRepository ratingRepository, LoggedUser loggedUser) {
+    public RatingServiceImpl(RatingRepository ratingRepository) {
         this.ratingRepository = ratingRepository;
-        this.loggedUser = loggedUser;
     }
 }

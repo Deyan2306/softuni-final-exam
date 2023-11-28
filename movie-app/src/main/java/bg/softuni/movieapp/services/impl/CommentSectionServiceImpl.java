@@ -8,12 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class CommentSectionServiceImpl implements CommentSectionService {
 
-    private final LoggedUser loggedUser;
     private final CommentSectionRepository commentSectionRepository;
 
     @Autowired
-    public CommentSectionServiceImpl(LoggedUser loggedUser, CommentSectionRepository commentSectionRepository) {
-        this.loggedUser = loggedUser;
+    public CommentSectionServiceImpl(CommentSectionRepository commentSectionRepository) {
         this.commentSectionRepository = commentSectionRepository;
     }
 }

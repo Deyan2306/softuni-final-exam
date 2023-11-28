@@ -1,7 +1,7 @@
 package bg.softuni.movieapp.services.impl;
 
 import bg.softuni.movieapp.model.binding.UserRegisterBindingModel;
-import bg.softuni.movieapp.model.entity.User;
+import bg.softuni.movieapp.model.entity.UserEntity;
 import bg.softuni.movieapp.repository.UserRepository;
 import bg.softuni.movieapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
             return false;
         }
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(userRegisterBindingModel.getPassword()));
         user.setEmail(userRegisterBindingModel.getEmail());

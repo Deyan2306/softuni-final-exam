@@ -9,11 +9,9 @@ import org.springframework.stereotype.Service;
 public class StudioServiceImpl implements StudioService {
 
     private final StudioRepository studioRepository;
-    private final LoggedUser loggedUser;
 
     @Autowired
-    public StudioServiceImpl(StudioRepository studioRepository, LoggedUser loggedUser) {
+    public StudioServiceImpl(StudioRepository studioRepository) {
         this.studioRepository = studioRepository;
-        this.loggedUser = loggedUser;
     }
 }

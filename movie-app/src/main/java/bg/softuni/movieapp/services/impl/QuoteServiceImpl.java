@@ -9,11 +9,9 @@ import org.springframework.stereotype.Service;
 public class QuoteServiceImpl implements QuoteService {
 
     private final QuoteRepository quoteRepository;
-    private final LoggedUser loggedUser;
 
     @Autowired
-    public QuoteServiceImpl(QuoteRepository quoteRepository, LoggedUser loggedUser) {
+    public QuoteServiceImpl(QuoteRepository quoteRepository) {
         this.quoteRepository = quoteRepository;
-        this.loggedUser = loggedUser;
     }
 }

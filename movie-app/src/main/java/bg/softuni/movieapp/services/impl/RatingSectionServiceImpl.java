@@ -8,12 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class RatingSectionServiceImpl implements RatingSectionService {
 
-    private final LoggedUser loggedUser;
     private final RatingSectionRepository ratingSectionRepository;
 
     @Autowired
-    public RatingSectionServiceImpl(LoggedUser loggedUser, RatingSectionRepository ratingSectionRepository) {
-        this.loggedUser = loggedUser;
+    public RatingSectionServiceImpl(RatingSectionRepository ratingSectionRepository) {
         this.ratingSectionRepository = ratingSectionRepository;
     }
 }
