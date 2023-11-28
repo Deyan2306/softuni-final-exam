@@ -2,6 +2,7 @@ package bg.softuni.movieapp.security;
 
 import bg.softuni.movieapp.repository.UserRepository;
 import bg.softuni.movieapp.services.impl.MovieAppUserDetailsService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+
+    private final String rememberMeKey;
+    public WebSecurityConfig(@Value("${movieapp.remember.me.key}") String rememberMeKey) {
+        this.rememberMeKey = rememberMeKey;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -39,6 +45,11 @@ public class WebSecurityConfig {
                         .logoutSuccessUrl("/users/logout-success")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
+                )
+                .rememberMe((rememberMe) -> rememberMe
+                        .key(rememberMeKey)
+                        .rememberMeParameter("rememberme")
+                        .rememberMeCookieName("rememberme")
                 )
                 .csrf(AbstractHttpConfigurer::disable);
 

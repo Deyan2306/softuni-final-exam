@@ -37,3 +37,6 @@ logging:
     blog: WARN
 server:
   port: 8080
+
+movieapp:
+  remember.me.key: ${REMEMBER_ME_KEY:topsecret}
