@@ -14,9 +14,13 @@ Some stuff, that i need to finish today :D
   - [ ] Create the controller templates
   - [ ] Put the appropriate information in the controllers
 - [ ] Security
+  - [X] Configure some basic Spring Security 
   - [ ] Implement Spring Security
   - [ ] Switch the user login from Session scope to Spring security
 - [ ] Image Paths
   - [ ] Make so the images are saved in appropriate paths and displayed 
 - [ ] Unit tests (60% Coverage)
   - [ ] Unit tests for the services
+- [ ] Error pages
+  - [ ] 404 Page
+  - [ ] 501 Page
