@@ -11,6 +11,9 @@
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
     <h1>Wellcome home!</h1>
+    <th:block sec:authorize="hasRole('ADMIN')">
+        <h3>You are an Admin! Welcome :)</h3>
+    </th:block>
     <p>Your login was successful, now you are in the home page.</p>
 </body>
 </html>

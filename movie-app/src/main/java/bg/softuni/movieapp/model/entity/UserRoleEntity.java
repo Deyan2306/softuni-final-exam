@@ -1,6 +1,5 @@
 package bg.softuni.movieapp.model.entity;
 
-import bg.softuni.movieapp.model.entity.base.BaseEntity;
 import bg.softuni.movieapp.model.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
