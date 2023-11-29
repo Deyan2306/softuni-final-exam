@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import static bg.softuni.movieapp.model.enums.UserRole.ADMIN;
 import static bg.softuni.movieapp.model.enums.UserRole.USER;
 
 @Component
@@ -22,14 +21,12 @@ public class UserRoleRepositoryInit implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        UserRoleEntity admin = new UserRoleEntity();
-        admin.setRole(ADMIN);
+        if (!userRoleRepository.existsUserRoleEntityByRole(USER)) {
 
-        UserRoleEntity user = new UserRoleEntity();
-        user.setRole(USER);
+            UserRoleEntity user = new UserRoleEntity();
+            user.setRole(USER);
 
-        userRoleRepository.save(admin);
-        userRoleRepository.save(user);
-
+            userRoleRepository.save(user);
+        }
     }
 }

@@ -40,3 +40,7 @@ server:
 
 movieapp:
   remember.me.key: ${REMEMBER_ME_KEY:topsecret}
+  admin:
+    username: ${MOVIEAPP_ADMIN_USERNAME:admin}
+    password: ${MOVIEAPP_ADMIN_PASSWORD:12345}
+    email: ${MOVIEAPP_ADMIN_EMAIL:admin.adminov@movie.app}
