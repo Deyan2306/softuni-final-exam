@@ -19,6 +19,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
     private final String rememberMeKey;
+
     public WebSecurityConfig(@Value("${movieapp.remember.me.key}") String rememberMeKey) {
         this.rememberMeKey = rememberMeKey;
     }
@@ -35,10 +36,10 @@ public class WebSecurityConfig {
                 )
                 .formLogin((form) -> form
                         .loginPage("/users/login")
+                        .failureForwardUrl("/users/login-error")
                         .usernameParameter("username")
                         .passwordParameter("password")
                         .defaultSuccessUrl("/home")
-                        .failureForwardUrl("/users/login-error")
                 )
                 .logout((logout) -> logout
                         .logoutUrl("/users/logout")
