@@ -26,3 +26,7 @@ Some stuff, that i need to finish today :D
   - [ ] 404 Page
   - [ ] 403 Page 
   - [ ] 501 Page
+- [ ] Additional cool stuff
+  - [ ] Email for registration
+  - [ ] Discord sign up functionality
+  - [ ] Pop-ups when you save something

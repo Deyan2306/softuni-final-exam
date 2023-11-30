@@ -1,16 +1,53 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>MovieApp - Home</title>
+    <title>User Settings - MovieApp</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet"> <!-- Link to your custom styles -->
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
-<h1>Welcome to your profile settings page</h1>
-<p1>You can edit some stuff here</p1>
+
+<div class="container mt-4">
+    <h1>User Profile Settings</h1>
+    <p>You can edit your profile information here.</p>
+
+    <form th:action="@{/settings}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="avatar">Avatar Profile Picture:</label>
+            <input type="file" class="form-control-file" id="avatar" name="avatar">
+        </div>
+
+        <div class="form-group">
+            <label for="biography">Biography:</label>
+            <textarea class="form-control" id="biography" name="biography"></textarea>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="firstName">First Name:</label>
+                <input type="text" class="form-control" id="firstName" name="firstName">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName">Last Name:</label>
+                <input type="text" class="form-control" id="lastName" name="lastName">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="location">Location:</label>
+                <input type="text" class="form-control" id="location" name="location">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="discord">Discord Username:</label>
+                <input type="text" class="form-control" id="discord" name="discord">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
 </body>
 </html>

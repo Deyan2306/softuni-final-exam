@@ -44,3 +44,5 @@ movieapp:
     username: ${MOVIEAPP_ADMIN_USERNAME:admin}
     password: ${MOVIEAPP_ADMIN_PASSWORD:12345}
     email: ${MOVIEAPP_ADMIN_EMAIL:admin.adminov@movie.app}
+  upload:
+    picture: src/main/resources/static/images/
