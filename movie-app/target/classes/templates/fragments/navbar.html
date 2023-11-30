@@ -29,6 +29,11 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/tv-series/}">TV Series</a>
                 </li>
+                <th:block sec:authorize="hasRole('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/}">Admin Panel</a>
+                    </li>
+                </th:block>
             </ul>
             <div class="ml-auto">
                 <th:block sec:authorize="isAuthenticated()">
