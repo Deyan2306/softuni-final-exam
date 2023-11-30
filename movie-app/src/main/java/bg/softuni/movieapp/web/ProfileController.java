@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
+
 @Controller
 @RequestMapping("/profile")
 public class ProfileController {
@@ -41,10 +43,10 @@ public class ProfileController {
     }
 
     @PostMapping("/settings")
-    public ModelAndView savedProfileSettings(UserChangeInformationDTO userChangeInformationDTO) {
+    public ModelAndView savedProfileSettings(UserChangeInformationDTO userChangeInformationDTO) throws IOException {
         boolean successful = this.userService.changeProfileInformation(userChangeInformationDTO);
 
-        return new ModelAndView("redirect:home");
+        return new ModelAndView("redirect:../home");
     }
 
 }

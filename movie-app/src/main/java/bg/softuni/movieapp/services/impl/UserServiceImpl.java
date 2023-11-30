@@ -121,11 +121,10 @@ public class UserServiceImpl implements UserService {
         }
 
         MultipartFile file = userChangeInformationDTO.getAvatar();
-        if (file.isEmpty()) {
-            return false;
+        boolean savedPicture = false;
+        if (!file.isEmpty()) {
+            savedPicture = saveProfilePicture(username, file, currentUser);
         }
-
-        boolean savedPicture = saveProfilePicture(username, file, currentUser);
 
         userRepository.save(currentUser);
 
@@ -133,27 +132,16 @@ public class UserServiceImpl implements UserService {
     }
 
     private boolean saveProfilePicture(String username, MultipartFile file, UserEntity currentUser) throws IOException {
-        String folderPath =  profilePictureUploadURI + username + "/";
-        long count = getUploadedPicturesCount(folderPath);
+        String folderPath =  profilePictureUploadURI + username + ".png";
 
-        // Delete all files there if any
-        if (count > 0) {
-            try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(folderPath))) {
-                for (Path path : directoryStream) {
-                    if (Files.isRegularFile(path)) {
-                        Files.delete(path);
-                    }
-                }
-            } catch (IOException e) {
-                return false;
-            }
+        if (file.isEmpty()) {
+            return false;
         }
 
-        File dest = new File(folderPath + PROFILE_PICTURE_NAME);
+        File dest = new File(folderPath);
         file.transferTo(dest);
 
-        currentUser.setAvatarPictureURI(folderPath + PROFILE_PICTURE_NAME);
-
+        currentUser.setAvatarPictureURI(folderPath);
         return true;
     }
 
