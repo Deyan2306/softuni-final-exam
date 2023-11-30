@@ -10,6 +10,7 @@ Some stuff, that i need to finish today :D
 - [ ] Services
   - [X] Create the services templates
   - [ ] Do the actual stuff in the services
+  - [ ] Validations for the register
 - [ ] Controllers
   - [ ] Create the controller templates
   - [ ] Put the appropriate information in the controllers

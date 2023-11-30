@@ -1,5 +1,6 @@
 package bg.softuni.movieapp.security;
 
+import bg.softuni.movieapp.model.enums.UserRole;
 import bg.softuni.movieapp.repository.UserRepository;
 import bg.softuni.movieapp.services.impl.MovieAppUserDetailsService;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,6 +32,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/", "/home").permitAll()
                         .requestMatchers("/users/register", "/users/login", "/users/logout").permitAll()
                         .requestMatchers("/users/logout-success", "/users/login-error").permitAll()
+                        .requestMatchers("/profile/", "/profile/settings", "/profile/movies", "/profile/tv-series").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .anyRequest().authenticated()
                 )

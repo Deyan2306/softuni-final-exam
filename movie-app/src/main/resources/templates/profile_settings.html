@@ -9,14 +9,7 @@
     <link href="css/styles.css" rel="stylesheet"> <!-- Link to your custom styles -->
 </head>
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
-    <th:block sec:authorize="hasRole('ADMIN')">
-        <h3>You are an Admin! Welcome :)</h3>
-    </th:block>
-    <h3>
-        Welcome, <th:block sec:authentication="name"></th:block>! :)
-    </h3>
-    <p>Your login was successful, now you are in the home page.</p>
-    <p><a th:href="@{/profile/}">Go to your profile</a></p>
+<h1>Welcome to your profile settings page</h1>
+<p1>You can edit some stuff here</p1>
 </body>
 </html>
