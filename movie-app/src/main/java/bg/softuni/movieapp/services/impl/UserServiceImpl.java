@@ -132,16 +132,28 @@ public class UserServiceImpl implements UserService {
     }
 
     private boolean saveProfilePicture(String username, MultipartFile file, UserEntity currentUser) throws IOException {
-        String folderPath =  profilePictureUploadURI + username + ".png";
 
         if (file.isEmpty()) {
             return false;
         }
 
-        File dest = new File(folderPath);
-        file.transferTo(dest);
+        String projectPath = System.getProperty("user.dir");
+        String fileName = username + ".png";
+        String filePath = projectPath + profilePictureUploadURI;
 
-        currentUser.setAvatarPictureURI(folderPath);
+        try {
+            Path directory = Paths.get(filePath);
+            if (!Files.exists(directory)) {
+                Files.createDirectories(directory);
+            }
+
+            Path movedFile = Paths.get(filePath, fileName);
+            Files.createFile(movedFile);
+            currentUser.setAvatarPictureURI(profilePictureUploadURI + username + ".png");
+        } catch (IOException e) {
+            return false;
+        }
+
         return true;
     }
 
