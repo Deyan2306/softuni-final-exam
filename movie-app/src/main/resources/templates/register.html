@@ -2,43 +2,89 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Register - MovieApp</title>
+    <title>MovieApp - Register</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
 </head>
 <body>
 
-    <div th:replace="fragments/navbar :: navbar"></div>
+<div th:replace="fragments/navbar :: navbar"></div>
 
-    <div class="container mt-5">
-        <h2 class="mb-4">Register on MovieApp</h2>
-        <form th:action="@{/users/register}" th:method="POST">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="mb-4 text-center">Register on MovieApp</h2>
+            <form class="register-form"
+                    th:action="@{/users/register}"
+                    th:method="POST"
+                    th:object="${userRegisterBindingModel}">
 
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username" required>
-            </div>
+                <div>
+                    <h3 class="registration-header">Create Your Account.</h3>
+                    <h2 class="registration-header big-green">Join our community.</h2>
+                    <br/>
+                </div>
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required/>
-            </div>
+                <div th:if="${hasRegistrationError}" class="error">Registration Error occurred!</div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
+                <!-- Username Field -->
+                <div class="form-group">
+                    <input type="text" oninput="checkFields()" class="form-control register-form-input" id="username"
+                           placeholder="username"
+                           th:field="*{username}"
+                           th:errorclass="bg-danger"
+                           required/>
+                    <small th:if="${#fields.hasErrors('username')}"
+                           th:errors="*{username}" class="text-danger">Username error message</small>
+                </div>
 
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
-            </div>
+                <!-- Email Field -->
+                <div class="form-group">
+                    <input type="email" oninput="checkFields()" class="form-control register-form-input" id="email"
+                           placeholder="email"
+                           th:field="*{email}"
+                           th:errorclass="bg-danger"
+                           required/>
+                    <small th:if="${#fields.hasErrors('email')}"
+                           th:errors="*{email}" class="text-danger">Email error message</small>
+                </div>
 
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
+                <!-- Password Field -->
+                <div class="form-group">
+                    <input type="password" oninput="checkFields()" class="form-control register-form-input" id="password"
+                           placeholder="password"
+                           th:field="*{password}"
+                           th:errorclass="bg-danger"
+                           required/>
+                    <small th:if="${#fields.hasErrors('password')}"
+                           th:errors="*{password}" class="text-danger">Password error message</small>
+                </div>
+
+                <!-- Confirm Password Field -->
+                <div class="form-group">
+                    <input type="password" oninput="checkFields()" class="form-control register-form-input" id="confirmPassword"
+                           placeholder="confirm password"
+                           th:field="*{confirmPassword}"
+                           th:classappend="${#fields.hasErrors('password')} ? 'bg-danger'"/>
+                </div>
+
+                <!-- Register Button -->
+                <div class="form-group text-center">
+                    <button id="submitButton" type="submit" class="btn btn-primary" disabled>Register</button>
+                </div>
+            </form>
+
+            <form class="register-form d-flex justify-content-between vertically-centered">
+                <p>Already have an account?</p>
+                <button class="btn btn-primary btn-sign-up">Sign Up</button>
+            </form>
+        </div>
     </div>
+</div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script th:src="@{/js/registrations.js}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>

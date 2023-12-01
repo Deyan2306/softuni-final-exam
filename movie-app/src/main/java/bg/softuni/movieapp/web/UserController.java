@@ -2,9 +2,13 @@ package bg.softuni.movieapp.web;
 
 import bg.softuni.movieapp.model.binding.UserRegisterBindingModel;
 import bg.softuni.movieapp.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,21 +43,41 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public ModelAndView register() {
+    public ModelAndView register(@ModelAttribute("userRegisterBindingModel") UserRegisterBindingModel userRegisterBindingModel) {
+
+        Authentication userAuthentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (!userAuthentication.getName().equals("anonymousUser")) {
+            return new ModelAndView("redirect:../home");
+        }
+
         return new ModelAndView("register");
     }
 
     @PostMapping("register")
-    public ModelAndView register(UserRegisterBindingModel userRegisterBindingModel) {
+    public ModelAndView register(
+            @ModelAttribute("userRegisterBindingModel") @Valid UserRegisterBindingModel userRegisterBindingModel,
+            BindingResult bindingResult) {
 
-        boolean isRegistered = this.userService.register(userRegisterBindingModel);
+        Authentication userAuthentication = SecurityContextHolder.getContext().getAuthentication();
 
-        String view = isRegistered
-                ? "redirect:/login"
-                : "register";
+        if (!userAuthentication.getName().equals("anonymousUser")) {
+            return new ModelAndView("redirect:../home");
+        }
 
-        return new ModelAndView(view);
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("/register");
+        }
 
+        boolean successfulRegistration = this.userService.register(userRegisterBindingModel);
+
+        if (!successfulRegistration) {
+            ModelAndView modelAndView = new ModelAndView("register");
+            modelAndView.addObject("hasRegistrationError", true);
+            return modelAndView;
+        }
+
+        return new ModelAndView("redirect:/login");
     }
 
 }
