@@ -1,9 +1,12 @@
 package bg.softuni.movieapp.model.dto.admin;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+@Getter @Setter
 public class AdminMovieAddDTO {
     private String genre;
     private String language;
