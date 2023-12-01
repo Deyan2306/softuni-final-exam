@@ -1,7 +1,12 @@
 package bg.softuni.movieapp.web;
 
+import bg.softuni.movieapp.model.dto.admin.AdminActorAddDTO;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,7 +35,15 @@ public class AdminController {
     }
 
     @GetMapping("/add/actor")
-    public ModelAndView addActor() {
+    public ModelAndView addActor(@ModelAttribute("actorAddDataTransferObject") AdminActorAddDTO adminActorAddDTO) {
+        return new ModelAndView("add-actor");
+    }
+
+    @PostMapping("/add/actor")
+    public ModelAndView addActor(
+            @ModelAttribute("actorAddDataTransferObject") @Valid AdminActorAddDTO adminActorAddDTO,
+            BindingResult bindingResult) {
+
         return new ModelAndView("add-actor");
     }
 

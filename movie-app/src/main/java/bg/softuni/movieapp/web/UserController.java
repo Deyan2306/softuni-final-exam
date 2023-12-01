@@ -54,7 +54,7 @@ public class UserController {
         return new ModelAndView("register");
     }
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public ModelAndView register(
             @ModelAttribute("userRegisterBindingModel") @Valid UserRegisterBindingModel userRegisterBindingModel,
             BindingResult bindingResult) {
