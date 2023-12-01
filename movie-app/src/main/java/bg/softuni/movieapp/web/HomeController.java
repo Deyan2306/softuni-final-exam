@@ -13,7 +13,7 @@ public class HomeController {
     public ModelAndView index() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (authentication.isAuthenticated()) {
+        if (!authentication.getName().equals("anonymousUser")) {
             return new ModelAndView("redirect:home");
         }
 

@@ -30,11 +30,14 @@ Some stuff, that i need to finish today :D
   - [ ] Email for registration
   - [ ] Discord sign up functionality
   - [ ] Google and Facebook registration
+  - [ ] Pagination functionality for the views
   - [ ] Pop-ups when you save something
 - [ ] Rest Api's
   - [ ] REST API for the comments
   - [ ] REST API for the quotes
 - [ ] FIX
+  - [ ] List Movies and TV Series
+  - [ ] Make so you can add movies and tv series from the admin panel (Use pagables)
   - [ ] It always redirects to the login page for some reason
   - [ ] Register validations
   - [ ] Updating the profile picture
@@ -43,3 +46,6 @@ Some stuff, that i need to finish today :D
   - [ ] Cookies question
   - [ ] Favicon
   - [ ] Footer
+  - [ ] Searchbar (with keywords like `movie:` and `tv_series:`)
+  - [ ] Logs 
+  - [ ] Write some basic unit tests, so you get a taste of how it works
