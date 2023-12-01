@@ -4,15 +4,15 @@ Some stuff, that i need to finish today :D
   - [X] Make it more `abstract` using some inheritance, no repeatable code
   - [X] Hibernate validations
   - [X] Finish the relations
-- [ ] Repositories
+- [X] Repositories
   - [X] Implement make the repositories
-  - [ ] Check if the uuid is working
+  - [X] Check if the uuid is working
 - [ ] Services
   - [X] Create the services templates
   - [ ] Do the actual stuff in the services
   - [ ] Validations for the register
 - [ ] Controllers
-  - [ ] Create the controller templates
+  - [X] Create the controller templates
   - [ ] Put the appropriate information in the controllers
 - [ ] Security
   - [X] Configure some basic Spring Security 
@@ -29,4 +29,17 @@ Some stuff, that i need to finish today :D
 - [ ] Additional cool stuff
   - [ ] Email for registration
   - [ ] Discord sign up functionality
+  - [ ] Google and Facebook registration
   - [ ] Pop-ups when you save something
+- [ ] Rest Api's
+  - [ ] REST API for the comments
+  - [ ] REST API for the quotes
+- [ ] FIX
+  - [ ] It always redirects to the login page for some reason
+  - [ ] Register validations
+  - [ ] Updating the profile picture
+  - [ ] The controller thing with the extra `/`
+  - [ ] Information flashing using some JS
+  - [ ] Cookies question
+  - [ ] Favicon
+  - [ ] Footer
