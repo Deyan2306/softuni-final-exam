@@ -39,7 +39,7 @@ Some stuff, that i need to finish today :D
   - [ ] List Movies and TV Series
   - [ ] Make so you can add movies and tv series from the admin panel (Use pagables)
   - [ ] It always redirects to the login page for some reason
-  - [ ] Register validations
+  - [X] Registration validations
   - [ ] Updating the profile picture
   - [ ] The controller thing with the extra `/`
   - [ ] Information flashing using some JS
@@ -49,3 +49,4 @@ Some stuff, that i need to finish today :D
   - [ ] Searchbar (with keywords like `movie:` and `tv_series:`)
   - [ ] Logs 
   - [ ] Write some basic unit tests, so you get a taste of how it works
+  - [ ] Finish the admin page controller 

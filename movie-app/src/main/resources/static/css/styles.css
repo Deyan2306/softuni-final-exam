@@ -116,3 +116,14 @@ body {
     transform: translate(-50%, -50%);
     color: #79C300;
 }
+
+.notification {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #79C300;
+    color: #111927;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}

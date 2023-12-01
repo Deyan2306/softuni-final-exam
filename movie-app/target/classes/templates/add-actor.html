@@ -5,68 +5,65 @@
     <title>Admin Panel - Add Actor</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link th:href="@{/css/styles.css}" rel="stylesheet">
+
 </head>
 <body>
 
-<div th:replace="fragments/navbar :: navbar"></div>
+    <div th:replace="fragments/navbar :: navbar"></div>
 
-<div class="container mt-5">
-    <h2>Add Actor</h2>
-    <form th:action="@{/admin/add/actor}" th:method="POST" th:object="${actorAddDataTransferObject}">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="firstName">First Name:</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" th:field="*{firstName}">
-                </div>
+    <div class="container mt-5">
+        <h2>Add Actor</h2>
+        <form
+                th:action="@{/admin/add/actor}"
+                th:method="POST"
+                th:object="${actorAddDataTransferObject}">
 
-                <div class="form-group">
-                    <label for="lastName">Last Name:</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" th:field="*{lastName}">
-                </div>
-
-                <div class="form-group">
-                    <label for="biography">Biography:</label>
-                    <textarea class="form-control" id="biography" name="biography" th:field="*{biography}"></textarea>
-                </div>
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" th:field="*{firstName}">
             </div>
 
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="birthDate">Birth Date:</label>
-                    <input type="date" class="form-control" id="birthDate" name="birthDate" th:field="*{birthDate}">
-                </div>
-
-                <div class="form-group">
-                    <label for="deathDate">Death Date:</label>
-                    <input type="date" class="form-control" id="deathDate" name="deathDate" th:field="*{deathDate}">
-                </div>
-
-                <div class="form-group">
-                    <label for="actorPhoto">Actor Photo:</label>
-                    <input type="file" class="form-control-file" id="actorPhoto" name="actorPhoto" th:field="*{actorPhoto}">
-                </div>
-
-                <div class="form-group">
-                    <label for="height">Height:</label>
-                    <input type="number" class="form-control" id="height" name="height" th:field="*{height}">
-                </div>
-
-                <div class="form-group">
-                    <label for="youtubeVideoId">YouTube Video ID:</label>
-                    <input type="text" class="form-control" id="youtubeVideoId" name="youtubeVideoId" th:field="*{youtubeVideoId}">
-                </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" th:field="*{lastName}">
             </div>
-        </div>
 
-        <div class="form-group">
+            <div class="form-group">
+                <label for="biography">Biography:</label>
+                <textarea class="form-control" id="biography" name="biography" th:field="*{biography}"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="birthDate">Birth Date:</label>
+                <input type="date" class="form-control" id="birthDate" name="birthDate" th:field="*{birthDate}">
+            </div>
+
+            <div class="form-group">
+                <label for="deathDate">Death Date:</label>
+                <input type="date" class="form-control" id="deathDate" name="deathDate" th:field="*{deathDate}">
+            </div>
+
+            <div class="form-group">
+                <label for="actorPhoto">Actor Photo:</label>
+                <input type="file" class="form-control-file" id="actorPhoto" name="actorPhoto" th:field="*{actorPhoto}">
+            </div>
+
+            <div class="form-group">
+                <label for="height">Height:</label>
+                <input type="number" class="form-control" id="height" name="height" th:field="*{height}">
+            </div>
+
+            <div class="form-group">
+                <label for="youtubeVideoId">YouTube Video ID:</label>
+                <input type="text" class="form-control" id="youtubeVideoId" name="youtubeVideoId" th:field="*{youtubeVideoId}">
+            </div>
+
             <button type="submit" class="btn btn-primary">Add Actor</button>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
