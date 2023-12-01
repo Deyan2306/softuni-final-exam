@@ -10,3 +10,14 @@ function checkFields() {
         submitButton.disabled = false;
     }
 }
+
+function checkFieldsLogin() {
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+
+    const submitButton = document.getElementById('loginButton');
+
+    if (username !== '' && password !== '') {
+        submitButton.disabled = false;
+    }
+}

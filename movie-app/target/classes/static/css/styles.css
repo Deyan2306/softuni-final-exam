@@ -91,3 +91,28 @@ body {
 .vertically-centered > p {
     margin-bottom: 0;
 }
+
+.stay-signed {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #2D3A4B;
+    position: relative;
+    border: none;
+    outline: none;
+    width: 15px;
+    height: 15px;
+}
+
+.stay-signed:checked {
+    background-color: #111927;
+}
+
+.stay-signed:checked::before {
+    content: "\2713";
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #79C300;
+}
