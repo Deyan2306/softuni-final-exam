@@ -22,6 +22,9 @@ public class Studio extends Likeable {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "studio_info")
+    private String info;
+
     @Column(name = "established_at")
     private LocalDate established;
 
