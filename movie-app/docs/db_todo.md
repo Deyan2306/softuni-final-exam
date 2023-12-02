@@ -22,10 +22,11 @@ Some stuff, that i need to finish today :D
   - [ ] Make so the images are saved in appropriate paths and displayed 
 - [ ] Unit tests (60% Coverage)
   - [ ] Unit tests for the services
-- [ ] Error pages
-  - [ ] 404 Page
-  - [ ] 403 Page 
-  - [ ] 501 Page
+- [X] Error pages
+  - [X] 404 Page
+  - [X] 403 Page
+  - [X] 500 Page
+  - [X] 501 Page
 - [ ] Additional cool stuff
   - [ ] Email for registration
   - [ ] Discord sign up functionality
