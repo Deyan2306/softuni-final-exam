@@ -1,6 +1,6 @@
 package bg.softuni.movieapp.model.enums;
 
-public enum Language {
+public enum LanguageEnum {
     ENGLISH,
     SPANISH,
     ITALIAN,

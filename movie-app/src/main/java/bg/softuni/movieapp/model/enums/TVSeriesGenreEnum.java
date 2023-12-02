@@ -1,6 +1,6 @@
 package bg.softuni.movieapp.model.enums;
 
-public enum TVSeriesGenre {
+public enum TVSeriesGenreEnum {
     ACTION,
     ADVENTURE,
     ANIMATION,

@@ -2,7 +2,7 @@ package bg.softuni.movieapp.init;
 
 import bg.softuni.movieapp.model.entity.UserEntity;
 import bg.softuni.movieapp.model.entity.UserRoleEntity;
-import bg.softuni.movieapp.model.enums.UserRole;
+import bg.softuni.movieapp.model.enums.UserRoleEnum;
 import bg.softuni.movieapp.repository.UserRepository;
 import bg.softuni.movieapp.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +40,10 @@ public class AdminProfileInit implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        if (!this.userRoleRepository.existsUserRoleEntityByRole(UserRole.ADMIN)) {
+        if (!this.userRoleRepository.existsUserRoleEntityByRole(UserRoleEnum.ADMIN)) {
 
             UserRoleEntity adminRole = new UserRoleEntity();
-            adminRole.setRole(UserRole.ADMIN);
+            adminRole.setRole(UserRoleEnum.ADMIN);
             this.userRoleRepository.save(adminRole);
 
             UserEntity admin = new UserEntity();

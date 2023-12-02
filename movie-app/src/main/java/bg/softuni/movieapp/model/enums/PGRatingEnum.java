@@ -1,6 +1,6 @@
 package bg.softuni.movieapp.model.enums;
 
-public enum PGRating {
+public enum PGRatingEnum {
     G,
     PG,
     PG_13,

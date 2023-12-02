@@ -3,9 +3,9 @@ package bg.softuni.movieapp.model.entity;
 import bg.softuni.movieapp.model.entity.base.Likeable;
 import bg.softuni.movieapp.model.entity.sections.QuoteSection;
 import bg.softuni.movieapp.model.entity.sections.RatingSection;
-import bg.softuni.movieapp.model.enums.Language;
-import bg.softuni.movieapp.model.enums.MovieGenre;
-import bg.softuni.movieapp.model.enums.PGRating;
+import bg.softuni.movieapp.model.enums.LanguageEnum;
+import bg.softuni.movieapp.model.enums.MovieGenreEnum;
+import bg.softuni.movieapp.model.enums.PGRatingEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import lombok.*;
@@ -27,11 +27,11 @@ public class Movie extends Likeable {
     private String titlePictureURI;
 
     @Enumerated(EnumType.STRING)
-    private List<MovieGenre> genre;
+    private List<MovieGenreEnum> genre;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "pg_rating", nullable = false)
-    private PGRating pgRating;
+    private PGRatingEnum pgRating;
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String summary;
@@ -56,7 +56,7 @@ public class Movie extends Likeable {
     private Studio studio;
 
     @Enumerated(EnumType.STRING)
-    private Language language;
+    private LanguageEnum language;
 
     @OneToOne
     private QuoteSection quoteSection;

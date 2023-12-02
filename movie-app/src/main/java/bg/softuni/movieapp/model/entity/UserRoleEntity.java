@@ -1,6 +1,6 @@
 package bg.softuni.movieapp.model.entity;
 
-import bg.softuni.movieapp.model.enums.UserRole;
+import bg.softuni.movieapp.model.enums.UserRoleEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +19,6 @@ public class UserRoleEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private UserRole role;
+    private UserRoleEnum role;
 
 }

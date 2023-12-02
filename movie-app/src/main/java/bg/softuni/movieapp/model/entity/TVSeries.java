@@ -3,9 +3,9 @@ package bg.softuni.movieapp.model.entity;
 import bg.softuni.movieapp.model.entity.base.Likeable;
 import bg.softuni.movieapp.model.entity.sections.QuoteSection;
 import bg.softuni.movieapp.model.entity.sections.RatingSection;
-import bg.softuni.movieapp.model.enums.Language;
-import bg.softuni.movieapp.model.enums.PGRating;
-import bg.softuni.movieapp.model.enums.TVSeriesGenre;
+import bg.softuni.movieapp.model.enums.LanguageEnum;
+import bg.softuni.movieapp.model.enums.PGRatingEnum;
+import bg.softuni.movieapp.model.enums.TVSeriesGenreEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
@@ -26,17 +26,17 @@ public class TVSeries extends Likeable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "genres", nullable = false)
-    private List<TVSeriesGenre> genres;
+    private List<TVSeriesGenreEnum> genres;
 
     @ManyToOne
     private Studio studio;
 
     @Enumerated(EnumType.STRING)
-    private Language language;
+    private LanguageEnum language;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "pg_rating", nullable = false)
-    private PGRating pgRating;
+    private PGRatingEnum pgRating;
 
     @Size(min = 20, max = 1500)
     @Column(columnDefinition = "TEXT", nullable = false)
