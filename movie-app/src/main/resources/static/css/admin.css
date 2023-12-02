@@ -1,0 +1,146 @@
+/* admin.css */
+
+body {
+    background-color: #111927;
+    color: #fff;
+}
+
+/* Main content styles */
+.main-content {
+    padding: 20px;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #263143;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for welcome message */
+.navbar-brand {
+    font-weight: bold;
+    color: #333;
+}
+
+.navbar .nav-item {
+    margin-right: 10px;
+}
+
+/* Content styles */
+.content {
+    background-color: #263143;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for welcome message */
+.content h2 {
+    font-weight: bold;
+    color: #fff;
+}
+
+.content p {
+    color: #c9c9c9;
+}
+
+.ml-auto {
+    display: flex;
+    align-items: center;
+}
+
+.btn-logout {
+    margin-left: 10px;
+}
+
+.navbar-styling {
+    border-radius: 5px;
+    background-color: #263143;
+    color: #ffffff;
+}
+
+.navbar-txt {
+    color: #ffffff;
+}
+
+.return-button {
+    background-color: #9FEF00;
+    border: none;
+    color: #263143;
+    width: 100%;
+}
+.return-button:hover {
+    background-color: #79C300;
+    color: #263143;
+}
+
+.return-button:disabled {
+    background-color: #263143;
+    cursor: default;
+    color: #5c6770;
+}
+
+.sidebar {
+    background-color: #263143;
+    border-right: 1px solid #1c1c1c;
+    height: 100vh;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+.col-md-3.sidebar {
+    width: 200px; /* Adjust the width as needed */
+}
+
+.list-group-item {
+    border: none;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: 5px auto;
+    padding: 8px;
+}
+
+.sidebar-link {
+    display: flex;
+    width: 100%;
+    padding: 8px 16px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    background-color: #263143;
+}
+
+.sidebar-link:hover {
+    background-color: #79C300;
+    color: #263143;
+}
+
+.footer-text {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #888;
+}
+
+.sidebar-content {
+    position: relative;
+    height: 95%; /* Make sure the container fills the height */
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 12px;
+}

@@ -4,17 +4,55 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>MovieApp - Home</title>
+    <title>Admin Panel</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet"> <!-- Link to your custom styles -->
+    <link th:href="@{/css/admin.css}" rel="stylesheet">
 </head>
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 sidebar">
+                <div class="sidebar-content">
+                    <h2 class="mt-4 mb-4 text-center">Admin Panel</h2>
+                    <ul class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action sidebar-link rounded">Dashboard</a>
+                        <a href="#" class="list-group-item list-group-item-action sidebar-link rounded">Movies</a>
+                        <a href="#" class="list-group-item list-group-item-action sidebar-link rounded">TV Series</a>
+                        <a href="#" class="list-group-item list-group-item-action sidebar-link rounded">Actors</a>
+                        <a href="#" class="list-group-item list-group-item-action sidebar-link rounded">Directors</a>
+                        <a href="#" class="list-group-item list-group-item-action sidebar-link rounded">Settings</a>
+                    </ul>
+                    <div class="sidebar-footer">
+                        Admin Panel @ 2023
+                    </div>
+                </div>
+            </div>
 
-    <h3>
-        Welcome to the Admin page, <th:block sec:authentication="name"></th:block>! :)
-    </h3>
+            <!-- Main Content -->
+            <div class="col-md-9 main-content">
+                <nav class="navbar navbar-expand-lg navbar-styling">
+                    <div class="container-fluid">
+                        <div class="navbar-brand navbar-txt">Welcome, <th:block sec:authentication="name"></th:block>!</div>
+                        <div class="ml-auto">
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                <a th:href="@{/home}" class="btn return-button rounded mr-2">Return to the homepage</a>
+                                <a th:href="@{/users/logout}" class="btn btn-danger rounded">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
 
-    <p>This is the admin page, so if you are here, that means you successfully authenticated!</p>
+                <div class="content mt-4">
+                    <!-- Main content here -->
+                    <h2>Welcome to the Admin Panel</h2>
+                    <p>Manage your movies, TV series, actors, and more!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
