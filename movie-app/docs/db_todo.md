@@ -51,3 +51,31 @@ Some stuff, that i need to finish today :D
   - [ ] Logs 
   - [ ] Write some basic unit tests, so you get a taste of how it works
   - [ ] Finish the admin page controller 
+----
+### To do for tuesday
+- [ ] Finish the Admin adding pages
+- [ ] Finish the saving functionality
+- [ ] Finish the picture saving functionality
+- [ ] Finish the admin panel statistics page
+- [ ] Make the index page and the home page.
+- [ ] Email OTP verification
+- [ ] JS Notifications
+- [ ] Basic comments using REST
+- [ ] List all stuff on the appropriate pages
+
+### To do for wednesday
+- [ ] Paging functionality
+- [ ] All pages finished
+- [ ] Adding comments
+- [ ] Rating
+- [ ] Liking
+- [ ] Upvoting and downvoting comments
+- [ ] Unit testing
+- [ ] Footer
+- [ ] Searchbar?
+- [ ] Cookies question
+- [ ] Discord, Github and Google registration
+
+### Thursday
+- [ ] Unit testing
+- [ ] Finishing touches
