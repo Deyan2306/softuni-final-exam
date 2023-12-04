@@ -1,4 +1,16 @@
 spring:
+  mail: #MailHog configuration
+    host: localhost
+    port: 1025
+    username: user
+    password: password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
   jpa:
     properties:
       hibernate:
