@@ -44,3 +44,15 @@ function checkFieldsAddStudio() {
         addStudioButton.disabled = false;
     }
 }
+
+function checkFieldsAddADirector() {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const birthDate = document.getElementById('birthDate').value;
+
+    const addActorButton = document.getElementById('addDirectorButton');
+
+    if (firstName !== '' && lastName !== '' && birthDate !== '') {
+        addActorButton.disabled = false;
+    }
+}

@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter @Setter
 public class AdminDirectorAddDTO {
@@ -20,4 +21,6 @@ public class AdminDirectorAddDTO {
     @NotBlank(message = "The director's birth date should not be blank.")
     private String birthDate;
     private String deathDate;
+
+    private MultipartFile directorPicture;
 }

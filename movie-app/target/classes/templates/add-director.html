@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Add Actor</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/admin.css}" rel="stylesheet">
+</head>
+<body>
+
+    <!--  Replace with the admin navbar  -->
+    <div th:replace="fragments/navbar :: admin-navbar"></div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+
+                <h2 class="mb-4 text-center">Add a Director to the DataBase</h2>
+
+                <p th:if="${bad_credentials}" class="error alert alert-danger">
+                    Invalid credentials for populating the information.
+                </p>
+
+                <form class="register-form"
+                      th:action="@{/admin/add/director}"
+                      th:method="POST"
+                      th:object="${directorAddDataTransferObject}">
+
+                    <div class="form-group">
+                        <input type="text"
+                               oninput="checkFieldsAddADirector()"
+                               placeholder="First Name..."
+                               class="form-control register-form-input"
+                               id="firstName" name="firstName"
+                               th:field="*{firstName}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text"
+                               oninput="checkFieldsAddADirector()"
+                               placeholder="Last Name..."
+                               class="form-control register-form-input"
+                               id="lastName" name="lastName"
+                               th:field="*{lastName}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea oninput="checkFieldsAddADirector()"
+                                  placeholder="Biography..."
+                                  class="form-control register-form-input"
+                                  id="biography"
+                                  name="biography"
+                                  th:field="*{biography}">
+                        </textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="date"
+                               oninput="checkFieldsAddADirector()"
+                               placeholder="Birth date..."
+                               class="form-control register-form-input"
+                               id="birthDate" name="birthDate"
+                               th:field="*{birthDate}">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="date"
+                               oninput="checkFieldsAddADirector()"
+                               placeholder="Death date..."
+                               class="form-control register-form-input"
+                               id="deathDate" name="deathDate"
+                               th:field="*{deathDate}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="actorPhoto" class="custom-file-upload">Add an Actor photo</label>
+                        <input type="file" class="form-control-file input-file" id="actorPhoto" name="actorPhoto" th:field="*{directorPicture}">
+                    </div>
+
+
+                    <button id="addDirectorButton" type="submit" class="btn btn-primary" disabled>Add the Actor</button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/registrations.js}"></script>
+    <script th:src="@{/js/loadBirthAndDeathDateDirector.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
