@@ -7,8 +7,25 @@
     <title>MovieApp - Home</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <link th:href="@{/css/admin.css}" rel="stylesheet">
 </head>
 <body>
+
+    <!-- Admin Navbar fragment -->
+    <nav th:fragment="admin-navbar"
+            class="navbar navbar-expand-lg navbar-styling">
+        <div class="container-fluid">
+            <div class="navbar-brand navbar-txt">Welcome, <th:block sec:authentication="name"></th:block>!</div>
+            <div class="ml-auto">
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <a th:href="@{/home}" class="btn return-button rounded mr-2">Return to the homepage</a>
+                    <a th:href="@{/users/logout}" class="btn btn-danger rounded">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Navbar fragment -->
     <nav th:fragment="navbar"
          class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" th:href="@{/}">MovieApp</a>

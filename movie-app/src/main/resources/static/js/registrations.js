@@ -21,3 +21,15 @@ function checkFieldsLogin() {
         submitButton.disabled = false;
     }
 }
+
+function checkFieldsAddActor() {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const birthDate = document.getElementById('birthDate').value;
+
+    const addActorButton = document.getElementById('addActorButton');
+
+    if (firstName !== '' && lastName !== '' && birthDate !== '') {
+        addActorButton.disabled = false;
+    }
+}

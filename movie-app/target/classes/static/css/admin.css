@@ -144,3 +144,24 @@ body {
     color: #fff;
     font-size: 12px;
 }
+
+.custom-file-upload {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    width: 100%;
+    cursor: pointer;
+    background-color: #263143;
+    color: #79C300;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+    background-color: #79C300;
+    color: #263143;
+}
+
+.input-file {
+    display: none;
+}

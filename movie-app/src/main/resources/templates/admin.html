@@ -16,12 +16,12 @@
                 <div class="sidebar-content">
                     <h2 class="mt-4 mb-4 text-center">Admin Panel</h2>
                     <ul class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action sidebar-link rounded">Dashboard</a>
-                        <a href="#" class="list-group-item list-group-item-action sidebar-link rounded">Movies</a>
-                        <a href="#" class="list-group-item list-group-item-action sidebar-link rounded">TV Series</a>
-                        <a href="#" class="list-group-item list-group-item-action sidebar-link rounded">Actors</a>
-                        <a href="#" class="list-group-item list-group-item-action sidebar-link rounded">Directors</a>
-                        <a href="#" class="list-group-item list-group-item-action sidebar-link rounded">Settings</a>
+                        <a th:href="@{/admin/add/movie}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Movie</a>
+                        <a th:href="@{/admin/add/tv-series}" class="list-group-item list-group-item-action sidebar-link rounded">Add a TV Series</a>
+                        <a th:href="@{/admin/add/tv-series-episode}" class="list-group-item list-group-item-action sidebar-link rounded">Add a TV Series Episode</a>
+                        <a th:href="@{/admin/add/actor}" class="list-group-item list-group-item-action sidebar-link rounded">Add an Actor</a>
+                        <a th:href="@{/admin/add/studio}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Studio</a>
+                        <a th:href="@{/admin/add/director}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Director</a>
                     </ul>
                     <div class="sidebar-footer">
                         Admin Panel @ 2023
@@ -31,17 +31,7 @@
 
             <!-- Main Content -->
             <div class="col-md-9 main-content">
-                <nav class="navbar navbar-expand-lg navbar-styling">
-                    <div class="container-fluid">
-                        <div class="navbar-brand navbar-txt">Welcome, <th:block sec:authentication="name"></th:block>!</div>
-                        <div class="ml-auto">
-                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                <a th:href="@{/home}" class="btn return-button rounded mr-2">Return to the homepage</a>
-                                <a th:href="@{/users/logout}" class="btn btn-danger rounded">Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
+                <div th:replace="fragments/navbar :: admin-navbar"></div>
 
                 <div class="content mt-4">
                     <!-- Main content here -->
