@@ -33,3 +33,14 @@ function checkFieldsAddActor() {
         addActorButton.disabled = false;
     }
 }
+
+function checkFieldsAddStudio() {
+    const name = document.getElementById('name').value;
+    const establishedAt = document.getElementById('establishedAt').value;
+
+    const addStudioButton = document.getElementById('addStudioButton');
+
+    if (name !== '' && establishedAt !== '') {
+        addStudioButton.disabled = false;
+    }
+}
