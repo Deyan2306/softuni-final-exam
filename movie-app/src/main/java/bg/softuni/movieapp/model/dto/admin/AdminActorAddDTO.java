@@ -1,10 +1,11 @@
 package bg.softuni.movieapp.model.dto.admin;
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
+
+
 
 @Getter @Setter
 public class AdminActorAddDTO {
@@ -26,4 +27,5 @@ public class AdminActorAddDTO {
     private int height;
 
     private String youtubeVideoId;
+
 }
