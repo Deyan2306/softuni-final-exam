@@ -137,3 +137,43 @@ function addDirectorID() {
     additionalActorIdHolder.appendChild(additionalActorIdHolderBox);
 
 }
+
+function addEpisodeId() {
+
+    let additionalActorIdHolder = document.getElementById('additionalEpisodeIDs');
+
+    let additionalActorIdHolderBox = document.createElement('div');
+    additionalActorIdHolderBox.classList.add("form-group", "row");
+
+    let inputFieldHolder = document.createElement('div');
+    inputFieldHolder.classList.add("col");
+
+    let inputField = document.createElement('input');
+
+    inputField.type = 'text';
+    //inputField.oninput = checkFieldsAddMovie;
+    inputField.placeholder = "Episode Id...";
+    inputField.classList.add("form-control", "register-form-input", "id-input-field");
+    inputField.id = "directorId";
+    inputField.name = "directorId";
+
+    inputFieldHolder.appendChild(inputField);
+
+    let buttonHolder = document.createElement('div');
+    buttonHolder.classList.add("col-auto");
+
+    let button = document.createElement('button');
+    button.type = 'button';
+    button.classList.add("btn", "btn-secondary", "add-something-button");
+    button.innerText = "Add Episode ID";
+    button.onclick = addEpisodeId;
+
+    buttonHolder.appendChild(button);
+
+
+    additionalActorIdHolderBox.appendChild(inputFieldHolder);
+    additionalActorIdHolderBox.appendChild(buttonHolder);
+
+    additionalActorIdHolder.appendChild(additionalActorIdHolderBox);
+
+}

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @Getter @Setter
 public class AdminTVSeriesAddDTO {
 
@@ -25,6 +27,8 @@ public class AdminTVSeriesAddDTO {
 
     @Size(min = 0, message = "TV Series episode's length should be a positive number.")
     private int minutes;
+
+    private List<String> episodesIds;
 
     private String pgRating;
 
