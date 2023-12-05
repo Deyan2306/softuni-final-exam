@@ -28,6 +28,7 @@ public class AdminMovieAddDTO {
     private String pgRating;
     private MultipartFile titlePicture;
     private String youtubeTrailerID;
+    private String studioId;
     private List<String> directorIDs;
     private List<String> actorIDs;
 

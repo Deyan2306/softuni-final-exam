@@ -56,3 +56,17 @@ function checkFieldsAddADirector() {
         addActorButton.disabled = false;
     }
 }
+
+function checkFieldsAddMovie() {
+
+    const movieTitle = document.getElementById('title').value;
+    const movieSummary = document.getElementById('summary').value;
+    const movieReleaseDate = document.getElementById('releaseDate').value;
+    const movieLength = document.getElementById('length').value;
+
+    const addMovieButton = document.getElementById('addMovieButton');
+
+    if (movieTitle !== '' && movieSummary !== '' && movieReleaseDate !== '' && movieLength !== 0) {
+        addMovieButton.disabled = false;
+    }
+}
