@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <title>MovieApp - Index</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+    <link th:href="@{/css/index-styles.css}" rel="stylesheet">
 </head>
 <body>
 
     <div th:replace="fragments/navbar :: navbar"></div>
 
     <div class="container">
-        <div class="jumbotron text-center">
-            <h1>Welcome to MovieApp</h1>
-            <p>Discover and explore your favorite movies and TV series!</p>
+        <div class="jumbotron text-center background-form-container">
+            <h1 class="header-heading">Welcome to MovieApp</h1>
+
+            <h2 class="green-heading">The #1 Movie Tracking platform.</h2>
+            <p class="paragraph-heading">Discover and explore your favorite movies and TV series!</p>
+
             <div class="mt-4">
-                <a th:href="@{/users/login}" class="btn btn-primary mr-2">Login</a>
-                <a th:href="@{/users/register}" class="btn btn-secondary">Register</a>
+                <a th:href="@{/users/login}" class="btn btn-primary mr-2 button-heading">Login</a>
+                <a th:href="@{/users/register}" class="btn btn-secondary button-heading">Register</a>
             </div>
         </div>
     </div>
