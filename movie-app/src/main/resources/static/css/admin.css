@@ -218,3 +218,8 @@ body {
     height: 2.6rem !important;
     margin-bottom: 0.8rem !important;
 }
+
+.id-input-field {
+    width: 250px;
+    height: 100%;
+}

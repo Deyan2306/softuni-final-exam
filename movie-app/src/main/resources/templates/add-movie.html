@@ -103,13 +103,10 @@
                 </div>
 
                 <!-- PG Rating Dropdown -->
-                <div class="form-group">
-                    <label for="pgRating">PG Rating:</label>
-                    <select class="form-control" id="pgRating" name="pgRating">
-                        <!-- Use Thymeleaf to populate PG ratings from an enum -->
-                        <option th:each="rating : ${pgRatings}" th:value="${rating}" th:text="${rating}"></option>
-                    </select>
-                </div>
+                <select class="form-control select-styled filled" id="pgRating" name="pgRating" th:value="*{pgRating}">
+                    <option value="" disabled selected>Select a PG Rating...</option>
+                    <option th:each="pgRating : ${T(bg.softuni.movieapp.model.enums.PGRatingEnum).values()}" th:value="${pgRating}" th:text="${pgRating}"></option>
+                </select>
 
                 <!-- YouTube Trailer ID Input -->
                 <div class="form-group">
@@ -121,16 +118,30 @@
                            th:field="*{youtubeTrailerID}">
                 </div>
 
-                <!-- Actor IDs Input (Dynamically Add) -->
-                <div class="form-group">
-                    <!-- Logic to dynamically add input fields for Actor IDs -->
-                    <button type="button" class="btn btn-secondary">Add Actor ID</button>
+                <div class="form-group row">
+                    <div class="col">
+                        <input type="text"
+                               oninput="checkFieldsAddMovie()"
+                               placeholder="Actor Id..."
+                               class="form-control register-form-input id-input-field"
+                               id="actorId" name="actorId">
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-secondary add-something-button">Add Actor ID</button>
+                    </div>
                 </div>
 
-                <!-- Director IDs Input (Dynamically Add) -->
-                <div class="form-group">
-                    <!-- Logic to dynamically add input fields for Director IDs -->
-                    <button type="button" class="btn btn-secondary">Add Director ID</button>
+                <div class="form-group row">
+                    <div class="col">
+                        <input type="text"
+                               oninput="checkFieldsAddMovie()"
+                               placeholder="Director Id..."
+                               class="form-control register-form-input id-input-field"
+                               id="directorId" name="directorId">
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-secondary add-something-button">Add Director ID</button>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -149,6 +160,7 @@
 
 <!-- Include your scripts here -->
 <script th:src="@{/js/registrations.js}"></script>
+<script th:src="@{/js/loadDatesMovie.js}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
