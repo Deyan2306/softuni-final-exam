@@ -109,9 +109,11 @@
                                id="actorId" name="actorId">
                     </div>
                     <div class="col-auto">
-                        <button type="button" class="btn btn-secondary add-something-button">Add Actor ID</button>
+                        <button type="button" class="btn btn-secondary add-something-button" onclick="addActorID()">Add Actor ID</button>
                     </div>
                 </div>
+
+                <div id="additionalActorIDs"></div>
 
                 <div class="form-group row">
                     <div class="col">
@@ -122,9 +124,11 @@
                                id="directorId" name="directorId">
                     </div>
                     <div class="col-auto">
-                        <button type="button" class="btn btn-secondary add-something-button">Add Director ID</button>
+                        <button type="button" class="btn btn-secondary add-something-button" onclick="addDirectorID()">Add Director ID</button>
                     </div>
                 </div>
+
+                <div id="additionalDirectorIDs"></div>
 
                 <div class="form-group">
                     <label for="titlePicture" class="custom-file-upload">Add a Title Picture</label>
@@ -142,7 +146,7 @@
 
 <!-- Include your scripts here -->
 <script th:src="@{/js/registrations.js}"></script>
-<script th:src="@{/js/addGenreButton.js}"></script>
+<script th:src="@{/js/handleAdminAddMovieButtons.js}"></script>
 <script th:src="@{/js/loadDatesMovie.js}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
