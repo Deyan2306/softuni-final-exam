@@ -62,6 +62,7 @@ Some stuff, that i need to finish today :D
 - [ ] JS Notifications
 - [ ] Basic comments using REST
 - [ ] List all stuff on the appropriate pages
+- [ ] Make so you cant access "login" without the "acceptCookies".
 
 ### To do for wednesday
 - [ ] Paging functionality
@@ -73,7 +74,7 @@ Some stuff, that i need to finish today :D
 - [ ] Unit testing
 - [ ] Footer
 - [ ] Searchbar?
-- [ ] Cookies question
+- [X] Cookies question
 - [ ] Discord, Github and Google registration
 
 ### Thursday

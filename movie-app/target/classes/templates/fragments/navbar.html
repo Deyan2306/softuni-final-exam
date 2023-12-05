@@ -8,6 +8,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link th:href="@{/css/admin.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
 </head>
 <body>
 
@@ -27,11 +28,11 @@
 
     <!-- Main Navbar fragment -->
     <nav th:fragment="navbar"
-         class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" th:href="@{/}">MovieApp</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+         class="navbar navbar-expand-lg navbar-dark navbar-background">
+        <a class="navbar-brand movieapp-text-header" th:href="@{/}">MovieApp</a>
+        <button class="navbar-toggler movieapp-text-header" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon movieapp-text-header"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -54,10 +55,9 @@
             </ul>
             <div class="ml-auto">
                 <th:block sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <form th:method="POST"
-                              th:action="@{/users/logout}">
-                            <input type="submit" class="btn btn-link" value="Logout"/>
+                    <li class="nav-item navbar-background">
+                        <form th:method="POST" th:action="@{/users/logout}">
+                            <input type="submit" class="btn btn-link logout-button" value="Logout"/>
                         </form>
                     </li>
                 </th:block>
