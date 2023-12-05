@@ -59,24 +59,6 @@
 
                 <div id="additionalGenres"></div>
 
-                <script>
-                    function addGenre() {
-                        var select = document.createElement("select");
-                        select.classList.add("form-control");
-
-                        // Add options from the enum
-                        var genres = []/* Replace with your array of genres */;
-                        for (var i = 0; i < genres.length; i++) {
-                            var option = document.createElement("option");
-                            option.value = genres[i];
-                            option.textContent = genres[i];
-                            select.appendChild(option);
-                        }
-
-                        document.getElementById("additionalGenres").appendChild(select);
-                    }
-                </script>
-
                 <select class="form-control select-styled filled" id="language" name="language" th:value="*{language}">
                     <option value="" disabled selected>Select a language...</option>
                     <option th:each="language : ${T(bg.softuni.movieapp.model.enums.LanguageEnum).values()}" th:value="${language}" th:text="${language}"></option>
@@ -160,6 +142,7 @@
 
 <!-- Include your scripts here -->
 <script th:src="@{/js/registrations.js}"></script>
+<script th:src="@{/js/addGenreButton.js}"></script>
 <script th:src="@{/js/loadDatesMovie.js}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
