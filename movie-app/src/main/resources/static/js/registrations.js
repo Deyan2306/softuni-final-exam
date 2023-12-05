@@ -70,3 +70,19 @@ function checkFieldsAddMovie() {
         addMovieButton.disabled = false;
     }
 }
+
+function checkFieldsAddTVSeriesEpisode() {
+
+    const tvSeriesEpisodeTitle = document.getElementById('title').value;
+    const tvSeriesEpisodeSummary = document.getElementById('summary').value;
+    const tvSeriesEpisodeNumber = document.getElementById('episodeNumber').value;
+    const seasonNumber = document.getElementById('seasonNumber').value;
+    const releaseDate = document.getElementById('releaseDate').value;
+
+    const addTvSeriesEpisodeButton = document.getElementById('addTVSeriesEpisodeButton');
+
+    if (tvSeriesEpisodeSummary !== '' && tvSeriesEpisodeTitle !== '' && tvSeriesEpisodeNumber !== 0 && seasonNumber !== 0 && releaseDate !== '') {
+        addTvSeriesEpisodeButton.disabled = false;
+    }
+
+}

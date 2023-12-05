@@ -1,6 +1,7 @@
 package bg.softuni.movieapp.model.dto.admin;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,9 +16,11 @@ public class AdminTVSeriesEpisodeDTO {
     @Size(min = 20, message = "Movie's summary should be at least 20 characters long.")
     private String summary;
 
+    @Positive(message = "Episode number should be positive.")
     @NotBlank(message = "You should point the episode number.")
     private int episodeNumber;
 
+    @Positive(message = "Season number should be positive.")
     @NotBlank(message = "You should point the season number.")
     private int seasonNumber;
 
