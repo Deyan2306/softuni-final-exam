@@ -38,3 +38,19 @@ body {
     background-color: #79C300;
     color: #263143;
 }
+
+.accept-cookies-container {
+    background-color: #111927 !important;
+    border: 1px solid #79C300;
+}
+
+.accept-cookies-container > p {
+    color: #a4b1cd !important;
+    font-size: 12px;
+}
+
+.accept-cookies-container > h1 {
+    color: #fff;
+    font-size:  25px;
+    font-weight: bold;
+}

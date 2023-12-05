@@ -17,14 +17,20 @@
             <h2 class="green-heading">The #1 Movie Tracking platform.</h2>
             <p class="paragraph-heading">Discover and explore your favorite movies and TV series!</p>
 
-            <div class="mt-4">
-                <a th:href="@{/users/login}" class="btn btn-primary mr-2 button-heading">Login</a>
-                <a th:href="@{/users/register}" class="btn btn-secondary button-heading">Register</a>
+            <div class="mt-4" id="buttonContainer" style="display: none;">
+                <a th:href="@{/users/login}" class="btn btn-primary mr-2 button-heading" id="loginButton">Login</a>
+                <a th:href="@{/users/register}" class="btn btn-secondary button-heading" id="registerButton">Register</a>
             </div>
         </div>
     </div>
 
-    <!-- Include Bootstrap JS -->
+    <div id="cookieConsentBanner" class="fixed-bottom bg-dark text-light p-2 text-center accept-cookies-container">
+        <h1>This website uses cookies.</h1>
+        <p>We use cookies to save state on your computer. No information about you, or your profile goes outside the webpage.</p>
+        <button id="acceptCookiesButton" class="btn btn-primary button-heading">Accept Cookies</button>
+    </div>
+
+    <script th:src="@{/js/acceptCookies.js}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
