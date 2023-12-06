@@ -35,4 +35,7 @@ public class Director extends Likeable {
     @OneToMany
     private List<Movie> movies;
 
+    @Column(name = "picture_uri")
+    private String pictureUri;
+
 }

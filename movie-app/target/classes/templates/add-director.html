@@ -31,7 +31,8 @@
                             <form class="register-form"
                                   th:action="@{/admin/add/director}"
                                   th:method="POST"
-                                  th:object="${directorAddDataTransferObject}">
+                                  th:object="${directorAddDataTransferObject}"
+                                  enctype="multipart/form-data">
 
                                 <div class="form-group">
                                     <input type="text"
@@ -80,11 +81,11 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="actorPhoto" class="custom-file-upload">Add an Actor photo</label>
-                                    <input type="file" class="form-control-file input-file" id="actorPhoto" name="actorPhoto" th:field="*{directorPicture}">
+                                    <label for="actorPhoto" class="custom-file-upload">Add Director photo</label>
+                                    <input type="file" class="form-control-file input-file" id="actorPhoto" name="directorPhoto" accept="image/*">
                                 </div>
 
-                                <button id="addDirectorButton" type="submit" class="btn btn-primary" disabled>Add the Actor</button>
+                                <button id="addDirectorButton" type="submit" class="btn btn-primary" disabled>Add the Director</button>
 
                             </form>
                         </div>

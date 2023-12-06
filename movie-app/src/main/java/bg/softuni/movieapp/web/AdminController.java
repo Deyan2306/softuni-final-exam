@@ -7,13 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @Controller
 public class AdminController {
 
+    private final DirectorService directorService;
     private final ActorService actorService;
     private final MovieService movieService;
     private final TVSeriesService tvSeriesService;
@@ -23,8 +26,9 @@ public class AdminController {
 
 
     @Autowired
-    public AdminController(ActorService actorService, DirectorService directorService, MovieService movieService, TVSeriesService tvSeriesService, TVSeriesEpisodeService tvSeriesEpisodeService, CommentService commentService, QuoteService quoteService) {
+    public AdminController(ActorService actorService, DirectorService directorService, DirectorService directorService1, MovieService movieService, TVSeriesService tvSeriesService, TVSeriesEpisodeService tvSeriesEpisodeService, CommentService commentService, QuoteService quoteService) {
         this.actorService = actorService;
+        this.directorService = directorService1;
         this.movieService = movieService;
         this.tvSeriesService = tvSeriesService;
         this.tvSeriesEpisodeService = tvSeriesEpisodeService;
@@ -113,7 +117,7 @@ public class AdminController {
             return modelAndView;
         }
 
-        return new ModelAndView("../../admin");
+        return new ModelAndView("redirect:../../admin");
     }
 
     @GetMapping("/admin/edit/actor/{id}")
@@ -136,9 +140,26 @@ public class AdminController {
     @PostMapping("/admin/add/director")
     public ModelAndView addDirectorPage(
             @ModelAttribute("directorAddDataTransferObject") @Valid AdminDirectorAddDTO adminDirectorAddDTO,
-            BindingResult bindingResult) {
+            @RequestParam("directorPhoto") MultipartFile directorPhoto,
+            BindingResult bindingResult) throws IOException {
 
-        return new ModelAndView("add-director");
+
+
+        adminDirectorAddDTO.setDirectorPicture(directorPhoto);
+
+//        if (bindingResult.hasErrors()) {
+//            return new ModelAndView("/add-director");
+//        }
+
+        boolean successfulDirectorAdding = this.directorService.addDirector(adminDirectorAddDTO);
+
+        if (!successfulDirectorAdding) {
+            ModelAndView modelAndView = new ModelAndView("/add-director");
+            modelAndView.addObject("hasAddingError", true);
+            return modelAndView;
+        }
+
+        return new ModelAndView("redirect:../../admin");
     }
 
     @GetMapping("/admin/add/studio")
