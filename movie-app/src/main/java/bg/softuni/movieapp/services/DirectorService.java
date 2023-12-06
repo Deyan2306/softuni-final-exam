@@ -8,4 +8,5 @@ public interface DirectorService {
 
     boolean addDirector(AdminDirectorAddDTO adminDirectorAddDTO) throws IOException;
 
+    Object getAllDirectors();
 }

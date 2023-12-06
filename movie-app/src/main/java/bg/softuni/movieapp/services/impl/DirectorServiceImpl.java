@@ -91,4 +91,9 @@ public class DirectorServiceImpl implements DirectorService {
 
         return true;
     }
+
+    @Override
+    public Object getAllDirectors() {
+        return this.directorRepository.findAll();
+    }
 }

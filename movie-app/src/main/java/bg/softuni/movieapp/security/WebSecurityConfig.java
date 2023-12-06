@@ -31,6 +31,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/about").permitAll()
+                        .requestMatchers("/api/get/directors").permitAll()
                         .requestMatchers("/home").hasAnyRole(UserRoleEnum.ADMIN.name(), UserRoleEnum.USER.name())
                         .requestMatchers("/users/register", "/users/login", "/users/logout").permitAll()
                         .requestMatchers("/users/logout-success", "/users/login-error").permitAll()
