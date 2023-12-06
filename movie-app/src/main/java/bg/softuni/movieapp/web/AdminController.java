@@ -18,6 +18,7 @@ public class AdminController {
 
     private final DirectorService directorService;
     private final ActorService actorService;
+    private final StudioService studioService;
     private final MovieService movieService;
     private final TVSeriesService tvSeriesService;
     private final TVSeriesEpisodeService tvSeriesEpisodeService;
@@ -26,9 +27,10 @@ public class AdminController {
 
 
     @Autowired
-    public AdminController(ActorService actorService, DirectorService directorService, DirectorService directorService1, MovieService movieService, TVSeriesService tvSeriesService, TVSeriesEpisodeService tvSeriesEpisodeService, CommentService commentService, QuoteService quoteService) {
+    public AdminController(ActorService actorService, DirectorService directorService, DirectorService directorService1, StudioService studioService, MovieService movieService, TVSeriesService tvSeriesService, TVSeriesEpisodeService tvSeriesEpisodeService, CommentService commentService, QuoteService quoteService) {
         this.actorService = actorService;
         this.directorService = directorService1;
+        this.studioService = studioService;
         this.movieService = movieService;
         this.tvSeriesService = tvSeriesService;
         this.tvSeriesEpisodeService = tvSeriesEpisodeService;
@@ -170,9 +172,21 @@ public class AdminController {
     @PostMapping("/admin/add/studio")
     public ModelAndView addStudioPage(
             @ModelAttribute("studioAddDataTransferObject") @Valid AdminAddStudioDTO adminAddStudioDTO,
+            @RequestParam("studioPhoto") MultipartFile studioPhoto,
             BindingResult bindingResult) {
 
-        return new ModelAndView("add-studio");
+        adminAddStudioDTO.setStudioPicture(studioPhoto);
+
+        boolean successfulStudioAdding = this.studioService.addStudio(adminAddStudioDTO);
+
+        if (!successfulStudioAdding) {
+            ModelAndView modelAndView = new ModelAndView("/add-studio");
+            modelAndView.addObject("hasAddingError", true);
+            return modelAndView;
+        }
+
+
+        return new ModelAndView("redirect:../../admin");
     }
 
 }

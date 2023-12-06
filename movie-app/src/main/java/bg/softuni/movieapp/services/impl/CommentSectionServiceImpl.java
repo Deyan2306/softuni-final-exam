@@ -1,5 +1,6 @@
 package bg.softuni.movieapp.services.impl;
 
+import bg.softuni.movieapp.model.entity.sections.CommentSection;
 import bg.softuni.movieapp.repository.sections.CommentSectionRepository;
 import bg.softuni.movieapp.services.CommentSectionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,5 +14,10 @@ public class CommentSectionServiceImpl implements CommentSectionService {
     @Autowired
     public CommentSectionServiceImpl(CommentSectionRepository commentSectionRepository) {
         this.commentSectionRepository = commentSectionRepository;
+    }
+
+    @Override
+    public void createCommentSection(CommentSection commentSection) {
+        this.commentSectionRepository.save(commentSection);
     }
 }

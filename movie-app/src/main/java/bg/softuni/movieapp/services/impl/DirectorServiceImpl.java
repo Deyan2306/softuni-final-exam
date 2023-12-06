@@ -5,6 +5,7 @@ import bg.softuni.movieapp.model.entity.Director;
 import bg.softuni.movieapp.model.entity.sections.CommentSection;
 import bg.softuni.movieapp.repository.DirectorRepository;
 import bg.softuni.movieapp.repository.sections.CommentSectionRepository;
+import bg.softuni.movieapp.services.CommentSectionService;
 import bg.softuni.movieapp.services.DirectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,12 +22,12 @@ import static bg.softuni.movieapp.util.FilePaths.DIRECTOR_PICTURE_SAVE_URI;
 public class DirectorServiceImpl implements DirectorService {
 
     private final DirectorRepository directorRepository;
-    private final CommentSectionRepository commentSectionRepository;
+    private final CommentSectionService commentSectionService;
 
     @Autowired
-    public DirectorServiceImpl(DirectorRepository directorRepository, CommentSectionRepository commentSectionRepository) {
+    public DirectorServiceImpl(DirectorRepository directorRepository, CommentSectionService commentSectionService) {
         this.directorRepository = directorRepository;
-        this.commentSectionRepository = commentSectionRepository;
+        this.commentSectionService = commentSectionService;
     }
 
     @Override
@@ -64,7 +65,7 @@ public class DirectorServiceImpl implements DirectorService {
         CommentSection currentDirectorCommentSection = new CommentSection();
         director.setCommentSection(currentDirectorCommentSection);
 
-        this.commentSectionRepository.save(currentDirectorCommentSection);
+        this.commentSectionService.createCommentSection(currentDirectorCommentSection);
         this.directorRepository.save(director);
 
         if (adminDirectorAddDTO.getDirectorPicture() != null) {
