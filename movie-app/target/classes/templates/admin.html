@@ -12,22 +12,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <div class="col-md-3 sidebar">
-                <div class="sidebar-content">
-                    <h2 class="mt-4 mb-4 text-center">Admin Panel</h2>
-                    <ul class="list-group">
-                        <a th:href="@{/admin/add/movie}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Movie</a>
-                        <a th:href="@{/admin/add/tv-series}" class="list-group-item list-group-item-action sidebar-link rounded">Add a TV Series</a>
-                        <a th:href="@{/admin/add/tv-series-episode}" class="list-group-item list-group-item-action sidebar-link rounded">Add a TV Series Episode</a>
-                        <a th:href="@{/admin/add/actor}" class="list-group-item list-group-item-action sidebar-link rounded">Add an Actor</a>
-                        <a th:href="@{/admin/add/studio}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Studio</a>
-                        <a th:href="@{/admin/add/director}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Director</a>
-                    </ul>
-                    <div class="sidebar-footer">
-                        Admin Panel @ 2023
-                    </div>
-                </div>
-            </div>
+            <div th:replace="fragments/navbar :: admin-sidebar"></div>
 
             <!-- Main Content -->
             <div class="col-md-9 main-content">

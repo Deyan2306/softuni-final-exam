@@ -12,6 +12,26 @@
 </head>
 <body>
 
+    <!-- Admin Panel Sidebar -->
+    <div th:fragment="admin-sidebar"
+            class="col-md-3 sidebar admin-sidebar-fixed-content">
+        <div class="sidebar-content">
+            <h2 class="mt-4 mb-4 text-center">Admin Panel</h2>
+            <ul class="list-group">
+                <a th:href="@{/admin}" class="list-group-item list-group-item-action sidebar-link rounded">Dashboard</a>
+                <a th:href="@{/admin/add/movie}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Movie</a>
+                <a th:href="@{/admin/add/tv-series}" class="list-group-item list-group-item-action sidebar-link rounded">Add a TV Series</a>
+                <a th:href="@{/admin/add/tv-series-episode}" class="list-group-item list-group-item-action sidebar-link rounded">Add a TV Series Episode</a>
+                <a th:href="@{/admin/add/actor}" class="list-group-item list-group-item-action sidebar-link rounded">Add an Actor</a>
+                <a th:href="@{/admin/add/studio}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Studio</a>
+                <a th:href="@{/admin/add/director}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Director</a>
+            </ul>
+            <div class="sidebar-footer">
+                Admin Panel @ 2023
+            </div>
+        </div>
+    </div>
+
     <!-- Admin Navbar fragment -->
     <nav th:fragment="admin-navbar"
             class="navbar navbar-expand-lg navbar-styling">
@@ -19,7 +39,6 @@
             <div class="navbar-brand navbar-txt">Welcome, <th:block sec:authentication="name"></th:block>!</div>
             <div class="ml-auto">
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <a th:href="@{/admin}" class="btn return-button rounded mr-2">Panel</a>
                     <a th:href="@{/home}" class="btn return-button rounded mr-2">Homepage</a>
                     <a th:href="@{/users/logout}" class="btn btn-danger rounded">Logout</a>
                 </div>
@@ -50,7 +69,7 @@
                 </li>
                 <th:block sec:authorize="hasRole('ADMIN')">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/admin/}">Admin Panel</a>
+                        <a class="nav-link" th:href="@{/admin}">Admin Panel</a>
                     </li>
                 </th:block>
             </ul>

@@ -9,86 +9,95 @@
 </head>
 <body>
 
-<!-- Replace with the admin navbar -->
-<div th:replace="fragments/navbar :: admin-navbar"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div th:replace="fragments/navbar :: admin-sidebar"></div>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+            <!-- Main Content -->
+            <div class="col-md-9 main-content">
+                <div th:replace="fragments/navbar :: admin-navbar"></div>
 
-            <h2 class="mb-4 text-center">Add a TV Series Episode to the Database</h2>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
 
-            <p th:if="${bad_credentials}" class="error alert alert-danger">
-                Invalid credentials for populating the information.
-            </p>
+                            <h2 class="mb-4 text-center">Add a TV Series Episode to the Database</h2>
 
-            <form class="register-form"
-                  th:action="@{/admin/add/tvseriesepisode}"
-                  th:method="POST"
-                  th:object="${tvSeriesEpisodeAddDataTransferObject}">
+                            <p th:if="${bad_credentials}" class="error alert alert-danger">
+                                Invalid credentials for populating the information.
+                            </p>
 
-                <div class="form-group">
-                    <input type="text"
-                           oninput="checkFieldsAddTVSeriesEpisode()"
-                           placeholder="Title..."
-                           class="form-control register-form-input"
-                           id="title" name="title"
-                           th:field="*{title}" required>
+                            <form class="register-form"
+                                  th:action="@{/admin/add/tvseriesepisode}"
+                                  th:method="POST"
+                                  th:object="${tvSeriesEpisodeAddDataTransferObject}">
+
+                                <div class="form-group">
+                                    <input type="text"
+                                           oninput="checkFieldsAddTVSeriesEpisode()"
+                                           placeholder="Title..."
+                                           class="form-control register-form-input"
+                                           id="title" name="title"
+                                           th:field="*{title}" required>
+                                </div>
+
+                                <div class="form-group">
+                        <textarea oninput="checkFieldsAddTVSeriesEpisode()"
+                                  placeholder="Summary..."
+                                  class="form-control register-form-input"
+                                  id="summary" name="summary"
+                                  th:field="*{summary}" required>
+                        </textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="number"
+                                           oninput="checkFieldsAddTVSeriesEpisode()"
+                                           placeholder="Episode Number..."
+                                           class="form-control register-form-input"
+                                           id="episodeNumber" name="episodeNumber"
+                                           th:field="*{episodeNumber}" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="number"
+                                           oninput="checkFieldsAddTVSeriesEpisode()"
+                                           placeholder="Season Number..."
+                                           class="form-control register-form-input"
+                                           id="seasonNumber" name="seasonNumber"
+                                           th:field="*{seasonNumber}" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="date"
+                                           oninput="checkFieldsAddTVSeriesEpisode()"
+                                           placeholder="Release Date..."
+                                           class="form-control register-form-input"
+                                           id="releaseDate" name="releaseDate"
+                                           th:field="*{releaseDate}" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="titleImage" class="custom-file-upload">Add a Title Image</label>
+                                    <input type="file" class="form-control-file input-file" id="titleImage" name="titleImage" th:field="*{titleImage}" required>
+                                </div>
+
+                                <button id="addTVSeriesEpisodeButton" type="submit" class="btn btn-primary" disabled>Add the TV Series Episode</button>
+
+                            </form>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <textarea oninput="checkFieldsAddTVSeriesEpisode()"
-                              placeholder="Summary..."
-                              class="form-control register-form-input"
-                              id="summary" name="summary"
-                              th:field="*{summary}" required>
-                    </textarea>
-                </div>
-
-                <div class="form-group">
-                    <input type="number"
-                           oninput="checkFieldsAddTVSeriesEpisode()"
-                           placeholder="Episode Number..."
-                           class="form-control register-form-input"
-                           id="episodeNumber" name="episodeNumber"
-                           th:field="*{episodeNumber}" required>
-                </div>
-
-                <div class="form-group">
-                    <input type="number"
-                           oninput="checkFieldsAddTVSeriesEpisode()"
-                           placeholder="Season Number..."
-                           class="form-control register-form-input"
-                           id="seasonNumber" name="seasonNumber"
-                           th:field="*{seasonNumber}" required>
-                </div>
-
-                <div class="form-group">
-                    <input type="date"
-                           oninput="checkFieldsAddTVSeriesEpisode()"
-                           placeholder="Release Date..."
-                           class="form-control register-form-input"
-                           id="releaseDate" name="releaseDate"
-                           th:field="*{releaseDate}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="titleImage" class="custom-file-upload">Add a Title Image</label>
-                    <input type="file" class="form-control-file input-file" id="titleImage" name="titleImage" th:field="*{titleImage}" required>
-                </div>
-
-                <button id="addTVSeriesEpisodeButton" type="submit" class="btn btn-primary" disabled>Add the TV Series Episode</button>
-
-            </form>
-
+            </div>
         </div>
     </div>
-</div>
 
-<script th:src="@{/js/registrations.js}"></script>
-<script th:src="@{/js/loadReleaseDateTVSeriesEpisodeAdding.js}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/registrations.js}"></script>
+    <script th:src="@{/js/loadReleaseDateTVSeriesEpisodeAdding.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>

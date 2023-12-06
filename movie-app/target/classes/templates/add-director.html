@@ -9,80 +9,87 @@
 </head>
 <body>
 
-    <!--  Replace with the admin navbar  -->
-    <div th:replace="fragments/navbar :: admin-navbar"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div th:replace="fragments/navbar :: admin-sidebar"></div>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
+            <!-- Main Content -->
+            <div class="col-md-9 main-content">
+                <div th:replace="fragments/navbar :: admin-navbar"></div>
 
-                <h2 class="mb-4 text-center">Add a Director to the DataBase</h2>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
 
-                <p th:if="${bad_credentials}" class="error alert alert-danger">
-                    Invalid credentials for populating the information.
-                </p>
+                            <h2 class="mb-4 text-center">Add a Director to the DataBase</h2>
 
-                <form class="register-form"
-                      th:action="@{/admin/add/director}"
-                      th:method="POST"
-                      th:object="${directorAddDataTransferObject}">
+                            <p th:if="${bad_credentials}" class="error alert alert-danger">
+                                Invalid credentials for populating the information.
+                            </p>
 
-                    <div class="form-group">
-                        <input type="text"
-                               oninput="checkFieldsAddADirector()"
-                               placeholder="First Name..."
-                               class="form-control register-form-input"
-                               id="firstName" name="firstName"
-                               th:field="*{firstName}" required>
+                            <form class="register-form"
+                                  th:action="@{/admin/add/director}"
+                                  th:method="POST"
+                                  th:object="${directorAddDataTransferObject}">
+
+                                <div class="form-group">
+                                    <input type="text"
+                                           oninput="checkFieldsAddADirector()"
+                                           placeholder="First Name..."
+                                           class="form-control register-form-input"
+                                           id="firstName" name="firstName"
+                                           th:field="*{firstName}" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text"
+                                           oninput="checkFieldsAddADirector()"
+                                           placeholder="Last Name..."
+                                           class="form-control register-form-input"
+                                           id="lastName" name="lastName"
+                                           th:field="*{lastName}" required>
+                                </div>
+
+                                <div class="form-group">
+                            <textarea oninput="checkFieldsAddADirector()"
+                                      placeholder="Biography..."
+                                      class="form-control register-form-input"
+                                      id="biography"
+                                      name="biography"
+                                      th:field="*{biography}">
+                            </textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="date"
+                                           oninput="checkFieldsAddADirector()"
+                                           placeholder="Birth date..."
+                                           class="form-control register-form-input"
+                                           id="birthDate" name="birthDate"
+                                           th:field="*{birthDate}">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="date"
+                                           oninput="checkFieldsAddADirector()"
+                                           placeholder="Death date..."
+                                           class="form-control register-form-input"
+                                           id="deathDate" name="deathDate"
+                                           th:field="*{deathDate}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="actorPhoto" class="custom-file-upload">Add an Actor photo</label>
+                                    <input type="file" class="form-control-file input-file" id="actorPhoto" name="actorPhoto" th:field="*{directorPicture}">
+                                </div>
+
+                                <button id="addDirectorButton" type="submit" class="btn btn-primary" disabled>Add the Actor</button>
+
+                            </form>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <input type="text"
-                               oninput="checkFieldsAddADirector()"
-                               placeholder="Last Name..."
-                               class="form-control register-form-input"
-                               id="lastName" name="lastName"
-                               th:field="*{lastName}" required>
-                    </div>
-
-                    <div class="form-group">
-                        <textarea oninput="checkFieldsAddADirector()"
-                                  placeholder="Biography..."
-                                  class="form-control register-form-input"
-                                  id="biography"
-                                  name="biography"
-                                  th:field="*{biography}">
-                        </textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="date"
-                               oninput="checkFieldsAddADirector()"
-                               placeholder="Birth date..."
-                               class="form-control register-form-input"
-                               id="birthDate" name="birthDate"
-                               th:field="*{birthDate}">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="date"
-                               oninput="checkFieldsAddADirector()"
-                               placeholder="Death date..."
-                               class="form-control register-form-input"
-                               id="deathDate" name="deathDate"
-                               th:field="*{deathDate}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="actorPhoto" class="custom-file-upload">Add an Actor photo</label>
-                        <input type="file" class="form-control-file input-file" id="actorPhoto" name="actorPhoto" th:field="*{directorPicture}">
-                    </div>
-
-
-                    <button id="addDirectorButton" type="submit" class="btn btn-primary" disabled>Add the Actor</button>
-
-                </form>
-
+                </div>
             </div>
         </div>
     </div>

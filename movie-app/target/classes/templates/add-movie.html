@@ -9,156 +9,165 @@
 </head>
 <body>
 
-<!-- Replace with the admin navbar -->
-<div th:replace="fragments/navbar :: admin-navbar"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div th:replace="fragments/navbar :: admin-sidebar"></div>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+            <!-- Main Content -->
+            <div class="col-md-9 main-content">
+                <div th:replace="fragments/navbar :: admin-navbar"></div>
 
-            <h2 class="mb-4 text-center">Add a Movie to the Database</h2>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
 
-            <p th:if="${bad_credentials}" class="error alert alert-danger">
-                Invalid credentials for populating the information.
-            </p>
+                            <h2 class="mb-4 text-center">Add a Movie to the Database</h2>
 
-            <form class="register-form"
-                  th:action="@{/admin/add/movie}"
-                  th:method="POST"
-                  th:object="${movieAddDataTransferObject}">
+                            <p th:if="${bad_credentials}" class="error alert alert-danger">
+                                Invalid credentials for populating the information.
+                            </p>
 
-                <div class="form-group">
-                    <input type="text"
-                           oninput="checkFieldsAddMovie()"
-                           placeholder="Title..."
-                           class="form-control register-form-input"
-                           id="title" name="title"
-                           th:field="*{title}" required>
-                </div>
+                            <form class="register-form"
+                                  th:action="@{/admin/add/movie}"
+                                  th:method="POST"
+                                  th:object="${movieAddDataTransferObject}">
 
-                <div class="form-group">
-                    <textarea oninput="checkFieldsAddMovie()"
-                              placeholder="Summary..."
-                              class="form-control register-form-input"
-                              id="summary" name="summary"
-                              th:field="*{summary}">
-                    </textarea>
-                </div>
+                                <div class="form-group">
+                                    <input type="text"
+                                           oninput="checkFieldsAddMovie()"
+                                           placeholder="Title..."
+                                           class="form-control register-form-input"
+                                           id="title" name="title"
+                                           th:field="*{title}" required>
+                                </div>
 
-                <div class="form-group row">
-                    <div class="col">
-                        <select class="form-control select-styled" id="genres" name="genres">
-                            <option value="" disabled selected>Select a genre...</option>
-                            <option th:each="genre : ${T(bg.softuni.movieapp.model.enums.MovieGenreEnum).values()}" th:value="${genre}" th:text="${genre}"></option>
-                        </select>
+                                <div class="form-group">
+                        <textarea oninput="checkFieldsAddMovie()"
+                                  placeholder="Summary..."
+                                  class="form-control register-form-input"
+                                  id="summary" name="summary"
+                                  th:field="*{summary}">
+                        </textarea>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <select class="form-control select-styled" id="genres" name="genres">
+                                            <option value="" disabled selected>Select a genre...</option>
+                                            <option th:each="genre : ${T(bg.softuni.movieapp.model.enums.MovieGenreEnum).values()}" th:value="${genre}" th:text="${genre}"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-secondary add-something-button" onclick="addGenre()">Add genre</button>
+                                    </div>
+                                </div>
+
+                                <div id="additionalGenres"></div>
+
+                                <select class="form-control select-styled filled" id="language" name="language" th:value="*{language}">
+                                    <option value="" disabled selected>Select a language...</option>
+                                    <option th:each="language : ${T(bg.softuni.movieapp.model.enums.LanguageEnum).values()}" th:value="${language}" th:text="${language}"></option>
+                                </select>
+
+                                <!-- Release Date Input -->
+                                <div class="form-group">
+                                    <input type="date"
+                                           oninput="checkFieldsAddMovie()"
+                                           placeholder="Release Date..."
+                                           class="form-control register-form-input"
+                                           id="releaseDate" name="releaseDate"
+                                           th:field="*{releaseDate}">
+                                </div>
+
+                                <!-- Length Input -->
+                                <div class="form-group">
+                                    <input type="number"
+                                           oninput="checkFieldsAddMovie()"
+                                           placeholder="Length..."
+                                           class="form-control register-form-input"
+                                           id="length" name="length"
+                                           th:field="*{length}">
+                                </div>
+
+                                <!-- PG Rating Dropdown -->
+                                <select class="form-control select-styled filled" id="pgRating" name="pgRating" th:value="*{pgRating}">
+                                    <option value="" disabled selected>Select a PG Rating...</option>
+                                    <option th:each="pgRating : ${T(bg.softuni.movieapp.model.enums.PGRatingEnum).values()}" th:value="${pgRating}" th:text="${pgRating}"></option>
+                                </select>
+
+                                <!-- YouTube Trailer ID Input -->
+                                <div class="form-group">
+                                    <input type="text"
+                                           oninput="checkFieldsAddMovie()"
+                                           placeholder="YouTube Trailer ID..."
+                                           class="form-control register-form-input"
+                                           id="youtubeTrailerID" name="youtubeTrailerID"
+                                           th:field="*{youtubeTrailerID}">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text"
+                                           oninput="checkFieldsAddMovie()"
+                                           placeholder="Studio ID..."
+                                           class="form-control register-form-input"
+                                           id="studioId" name="studioId"
+                                           th:field="*{studioId}">
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <input type="text"
+                                               oninput="checkFieldsAddMovie()"
+                                               placeholder="Actor Id..."
+                                               class="form-control register-form-input id-input-field"
+                                               id="actorId" name="actorId">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-secondary add-something-button" onclick="addActorID()">Add Actor ID</button>
+                                    </div>
+                                </div>
+
+                                <div id="additionalActorIDs"></div>
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <input type="text"
+                                               oninput="checkFieldsAddMovie()"
+                                               placeholder="Director Id..."
+                                               class="form-control register-form-input id-input-field"
+                                               id="directorId" name="directorId">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-secondary add-something-button" onclick="addDirectorID()">Add Director ID</button>
+                                    </div>
+                                </div>
+
+                                <div id="additionalDirectorIDs"></div>
+
+                                <div class="form-group">
+                                    <label for="titlePicture" class="custom-file-upload">Add a Title Picture</label>
+                                    <input type="file" class="form-control-file input-file" id="titlePicture" name="titlePicture" th:field="*{titlePicture}">
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button id="addMovieButton" type="submit" class="btn btn-primary" disabled>Add the Movie</button>
+
+                            </form>
+
+                        </div>
                     </div>
-                    <div class="col-auto">
-                        <button type="button" class="btn btn-secondary add-something-button" onclick="addGenre()">Add genre</button>
-                    </div>
                 </div>
 
-                <div id="additionalGenres"></div>
-
-                <select class="form-control select-styled filled" id="language" name="language" th:value="*{language}">
-                    <option value="" disabled selected>Select a language...</option>
-                    <option th:each="language : ${T(bg.softuni.movieapp.model.enums.LanguageEnum).values()}" th:value="${language}" th:text="${language}"></option>
-                </select>
-
-                <!-- Release Date Input -->
-                <div class="form-group">
-                    <input type="date"
-                           oninput="checkFieldsAddMovie()"
-                           placeholder="Release Date..."
-                           class="form-control register-form-input"
-                           id="releaseDate" name="releaseDate"
-                           th:field="*{releaseDate}">
-                </div>
-
-                <!-- Length Input -->
-                <div class="form-group">
-                    <input type="number"
-                           oninput="checkFieldsAddMovie()"
-                           placeholder="Length..."
-                           class="form-control register-form-input"
-                           id="length" name="length"
-                           th:field="*{length}">
-                </div>
-
-                <!-- PG Rating Dropdown -->
-                <select class="form-control select-styled filled" id="pgRating" name="pgRating" th:value="*{pgRating}">
-                    <option value="" disabled selected>Select a PG Rating...</option>
-                    <option th:each="pgRating : ${T(bg.softuni.movieapp.model.enums.PGRatingEnum).values()}" th:value="${pgRating}" th:text="${pgRating}"></option>
-                </select>
-
-                <!-- YouTube Trailer ID Input -->
-                <div class="form-group">
-                    <input type="text"
-                           oninput="checkFieldsAddMovie()"
-                           placeholder="YouTube Trailer ID..."
-                           class="form-control register-form-input"
-                           id="youtubeTrailerID" name="youtubeTrailerID"
-                           th:field="*{youtubeTrailerID}">
-                </div>
-
-                <div class="form-group">
-                    <input type="text"
-                           oninput="checkFieldsAddMovie()"
-                           placeholder="Studio ID..."
-                           class="form-control register-form-input"
-                           id="studioId" name="studioId"
-                           th:field="*{studioId}">
-                </div>
-
-                <div class="form-group row">
-                    <div class="col">
-                        <input type="text"
-                               oninput="checkFieldsAddMovie()"
-                               placeholder="Actor Id..."
-                               class="form-control register-form-input id-input-field"
-                               id="actorId" name="actorId">
-                    </div>
-                    <div class="col-auto">
-                        <button type="button" class="btn btn-secondary add-something-button" onclick="addActorID()">Add Actor ID</button>
-                    </div>
-                </div>
-
-                <div id="additionalActorIDs"></div>
-
-                <div class="form-group row">
-                    <div class="col">
-                        <input type="text"
-                               oninput="checkFieldsAddMovie()"
-                               placeholder="Director Id..."
-                               class="form-control register-form-input id-input-field"
-                               id="directorId" name="directorId">
-                    </div>
-                    <div class="col-auto">
-                        <button type="button" class="btn btn-secondary add-something-button" onclick="addDirectorID()">Add Director ID</button>
-                    </div>
-                </div>
-
-                <div id="additionalDirectorIDs"></div>
-
-                <div class="form-group">
-                    <label for="titlePicture" class="custom-file-upload">Add a Title Picture</label>
-                    <input type="file" class="form-control-file input-file" id="titlePicture" name="titlePicture" th:field="*{titlePicture}">
-                </div>
-
-                <!-- Submit Button -->
-                <button id="addMovieButton" type="submit" class="btn btn-primary" disabled>Add the Movie</button>
-
-            </form>
-
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Include your scripts here -->
-<script th:src="@{/js/registrations.js}"></script>
-<script th:src="@{/js/handleAdminAddMovieButtons.js}"></script>
-<script th:src="@{/js/loadDatesMovie.js}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/registrations.js}"></script>
+    <script th:src="@{/js/handleAdminAddMovieButtons.js}"></script>
+    <script th:src="@{/js/loadDatesMovie.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
