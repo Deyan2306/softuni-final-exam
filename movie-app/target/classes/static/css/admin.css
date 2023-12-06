@@ -223,3 +223,58 @@ body {
     width: 250px;
     height: 100%;
 }
+
+.statistics-block-field {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    margin-bottom: 10px;
+    height: 16.5rem;
+    width: 26rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    border-radius: 10px;
+}
+
+.statistics-block-field > p {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.description {
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+}
+
+.bgc-blue {
+    background-color: #3598dc;
+}
+
+.bgc-cyan {
+    background-color: #32c5d2;
+}
+
+.bgc-red {
+    background-color: #e7505a;
+}
+
+.bgc-yellow {
+    background-color: #c49f47;
+}
+
+.bgc-purple {
+    background-color: #8E44AD;
+}
+
+.bgc-green {
+    background-color: #09bc8a;
+}
+
+.heading-count {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    font-size: 100px !important;
+}

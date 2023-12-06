@@ -1,17 +1,22 @@
 package bg.softuni.movieapp.services.impl;
 
-import bg.softuni.movieapp.repository.TVSeriesEpisodeRepository;
-import bg.softuni.movieapp.services.TVSeriesEpisodeService;
+import bg.softuni.movieapp.repository.TVSeriesRepository;
+import bg.softuni.movieapp.services.TVSeriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TVSeriesServiceImpl implements TVSeriesEpisodeService {
+public class TVSeriesServiceImpl implements TVSeriesService {
 
-    private final TVSeriesEpisodeRepository tvSeriesEpisodeRepository;
+    private final TVSeriesRepository tvSeriesRepository;
 
     @Autowired
-    public TVSeriesServiceImpl(TVSeriesEpisodeRepository tvSeriesEpisodeRepository) {
-        this.tvSeriesEpisodeRepository = tvSeriesEpisodeRepository;
+    public TVSeriesServiceImpl(TVSeriesRepository tvSeriesRepository) {
+        this.tvSeriesRepository = tvSeriesRepository;
+    }
+
+    @Override
+    public int getNumberOfTVSeries() {
+        return (int) this.tvSeriesRepository.count();
     }
 }

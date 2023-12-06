@@ -19,7 +19,8 @@
             <div class="navbar-brand navbar-txt">Welcome, <th:block sec:authentication="name"></th:block>!</div>
             <div class="ml-auto">
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <a th:href="@{/home}" class="btn return-button rounded mr-2">Return to the homepage</a>
+                    <a th:href="@{/admin}" class="btn return-button rounded mr-2">Panel</a>
+                    <a th:href="@{/home}" class="btn return-button rounded mr-2">Homepage</a>
                     <a th:href="@{/users/logout}" class="btn btn-danger rounded">Logout</a>
                 </div>
             </div>

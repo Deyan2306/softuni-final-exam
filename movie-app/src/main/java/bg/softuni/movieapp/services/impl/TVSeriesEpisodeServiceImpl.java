@@ -14,4 +14,9 @@ public class TVSeriesEpisodeServiceImpl implements TVSeriesEpisodeService {
     public TVSeriesEpisodeServiceImpl(TVSeriesEpisodeRepository tvSeriesEpisodeRepository) {
         this.tvSeriesEpisodeRepository = tvSeriesEpisodeRepository;
     }
+
+    @Override
+    public int getNumberOfTVSeriesEpisodes() {
+        return (int) this.tvSeriesEpisodeRepository.count();
+    }
 }

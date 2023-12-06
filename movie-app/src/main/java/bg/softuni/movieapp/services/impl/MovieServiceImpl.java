@@ -14,4 +14,9 @@ public class MovieServiceImpl implements MovieService {
     public MovieServiceImpl(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
+
+    @Override
+    public int getNumberOfMovies() {
+        return (int) this.movieRepository.count();
+    }
 }

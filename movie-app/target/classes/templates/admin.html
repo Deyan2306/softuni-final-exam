@@ -34,9 +34,41 @@
                 <div th:replace="fragments/navbar :: admin-navbar"></div>
 
                 <div class="content mt-4">
-                    <!-- Main content here -->
                     <h2>Welcome to the Admin Panel</h2>
                     <p>Manage your movies, TV series, actors, and more!</p>
+                </div>
+
+                <!-- Main content here -->
+                <div class="content mt-5">
+                    <div class="statistics-block yellow-bg statistics-block-field bgc-blue">
+                        <p class="description">Actors Count</p>
+                        <p th:text="${number_of_actors}" th:class="heading-count">Actors Count</p>
+                    </div>
+
+                    <div class="statistics-block red-bg statistics-block-field bgc-cyan">
+                        <p class="description">Movies Count</p>
+                        <p th:text="${number_of_movies}" th:class="heading-count">Movies Count</p>
+                    </div>
+
+                    <div class="statistics-block blue-bg statistics-block-field bgc-red">
+                        <p class="description">TV Series Count</p>
+                        <p th:text="${number_of_tv_series}" th:class="heading-count">TV Series Count</p>
+                    </div>
+
+                    <div class="statistics-block green-bg statistics-block-field bgc-yellow">
+                        <p class="description">TV Series Episodes Count</p>
+                        <p th:text="${number_of_tv_series_episodes}" th:class="heading-count">TV Series Episodes Count</p>
+                    </div>
+
+                    <div class="statistics-block light-green-bg statistics-block-field bgc-purple">
+                        <p class="description">Comments Count</p>
+                        <p th:text="${number_of_comments}" th:class="heading-count">Comments Count</p>
+                    </div>
+
+                    <div class="statistics-block purple-bg statistics-block-field bgc-green">
+                        <p class="description">Quotes Count</p>
+                        <p th:text="${number_of_quotes}" th:class="heading-count">Quotes Count</p>
+                    </div>
                 </div>
             </div>
         </div>

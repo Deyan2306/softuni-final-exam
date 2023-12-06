@@ -14,4 +14,9 @@ public class QuoteServiceImpl implements QuoteService {
     public QuoteServiceImpl(QuoteRepository quoteRepository) {
         this.quoteRepository = quoteRepository;
     }
+
+    @Override
+    public int getNumberOfQuotes() {
+        return (int) this.quoteRepository.count();
+    }
 }

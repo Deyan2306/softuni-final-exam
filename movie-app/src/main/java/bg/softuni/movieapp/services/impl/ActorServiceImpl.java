@@ -65,4 +65,9 @@ public class ActorServiceImpl implements ActorService {
 
         return true;
     }
+
+    @Override
+    public int getNumberOfActors() {
+        return (int) this.actorRepository.count();
+    }
 }

@@ -14,4 +14,9 @@ public class CommentServiceImpl implements CommentService {
     public CommentServiceImpl(CommentRepository commentRepository) {
         this.commentRepository = commentRepository;
     }
+
+    @Override
+    public int getNumberOfComments() {
+        return (int) this.commentRepository.count();
+    }
 }
