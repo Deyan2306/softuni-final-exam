@@ -7,7 +7,7 @@
     <title>MovieApp - Home</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    <link th:href="@{/css/admin.css}" rel="stylesheet">
+    <link th:href="@{/css/app.css}" rel="stylesheet">
     <link th:href="@{/css/navbar.css}" rel="stylesheet">
 </head>
 <body>
@@ -32,6 +32,26 @@
         </div>
     </div>
 
+    <!--  Normal User Sidebar  -->
+    <div th:fragment="sidebar"
+         class="col-md-3 sidebar admin-sidebar-fixed-content">
+        <div class="sidebar-content">
+            <h2 class="mt-4 mb-4 text-center">Movie App</h2>
+            <ul class="list-group">
+                <a th:href="@{/home}" class="list-group-item list-group-item-action sidebar-link rounded">Dashboard</a>
+                <a th:href="@{/movies}" class="list-group-item list-group-item-action sidebar-link rounded">Movies</a>
+                <a th:href="@{/tv-series}" class="list-group-item list-group-item-action sidebar-link rounded">TV Series</a>
+                <a th:href="@{/actors}" class="list-group-item list-group-item-action sidebar-link rounded">Actors</a>
+                <a th:href="@{/users/all}" class="list-group-item list-group-item-action sidebar-link rounded">Users</a>
+                <a th:href="@{/comments/all}" class="list-group-item list-group-item-action sidebar-link rounded">All comments</a>
+                <a th:href="@{/quotes/all}" class="list-group-item list-group-item-action sidebar-link rounded">All Quotes</a>
+            </ul>
+            <div class="sidebar-footer">
+                Movie App @ 2023
+            </div>
+        </div>
+    </div>
+
     <!-- Admin Navbar fragment -->
     <nav th:fragment="admin-navbar"
             class="navbar navbar-expand-lg navbar-styling">
@@ -48,39 +68,18 @@
 
     <!-- Main Navbar fragment -->
     <nav th:fragment="navbar"
-         class="navbar navbar-expand-lg navbar-dark navbar-background">
-        <a class="navbar-brand movieapp-text-header" th:href="@{/}">MovieApp</a>
-        <button class="navbar-toggler movieapp-text-header" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon movieapp-text-header"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/home}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/movies/}">Movies</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/tv-series/}">TV Series</a>
-                </li>
-                <th:block sec:authorize="hasRole('ADMIN')">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/admin}">Admin Panel</a>
-                    </li>
-                </th:block>
-            </ul>
+         class="navbar navbar-expand-lg navbar-styling">
+        <div class="container-fluid">
+            <div class="navbar-brand navbar-txt">Welcome, <th:block sec:authentication="name"></th:block>!</div>
             <div class="ml-auto">
-                <th:block sec:authorize="isAuthenticated()">
-                    <li class="nav-item navbar-background">
-                        <form th:method="POST" th:action="@{/users/logout}">
-                            <input type="submit" class="btn btn-link logout-button" value="Logout"/>
-                        </form>
-                    </li>
-                </th:block>
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <th:block sec:authorize="hasRole('ADMIN')">
+                        <li class="nav-item">
+                            <a class="btn btn-danger rounded" th:href="@{/admin}" style="list-style: none">Admin Panel</a>
+                        </li>
+                    </th:block>
+                    <a th:href="@{/users/logout}" class="btn btn-danger rounded">Logout</a>
+                </div>
             </div>
         </div>
     </nav>

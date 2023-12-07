@@ -6,17 +6,32 @@
     <meta charset="UTF-8">
     <title>MovieApp - Home</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet"> <!-- Link to your custom styles -->
+    <link th:href="@{/css/app.css}" rel="stylesheet">
 </head>
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
-    <th:block sec:authorize="hasRole('ADMIN')">
-        <h3>You are an Admin! Welcome :)</h3>
-    </th:block>
-    <h3>
-        Welcome, <th:block sec:authentication="name"></th:block>! :)
-    </h3>
-    <p>Your login was successful, now you are in the home page.</p>
-    <p><a th:href="@{/profile/}">Go to your profile</a></p>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div th:replace="fragments/navbar :: sidebar"></div>
+
+        <!-- Main Content -->
+        <div class="col-md-9 main-content">
+            <div th:replace="fragments/navbar :: navbar"></div>
+
+            <div class="content mt-4">
+                <h2>Welcome to the Admin Panel</h2>
+                <p>Manage your movies, TV series, actors, and more!</p>
+            </div>
+
+            <!-- Main content here -->
+            <h1>Welcome :D</h1>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
