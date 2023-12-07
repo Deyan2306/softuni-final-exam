@@ -6,4 +6,5 @@ public enum FilePaths {
     public final static String PROFILE_PICTURE_NAME = "avatar.png";
     public final static String DIRECTOR_PICTURE_SAVE_URI = "src/main/resources/static/images/avatars/directors/";
     public final static String STUDIO_PICTURE_SAVE_URI = "src/main/resources/static/images/avatars/studios/";
+    public final static String TV_SERIES_EPISODE_PICTURE_SAVE_URI = "src/main/resources/static/images/avatars/tv-series-episodes/";
 }

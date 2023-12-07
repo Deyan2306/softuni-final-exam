@@ -91,9 +91,20 @@ public class AdminController {
     @PostMapping("/admin/add/tv-series-episode")
     public ModelAndView addTVSeriesEpisodePage(
             @ModelAttribute("tvSeriesEpisodeAddDataTransferObject") @Valid AdminTVSeriesEpisodeDTO adminTVSeriesEpisodeDTO,
+            @RequestParam("titleImage") MultipartFile titleImage,
             BindingResult bindingResult) {
 
-        return new ModelAndView("add-tv-series-episode");
+        adminTVSeriesEpisodeDTO.setTitleImage(titleImage);
+
+        boolean successfulTvSeriesEpisodeAdding = this.tvSeriesEpisodeService.addEpisode(adminTVSeriesEpisodeDTO);
+
+        if (!successfulTvSeriesEpisodeAdding) {
+            ModelAndView modelAndView = new ModelAndView("add-tv-series-episode");
+            modelAndView.addObject("hasAddingError", true);
+            return modelAndView;
+        }
+
+        return new ModelAndView("redirect:../../admin");
     }
 
     @GetMapping("/admin/add/actor")
