@@ -104,7 +104,10 @@ public class AdminController {
     @PostMapping("/admin/add/actor")
     public ModelAndView addActorPage(
             @ModelAttribute("actorAddDataTransferObject") @Valid AdminActorAddDTO adminActorAddDTO,
+            @RequestParam("actorPhoto") MultipartFile actorPhoto,
             BindingResult bindingResult) {
+
+        adminActorAddDTO.setActorPhoto(actorPhoto);
 
         // TODO: FIX
 //        if (bindingResult.hasErrors()) {
@@ -122,18 +125,6 @@ public class AdminController {
         return new ModelAndView("redirect:../../admin");
     }
 
-    @GetMapping("/admin/edit/actor/{id}")
-    public ModelAndView actorEditPage(@PathVariable("id") UUID id, @ModelAttribute("actorEditDataTransferObject") AdminActorAddDTO actorAddDTO) {
-        // Auto-populate the fields with the information about the actor
-        return new ModelAndView("/add-actor");
-    }
-
-    @PostMapping("/admin/edit/actor/{id}")
-    public ModelAndView actorEditPage(@PathVariable("id") UUID id, @ModelAttribute("actorEditDataTransferObject") @Valid AdminActorAddDTO actorAddDTO, BindingResult bindingResult) {
-
-        return new ModelAndView("/add-actor");
-    }
-
     @GetMapping("/admin/add/director")
     public ModelAndView addDirectorPage(@ModelAttribute("directorAddDataTransferObject") AdminDirectorAddDTO adminDirectorAddDTO) {
         return new ModelAndView("add-director");
@@ -144,8 +135,6 @@ public class AdminController {
             @ModelAttribute("directorAddDataTransferObject") @Valid AdminDirectorAddDTO adminDirectorAddDTO,
             @RequestParam("directorPhoto") MultipartFile directorPhoto,
             BindingResult bindingResult) throws IOException {
-
-
 
         adminDirectorAddDTO.setDirectorPicture(directorPhoto);
 

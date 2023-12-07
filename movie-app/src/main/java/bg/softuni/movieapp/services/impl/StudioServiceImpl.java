@@ -17,7 +17,6 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import static bg.softuni.movieapp.util.FilePaths.DIRECTOR_PICTURE_SAVE_URI;
 import static bg.softuni.movieapp.util.FilePaths.STUDIO_PICTURE_SAVE_URI;
 
 @Service
@@ -75,7 +74,7 @@ public class StudioServiceImpl implements StudioService {
 
             String id = String.valueOf(currentDirector.getId());
 
-            Path path = Path.of(DIRECTOR_PICTURE_SAVE_URI);
+            Path path = Path.of(STUDIO_PICTURE_SAVE_URI);
             String fileName = id + ".png";
             Path targetPath = path.resolve(fileName);
 

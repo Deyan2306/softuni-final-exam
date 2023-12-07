@@ -31,7 +31,7 @@ public class Actor extends Likeable {
     private LocalDate deathDate;
 
     @Column(name = "author_photo_uri", unique = true)
-    private String authorPhotoURI;
+    private String actorPhotoURI;
 
     @Column(name = "personal_youtube_video_id")
     private String personalYoutubeVideoID;
