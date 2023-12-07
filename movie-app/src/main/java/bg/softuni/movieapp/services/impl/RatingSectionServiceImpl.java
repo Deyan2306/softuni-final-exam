@@ -1,5 +1,6 @@
 package bg.softuni.movieapp.services.impl;
 
+import bg.softuni.movieapp.model.entity.sections.RatingSection;
 import bg.softuni.movieapp.repository.sections.RatingSectionRepository;
 import bg.softuni.movieapp.services.RatingSectionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,5 +14,10 @@ public class RatingSectionServiceImpl implements RatingSectionService {
     @Autowired
     public RatingSectionServiceImpl(RatingSectionRepository ratingSectionRepository) {
         this.ratingSectionRepository = ratingSectionRepository;
+    }
+
+    @Override
+    public void createRatingSection(RatingSection ratingSection) {
+        this.ratingSectionRepository.save(ratingSection);
     }
 }

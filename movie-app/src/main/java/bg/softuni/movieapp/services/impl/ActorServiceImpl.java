@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.Optional;
+import java.util.UUID;
 
 import static bg.softuni.movieapp.util.FilePaths.STUDIO_PICTURE_SAVE_URI;
 
@@ -103,5 +105,10 @@ public class ActorServiceImpl implements ActorService {
     @Override
     public int getNumberOfActors() {
         return (int) this.actorRepository.count();
+    }
+
+    @Override
+    public Optional<Actor> getActorByActorId(String actorID) {
+        return this.actorRepository.findById(UUID.fromString(actorID));
     }
 }

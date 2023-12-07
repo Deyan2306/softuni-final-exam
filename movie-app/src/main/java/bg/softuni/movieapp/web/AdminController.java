@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -65,9 +66,26 @@ public class AdminController {
     @PostMapping("/admin/add/movie")
     public ModelAndView addMoviePage(
             @ModelAttribute("movieAddDataTransferObject") @Valid AdminMovieAddDTO adminMovieAddDTO,
+            @RequestParam("genres") List<String> genres,
+            @RequestParam("actorId") List<String> actorIds,
+            @RequestParam("directorId") List<String> directorId,
+            @RequestParam("titlePicture") MultipartFile titlePicture,
             BindingResult bindingResult) {
 
-        return new ModelAndView("add-movie");
+        adminMovieAddDTO.setGenres(genres);
+        adminMovieAddDTO.setActorIDs(actorIds);
+        adminMovieAddDTO.setDirectorIDs(directorId);
+        adminMovieAddDTO.setTitlePicture(titlePicture);
+
+        boolean successfulMovieAdding = this.movieService.addMovie(adminMovieAddDTO);
+
+        if (!successfulMovieAdding) {
+            ModelAndView modelAndView = new ModelAndView("add-movie");
+            modelAndView.addObject("hasAddingError", true);
+            return modelAndView;
+        }
+
+        return new ModelAndView("redirect:../../admin");
     }
 
     @GetMapping("/admin/add/tv-series")
