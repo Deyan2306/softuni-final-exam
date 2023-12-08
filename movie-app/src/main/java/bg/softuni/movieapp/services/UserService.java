@@ -14,4 +14,5 @@ public interface UserService {
     boolean changeProfileInformation(UserChangeInformationDTO userChangeInformationDTO) throws IOException;
 
     UserEntity getUserByUsername(String name);
+    boolean isUserActive(UserEntity user);
 }

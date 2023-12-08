@@ -53,6 +53,8 @@ public class AdminProfileInit implements CommandLineRunner {
             admin.setPassword(passwordEncoder.encode(adminPassword));
             admin.setEmail(adminEmail);
             admin.setRoles(List.of(adminRole));
+            admin.setDiscordUsername("Deyan2306");
+            admin.setBio("This is the administrative account of the app.");
             admin.setAvatarPictureURI(DEFAULT_PROFILE_PICTURE_URI);
 
             this.userRepository.save(admin);

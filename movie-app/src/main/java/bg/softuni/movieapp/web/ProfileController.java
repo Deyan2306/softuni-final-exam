@@ -35,9 +35,11 @@ public class ProfileController {
         }
 
         UserEntity currentUser = userService.getUserByUsername(authentication.getName());
+        boolean isUserActive = userService.isUserActive(currentUser);
 
         return new ModelAndView("profile")
-                .addObject("user", currentUser);
+                .addObject("user", currentUser)
+                .addObject("isActive", isUserActive);
     }
 
     @GetMapping("/movies")

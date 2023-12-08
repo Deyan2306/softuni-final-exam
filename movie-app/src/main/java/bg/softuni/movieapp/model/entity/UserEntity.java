@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,5 +95,8 @@ public class UserEntity extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "tv_series_id")
     )
     private List<TVSeries> watchedTVSeries;
+
+    @Column
+    private LocalDateTime lastActivityTimestamp;
 
 }

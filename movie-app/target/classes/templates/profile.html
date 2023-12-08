@@ -4,52 +4,214 @@
     <meta charset="UTF-8">
     <title>MovieApp - User Profile</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link th:href="@{/css/styles.css}" rel="stylesheet">
     <style>
+        .discord-icon {
+            color: #7289DA; /* Discord's color */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .discord-tooltip {
+            position: absolute;
+            background-color: #4CAF50; /* Green background color */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 9999;
+        }
+
+        .discord-icon:hover {
+            transform: scale(1.2); /* Scale up on hover */
+        }
+
+        .discord-icon:hover + .discord-tooltip {
+            opacity: 1; /* Show tooltip on hover */
+        }
+
         .profile-info {
             margin-bottom: 20px;
         }
         .btn-group {
             margin-top: 10px;
         }
+        .main-data {
+            display: flex;
+            align-items: flex-start;
+        }
+        .pfp-picture {
+            margin-right: 20px;
+            position: relative;
+        }
+        .pfp-picture img {
+            max-width: 200px;
+            border-radius: 50%;
+        }
+        .user-information {
+            flex-grow: 1;
+        }
+        .bio-holder {
+            margin-top: 20px;
+        }
+        .btn-group .btn {
+            flex: 1;
+            max-width: 100px;
+        }
+
+        /* Your existing styles */
+        .mail-icon {
+            color: #007bff; /* Email icon color */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .mail-tooltip {
+            position: absolute;
+            background-color: #007bff; /* Blue background color */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 9999;
+        }
+
+        .green-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: green;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .mail-icon:hover {
+            transform: scale(1.2); /* Scale up on hover */
+        }
+
+        .mail-icon:hover + .mail-tooltip {
+            opacity: 1; /* Show tooltip on hover */
+        }
+
+        .settings-icon {
+            position: relative;
+            display: inline-block;
+        }
+
+        .settings-icon::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            width: calc(100% + 8px);
+            height: calc(100% + 8px);
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .settings-icon:hover::before {
+            opacity: 1;
+        }
+
+        .settings-icon i {
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+            font-size: 36px;
+            color: #ffffff;
+            animation: spin 2s linear infinite;
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="main-data">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="mb-4" th:text="${user.username}  + '\'s Profile'">User Profile</h1>
-                </div>
-            </div>
-            <div class="header-functions">
-                <div class="row">
-                    <div class="col-md-12 btn-group">
-                        <a th:href="@{/edit-profile}" class="btn btn-primary mr-2">Edit Profile</a>
-                        <a th:href="@{/change-password}" class="btn btn-secondary mr-2">Change Password</a>
-                        <a th:href="@{/logout}" class="btn btn-danger">Logout</a>
-                    </div>
-                </div>
-            </div>
-            <div class="pfp-picture">
-                <img th:src="@{${user.getAvatarPictureURI()}}" alt="profile picture"/>
-            </div>
-            <div class="user-information">
-                <div class="row">
-                    <div class="col-md-6 profile-info">
-                        <p th:text="'Username: ' + ${user.username}"></p>
-                        <p th:text="'Email: ' + ${user.email}"></p>
-                    </div>
-                </div>
-            </div>
+<div class="container">
+    <div class="main-data">
+        <div class="pfp-picture" onclick="redirectToEditProfile()">
+            <img th:src="@{${user.getAvatarPictureURI()}}" alt="profile picture"/>
+            <i class="fas fa-cog settings-icon"></i> <!-- Settings icon -->
+            <span th:if="${isActive}" class="green-dot"></span>
+        </div>
 
+        <div class="user-information">
+            <h1 th:text="${user.username}">User Profile</h1>
+
+            <th:block th:if="${user.getDiscordUsername() != null}">
+                <i class="fab fa-discord discord-icon ml-2"
+                   th:attr="data-discord-username=${user.discordUsername}"
+                   onclick="copyDiscordUsername(this)"></i>
+                <div class="discord-tooltip ml-2"
+                     th:text="${'Copy ' + user.discordUsername + ' to clipboard'}">Copy to Clipboard</div>
+            </th:block>
+            <i class="fas fa-envelope mail-icon ml-2"
+               th:attr="data-email=${user.email}"
+               onclick="copyAndComposeEmail(this)"></i>
+            <div class="mail-tooltip ml-2">Copy Email Address</div>
             <div class="bio-holder">
                 <p th:text="${user.bio}"></p>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function copyDiscordUsername(element) {
+        const username = element.getAttribute("data-discord-username");
+        navigator.clipboard.writeText(username).then(() => {
+            // Display a success message in the tooltip
+            const successMessage = `Successfully added ${username} to clipboard`;
+            const tooltip = element.nextElementSibling;
+            tooltip.textContent = successMessage;
+            tooltip.style.opacity = 1;
+            setTimeout(() => {
+                tooltip.style.opacity = 0;
+            }, 2000); // Hide the tooltip after 2 seconds
+        }).catch(err => {
+            console.error('Failed to copy!', err);
+        });
+    }
+
+    function copyAndComposeEmail(element) {
+        const email = element.getAttribute("data-email");
+        // Copy the email address to the clipboard
+        navigator.clipboard.writeText(email).then(() => {
+            // Display a success message in the tooltip
+            const successMessage = `Successfully copied ${email} to clipboard`;
+            const tooltip = element.nextElementSibling;
+            tooltip.textContent = successMessage;
+            tooltip.style.opacity = 1;
+            setTimeout(() => {
+                tooltip.style.opacity = 0;
+            }, 2000); // Hide the tooltip after 2 seconds
+        }).catch(err => {
+            console.error('Failed to copy!', err);
+        });
+
+        // Open default email client to compose an email
+        window.location.href = `mailto:${email}`;
+    }
+</script>
+
+<script th:inline="javascript">
+    /* Function to redirect to edit profile */
+    function redirectToEditProfile() {
+        window.location.href = "test";/* Insert your edit profile URL here */
+    }
+</script>
 </body>
 </html>

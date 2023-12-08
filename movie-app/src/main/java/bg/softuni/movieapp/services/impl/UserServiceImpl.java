@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -133,6 +134,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity getUserByUsername(String name) {
         return this.userRepository.findByUsername(name);
+    }
+
+    @Override
+    public boolean isUserActive(UserEntity user) {
+        LocalDateTime lastActivity = user.getLastActivityTimestamp();
+        if (lastActivity != null) {
+            // Define a threshold, e.g., 10 minutes
+            LocalDateTime threshold = LocalDateTime.now().minusMinutes(5);
+            return lastActivity.isAfter(threshold);
+        }
+        return false;
     }
 
     private boolean saveProfilePicture(String username, MultipartFile file, UserEntity currentUser) throws IOException {
