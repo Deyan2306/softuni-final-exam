@@ -1,8 +1,12 @@
 package bg.softuni.movieapp.web;
 
 import bg.softuni.movieapp.model.dto.UserChangeInformationDTO;
+import bg.softuni.movieapp.model.entity.UserEntity;
 import bg.softuni.movieapp.services.UserService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/profile")
 public class ProfileController {
 
     private final UserService userService;
@@ -22,9 +25,19 @@ public class ProfileController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
+    @GetMapping("profile")
     public ModelAndView myProfile() {
-        return new ModelAndView("profile");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication.getName().equals("anonymousUser")) {
+            return new ModelAndView("redirect:/");
+        }
+
+        UserEntity currentUser = userService.getUserByUsername(authentication.getName());
+
+        return new ModelAndView("profile")
+                .addObject("user", currentUser);
     }
 
     @GetMapping("/movies")

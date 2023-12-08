@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+import static bg.softuni.movieapp.util.FilePaths.DEFAULT_PROFILE_PICTURE_URI;
+
 @Component
 public class AdminProfileInit implements CommandLineRunner {
 
@@ -51,6 +53,7 @@ public class AdminProfileInit implements CommandLineRunner {
             admin.setPassword(passwordEncoder.encode(adminPassword));
             admin.setEmail(adminEmail);
             admin.setRoles(List.of(adminRole));
+            admin.setAvatarPictureURI(DEFAULT_PROFILE_PICTURE_URI);
 
             this.userRepository.save(admin);
         }

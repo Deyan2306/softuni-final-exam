@@ -1,22 +1,55 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>MovieApp - Home</title>
+    <title>MovieApp - User Profile</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet"> <!-- Link to your custom styles -->
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <style>
+        .profile-info {
+            margin-bottom: 20px;
+        }
+        .btn-group {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-<div th:replace="fragments/navbar :: navbar"></div>
-    <h1>Welcome to your profile page</h1>
-    <p1>You can edit some stuff here</p1>
+    <div class="container">
+        <div class="main-data">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="mb-4" th:text="${user.username}  + '\'s Profile'">User Profile</h1>
+                </div>
+            </div>
+            <div class="header-functions">
+                <div class="row">
+                    <div class="col-md-12 btn-group">
+                        <a th:href="@{/edit-profile}" class="btn btn-primary mr-2">Edit Profile</a>
+                        <a th:href="@{/change-password}" class="btn btn-secondary mr-2">Change Password</a>
+                        <a th:href="@{/logout}" class="btn btn-danger">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pfp-picture">
+                <img th:src="@{${user.getAvatarPictureURI()}}" alt="profile picture"/>
+            </div>
+            <div class="user-information">
+                <div class="row">
+                    <div class="col-md-6 profile-info">
+                        <p th:text="'Username: ' + ${user.username}"></p>
+                        <p th:text="'Email: ' + ${user.email}"></p>
+                    </div>
+                </div>
+            </div>
 
-    <ul>
-        <li><a th:href="@{/profile/settings}">Profile Settings</a></li>
-        <li><a th:href="@{/profile/movies}">Watched Movies</a></li>
-        <li> <a th:href="@{/profile/tv-series}">Watched TV Series</a></li>
-    </ul>
+            <div class="bio-holder">
+                <p th:text="${user.bio}"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

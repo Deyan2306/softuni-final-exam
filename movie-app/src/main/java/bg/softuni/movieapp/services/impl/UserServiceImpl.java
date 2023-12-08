@@ -7,6 +7,7 @@ import bg.softuni.movieapp.model.entity.UserRoleEntity;
 import bg.softuni.movieapp.repository.UserRepository;
 import bg.softuni.movieapp.repository.UserRoleRepository;
 import bg.softuni.movieapp.services.UserService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -20,6 +21,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 import static bg.softuni.movieapp.model.enums.UserRoleEnum.USER;
 import static bg.softuni.movieapp.util.FilePaths.DEFAULT_PROFILE_PICTURE_URI;
@@ -126,6 +128,11 @@ public class UserServiceImpl implements UserService {
         userRepository.save(currentUser);
 
         return changedSomething || savedPicture;
+    }
+
+    @Override
+    public UserEntity getUserByUsername(String name) {
+        return this.userRepository.findByUsername(name);
     }
 
     private boolean saveProfilePicture(String username, MultipartFile file, UserEntity currentUser) throws IOException {
