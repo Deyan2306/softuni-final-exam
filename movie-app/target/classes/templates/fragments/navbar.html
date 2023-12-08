@@ -23,6 +23,7 @@
                 <a th:href="@{/admin/add/tv-series}" class="list-group-item list-group-item-action sidebar-link rounded">Add a TV Series</a>
                 <a th:href="@{/admin/add/tv-series-episode}" class="list-group-item list-group-item-action sidebar-link rounded">Add a TV Series Episode</a>
                 <a th:href="@{/admin/add/actor}" class="list-group-item list-group-item-action sidebar-link rounded">Add an Actor</a>
+                <a th:href="@{/admin/add/actor-role}" class="list-group-item list-group-item-action sidebar-link rounded">Add an Actor Role</a>
                 <a th:href="@{/admin/add/studio}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Studio</a>
                 <a th:href="@{/admin/add/director}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Director</a>
             </ul>
@@ -74,9 +75,9 @@
             <div class="ml-auto">
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                     <th:block sec:authorize="hasRole('ADMIN')">
-                        <li class="nav-item">
-                            <a class="btn btn-danger rounded" th:href="@{/admin}" style="list-style: none">Admin Panel</a>
-                        </li>
+                        <div class="nav-item">
+                            <a class="btn btn-danger rounded" th:href="@{/admin}">Admin Panel</a>
+                        </div>
                     </th:block>
                     <a th:href="@{/users/logout}" class="btn btn-danger rounded">Logout</a>
                 </div>

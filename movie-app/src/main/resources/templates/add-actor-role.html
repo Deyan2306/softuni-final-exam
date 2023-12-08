@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Add Actor</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/app.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div th:replace="fragments/navbar :: admin-sidebar"></div>
+
+        <!-- Main Content -->
+        <div class="col-md-9 main-content">
+            <div th:replace="fragments/navbar :: admin-navbar"></div>
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+
+                        <h2 class="mb-4 text-center">Add an Actor Role to the DataBase</h2>
+
+                        <p th:if="${bad_credentials}" class="error alert alert-danger">
+                            Invalid credentials for populating the information.
+                        </p>
+
+                        <form class="register-form"
+                              th:action="@{/admin/add/actor-role}"
+                              th:method="POST"
+                              th:object="${actorRoleAddDataTransferObject}">
+
+                            <div class="form-group">
+                                <input type="text"
+                                       oninput="checkFieldsAddActor()"
+                                       placeholder="First Name..."
+                                       class="form-control register-form-input"
+                                       id="firstName" name="firstName"
+                                       th:field="*{firstName}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text"
+                                       oninput="checkFieldsAddActor()"
+                                       placeholder="Last Name..."
+                                       class="form-control register-form-input"
+                                       id="lastName" name="lastName"
+                                       th:field="*{lastName}" required>
+                            </div>
+
+                            <div class="form-group">
+                            <textarea oninput="checkFieldsAddActor()"
+                                      placeholder="Biography..."
+                                      class="form-control register-form-input"
+                                      id="bio"
+                                      name="bio"
+                                      th:field="*{bio}">
+                            </textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="date"
+                                       oninput="checkFieldsAddActor()"
+                                       placeholder="Birth date..."
+                                       class="form-control register-form-input"
+                                       id="birthDate" name="birthDate"
+                                       th:field="*{birthDate}">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text"
+                                       oninput="checkFieldsAddActor()"
+                                       placeholder="Actor Id..."
+                                       class="form-control register-form-input"
+                                       id="actorId" name="actorId"
+                                       th:field="*{actorId}" required>
+                            </div>
+
+
+                            <button id="addActorButton" type="submit" class="btn btn-primary" disabled>Add the Actor Role</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/registrations.js}"></script>
+<script th:src="@{/js/loadBirthAndDeathDateActor.js}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

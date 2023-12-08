@@ -8,6 +8,8 @@ import bg.softuni.movieapp.repository.ActorRepository;
 import bg.softuni.movieapp.services.ActorService;
 import bg.softuni.movieapp.services.CommentSectionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -110,5 +112,10 @@ public class ActorServiceImpl implements ActorService {
     @Override
     public Optional<Actor> getActorByActorId(String actorID) {
         return this.actorRepository.findById(UUID.fromString(actorID));
+    }
+
+    @Override
+    public Page<Actor> getActorsBySearchAndSort(String searchName, String sort, String order, Pageable pageable) {
+        return null;
     }
 }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link th:href="@{/css/actors.css}" rel="stylesheet">
+</head>
+<body>
+<!-- Search Form -->
+<form th:action="@{/actors}" method="get">
+    <input type="text" name="search" th:value="${searchName}" placeholder="Search by name"/>
+    <button type="submit">Search</button>
+</form>
+
+<!-- Actors List -->
+<div th:if="${actors.empty}">
+    <p>No actors found</p>
+</div>
+<div th:unless="${actors.empty}">
+    <div th:each="actor : ${actors.content}">
+        <div class="actor-box">
+            <h3 th:text="${actor.name}"></h3>
+            <!-- Add icons and links for comments, ratings, average rating -->
+            <p>Number of Comments: <span th:text="${actor.commentCount}"></span></p>
+            <p>Number of Ratings: <span th:text="${actor.ratingCount}"></span></p>
+            <p>Average Rating: <span th:text="${actor.averageRating}"></span></p>
+            <a th:href="@{/actor/{id}(id=${actor.id})}">Go to Actor Page</a>
+        </div>
+    </div>
+</div>
+
+<!-- Pagination -->
+<div class="pagination">
+    <ul>
+        <li th:if="${actors.hasPrevious()}">
+            <a th:href="@{/actors(page=${actors.previousPageable().pageNumber})}">&lt;</a>
+        </li>
+        <li th:each="pageNumber : ${#numbers.sequence(0, actors.totalPages - 1)}">
+            <a th:href="@{/actors(page=${pageNumber})}" th:text="${pageNumber} + 1"></a>
+        </li>
+        <li th:if="${actors.hasNext()}">
+            <a th:href="@{/actors(page=${actors.nextPageable().pageNumber})}">&gt;</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

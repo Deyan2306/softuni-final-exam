@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 public class AdminController {
@@ -22,18 +21,20 @@ public class AdminController {
     private final StudioService studioService;
     private final MovieService movieService;
     private final TVSeriesService tvSeriesService;
+    private final ActorRoleService actorRoleService;
     private final TVSeriesEpisodeService tvSeriesEpisodeService;
     private final CommentService commentService;
     private final QuoteService quoteService;
 
 
     @Autowired
-    public AdminController(ActorService actorService, DirectorService directorService, DirectorService directorService1, StudioService studioService, MovieService movieService, TVSeriesService tvSeriesService, TVSeriesEpisodeService tvSeriesEpisodeService, CommentService commentService, QuoteService quoteService) {
+    public AdminController(ActorService actorService, DirectorService directorService1, StudioService studioService, MovieService movieService, TVSeriesService tvSeriesService, ActorRoleService actorRoleService, TVSeriesEpisodeService tvSeriesEpisodeService, CommentService commentService, QuoteService quoteService) {
         this.actorService = actorService;
         this.directorService = directorService1;
         this.studioService = studioService;
         this.movieService = movieService;
         this.tvSeriesService = tvSeriesService;
+        this.actorRoleService = actorRoleService;
         this.tvSeriesEpisodeService = tvSeriesEpisodeService;
         this.commentService = commentService;
         this.quoteService = quoteService;
@@ -147,6 +148,27 @@ public class AdminController {
 
         if (!successfulActorAdding) {
             ModelAndView modelAndView = new ModelAndView("add-actor");
+            modelAndView.addObject("hasAddingError", true);
+            return modelAndView;
+        }
+
+        return new ModelAndView("redirect:../../admin");
+    }
+
+    @GetMapping("/admin/add/actor-role")
+    public ModelAndView addActorRolePage(@ModelAttribute("actorRoleAddDataTransferObject") AdminAddActorRoleDTO adminAddActorRoleDTO) {
+        return new ModelAndView("add-actor-role");
+    }
+
+    @PostMapping("/admin/add/actor-role")
+    public ModelAndView addActorRolePage(
+            @ModelAttribute("actorRoleAddDataTransferObject") @Valid AdminAddActorRoleDTO adminAddActorRoleDTO,
+            BindingResult bindingResult) {
+
+        boolean successfulActorRoleAdding = this.actorRoleService.addActorRole(adminAddActorRoleDTO);
+
+        if (!successfulActorRoleAdding) {
+            ModelAndView modelAndView = new ModelAndView("add-actor-role");
             modelAndView.addObject("hasAddingError", true);
             return modelAndView;
         }

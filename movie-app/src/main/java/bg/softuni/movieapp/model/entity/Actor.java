@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "authors")
+@Table(name = "actors")
 public class Actor extends Likeable {
 
     @Size(min = 2, max = 100)

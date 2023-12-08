@@ -10,25 +10,14 @@
 </head>
 <body>
 
-<div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <div th:replace="fragments/navbar :: sidebar"></div>
+<div th:replace="fragments/navbar :: navbar"></div>
 
-        <!-- Main Content -->
-        <div class="col-md-9 main-content">
-            <div th:replace="fragments/navbar :: navbar"></div>
-
-            <div class="content mt-4">
-                <h2>Welcome to the Admin Panel</h2>
-                <p>Manage your movies, TV series, actors, and more!</p>
-            </div>
-
-            <!-- Main content here -->
-            <h1>Welcome :D</h1>
-        </div>
-    </div>
+<div class="content mt-4">
+    <h2>Welcome to the Admin Panel</h2>
+    <p>Manage your movies, TV series, actors, and more!</p>
 </div>
+<!-- Main content here -->
+<h1>Welcome :D</h1>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
