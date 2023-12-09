@@ -158,6 +158,11 @@ public class UserServiceImpl implements UserService {
         return currentUser.getCreatedComments().stream().limit(5).toList();
     }
 
+    @Override
+    public int getNumberOfUsers() {
+        return (int) this.userRepository.count();
+    }
+
     private boolean saveProfilePicture(String username, MultipartFile file, UserEntity currentUser) throws IOException {
 
         if (file.isEmpty()) {

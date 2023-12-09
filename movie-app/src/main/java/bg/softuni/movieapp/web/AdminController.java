@@ -32,9 +32,10 @@ public class AdminController {
     private final CommentService commentService;
     private final QuoteService quoteService;
     private final UserService userService;
+    private final RatingService ratingService;
 
     @Autowired
-    public AdminController(ActorService actorService, DirectorService directorService1, StudioService studioService, MovieService movieService, TVSeriesService tvSeriesService, ActorRoleService actorRoleService, TVSeriesEpisodeService tvSeriesEpisodeService, CommentService commentService, QuoteService quoteService, UserService userService) {
+    public AdminController(ActorService actorService, DirectorService directorService1, StudioService studioService, MovieService movieService, TVSeriesService tvSeriesService, ActorRoleService actorRoleService, TVSeriesEpisodeService tvSeriesEpisodeService, CommentService commentService, QuoteService quoteService, UserService userService, RatingService ratingService) {
         this.actorService = actorService;
         this.directorService = directorService1;
         this.studioService = studioService;
@@ -45,6 +46,7 @@ public class AdminController {
         this.commentService = commentService;
         this.quoteService = quoteService;
         this.userService = userService;
+        this.ratingService = ratingService;
     }
 
     @GetMapping("/admin")
@@ -52,8 +54,8 @@ public class AdminController {
 
         int numberOfActors = this.actorService.getNumberOfActors();
         int numberOfMovies = this.movieService.getNumberOfMovies();
-        int numberOfTVSeries = this.tvSeriesService.getNumberOfTVSeries();
-        int numberOfTVSeriesEpisodes = this.tvSeriesEpisodeService.getNumberOfTVSeriesEpisodes();
+        int numberOfUsers = this.userService.getNumberOfUsers();
+        int numberOfRatings = this.ratingService.getNumberOfRatings();
         int numberOfComments = this.commentService.getNumberOfComments();
         int numberOfQuotes = this.quoteService.getNumberOfQuotes();
 
@@ -63,8 +65,8 @@ public class AdminController {
         return new ModelAndView("admin")
                 .addObject("number_of_actors", numberOfActors)
                 .addObject("number_of_movies", numberOfMovies)
-                .addObject("number_of_tv_series", numberOfTVSeries)
-                .addObject("number_of_tv_series_episodes", numberOfTVSeriesEpisodes)
+                .addObject("number_of_users", numberOfUsers)
+                .addObject("number_of_ratings", numberOfRatings)
                 .addObject("number_of_comments", numberOfComments)
                 .addObject("number_of_quotes", numberOfQuotes)
                 .addObject("profilePhotoUri", imageUrl);

@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <title>Admin Panel</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
     <link th:href="@{/css/app.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" th:href="@{/images/static-images/logo.png}"/>
 </head>
 <body>
@@ -37,13 +39,13 @@
                     </div>
 
                     <div class="statistics-block blue-bg statistics-block-field bgc-red">
-                        <p class="description">TV Series Count</p>
-                        <p th:text="${number_of_tv_series}" th:class="heading-count">TV Series Count</p>
+                        <p class="description">Users Count</p>
+                        <p th:text="${number_of_users}" th:class="heading-count">Users Count</p>
                     </div>
 
                     <div class="statistics-block green-bg statistics-block-field bgc-yellow">
-                        <p class="description">TV Series Episodes Count</p>
-                        <p th:text="${number_of_tv_series_episodes}" th:class="heading-count">TV Series Episodes Count</p>
+                        <p class="description">Ratings Count</p>
+                        <p th:text="${number_of_ratings}" th:class="heading-count">Ratings Count</p>
                     </div>
 
                     <div class="statistics-block light-green-bg statistics-block-field bgc-purple">

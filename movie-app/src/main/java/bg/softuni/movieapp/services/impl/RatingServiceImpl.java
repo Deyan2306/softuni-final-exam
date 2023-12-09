@@ -14,4 +14,9 @@ public class RatingServiceImpl implements RatingService {
     public RatingServiceImpl(RatingRepository ratingRepository) {
         this.ratingRepository = ratingRepository;
     }
+
+    @Override
+    public int getNumberOfRatings() {
+        return (int) this.ratingRepository.findAll().stream().count();
+    }
 }

@@ -7,17 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/tv-series")
 public class TVSeriesController {
 
-    @GetMapping("/")
-    public ModelAndView moviesHome() {
-        return new ModelAndView("tv-series");
-    }
-
-    @GetMapping("/{tvSeriesId}")
-    public ModelAndView tvSeriesPage(@PathVariable("tvSeriesId") String tvSeriesId) {
-        return new ModelAndView("tv-series-page");
+    @GetMapping("/tv-series")
+    public ModelAndView tvSeriesHome() {
+        return new ModelAndView("not-constructed");
     }
 
 }

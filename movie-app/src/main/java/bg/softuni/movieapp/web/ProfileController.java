@@ -25,7 +25,7 @@ public class ProfileController {
         this.userService = userService;
     }
 
-    @GetMapping("profile")
+    @GetMapping("/profile")
     public ModelAndView myProfile() {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -42,14 +42,14 @@ public class ProfileController {
                 .addObject("isActive", isUserActive);
     }
 
-    @GetMapping("/movies")
+    @GetMapping("/profile/movies")
     public ModelAndView myWatchedMovies() {
         return new ModelAndView("watched_movies");
     }
 
-    @GetMapping("/tv-series")
+    @GetMapping("/profile/tv-series")
     public ModelAndView myWatchedTVSeries() {
-        return new ModelAndView("watched_tv_series");
+        return new ModelAndView("not-constructed");
     }
 
     @GetMapping("/settings")

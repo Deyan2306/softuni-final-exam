@@ -12,6 +12,8 @@ import bg.softuni.movieapp.model.enums.MovieGenreEnum;
 import bg.softuni.movieapp.repository.MovieRepository;
 import bg.softuni.movieapp.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -161,5 +163,15 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public void deleteMovieByMovieId(String movieID) {
         this.movieRepository.deleteById(UUID.fromString(movieID));
+    }
+
+    @Override
+    public Page<Movie> getAllPagables(Pageable pageable) {
+        return this.movieRepository.findAll(pageable);
+    }
+
+    @Override
+    public Optional<Movie> findMovieById(String id) {
+        return this.movieRepository.findById(UUID.fromString(id));
     }
 }

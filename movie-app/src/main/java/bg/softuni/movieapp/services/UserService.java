@@ -21,4 +21,6 @@ public interface UserService {
     String getPhotoURIforUser(String username);
 
     List<Comment> getLatestCreatedComments(UserEntity currentUser);
+
+    int getNumberOfUsers();
 }

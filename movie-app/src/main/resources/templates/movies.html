@@ -11,6 +11,36 @@
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
-<h1> Movies </h1>
+<div th:each="movie : ${moviePage.content}">
+    <a th:href="@{/movie/{id}(id=${movie})}">
+        <div>
+            <img th:src="${movie.pictureUrl}" alt="Movie Poster" />
+            <h3 th:text="${movie.name}" />
+            <p th:text="${movie.studio.name}" />
+        </div>
+    </a>
+</div>
+
+<div th:if="${moviePage.totalPages > 1}">
+    <ul class="pagination">
+        <li th:class="${page.number == 0} ? 'disabled'">
+            <a th:href="@{/movies(page=0, size=${page.size})}">&lt;&lt;</a>
+        </li>
+        <li th:class="${!page.hasPrevious()} ? 'disabled'">
+            <a th:href="@{/movies(page=${page.number - 1}, size=${page.size})}">&lt;</a>
+        </li>
+        <li th:each="i : ${#numbers.sequence(0, moviePage.totalPages - 1)}">
+            <a th:href="@{/movies(page=${i}, size=${page.size})}"
+               th:text="${i + 1}"
+               th:class="${i == page.number} ? 'active'" />
+        </li>
+        <li th:class="${!page.hasNext()} ? 'disabled'">
+            <a th:href="@{/movies(page=${page.number + 1}, size=${page.size})}">&gt;</a>
+        </li>
+        <li th:class="${page.number == moviePage.totalPages - 1} ? 'disabled'">
+            <a th:href="@{/movies(page=${moviePage.totalPages - 1}, size=${page.size})}">&gt;&gt;</a>
+        </li>
+    </ul>
+</div>
 </body>
 </html>
