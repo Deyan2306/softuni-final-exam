@@ -69,13 +69,11 @@ public class AdminController {
             @ModelAttribute("movieAddDataTransferObject") @Valid AdminMovieAddDTO adminMovieAddDTO,
             @RequestParam("genres") List<String> genres,
             @RequestParam("actorId") List<String> actorIds,
-            @RequestParam("directorId") List<String> directorId,
             @RequestParam("titlePicture") MultipartFile titlePicture,
             BindingResult bindingResult) {
 
         adminMovieAddDTO.setGenres(genres);
-        adminMovieAddDTO.setActorIDs(actorIds);
-        adminMovieAddDTO.setDirectorIDs(directorId);
+        adminMovieAddDTO.setActorRoleIDs(actorIds);
         adminMovieAddDTO.setTitlePicture(titlePicture);
 
         boolean successfulMovieAdding = this.movieService.addMovie(adminMovieAddDTO);

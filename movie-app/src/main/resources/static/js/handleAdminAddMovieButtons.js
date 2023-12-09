@@ -72,7 +72,7 @@ function addActorID() {
 
     inputField.type = 'text';
     //inputField.oninput = checkFieldsAddMovie;
-    inputField.placeholder = "Actor Id...";
+    inputField.placeholder = "Actor Role Id...";
     inputField.classList.add("form-control", "register-form-input", "id-input-field");
     inputField.id = "actorId";
     inputField.name = "actorId";
@@ -85,7 +85,7 @@ function addActorID() {
     let button = document.createElement('button');
     button.type = 'button';
     button.classList.add("btn", "btn-secondary", "add-something-button");
-    button.innerText = "Add Actor ID";
+    button.innerText = "Add Role ID";
     button.onclick = addActorID;
 
     buttonHolder.appendChild(button);

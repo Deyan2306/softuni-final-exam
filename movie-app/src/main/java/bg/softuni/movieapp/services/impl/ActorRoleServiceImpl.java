@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ActorRoleServiceImpl implements ActorRoleService {
@@ -70,5 +71,10 @@ public class ActorRoleServiceImpl implements ActorRoleService {
         this.actorRoleRepository.save(role);
 
         return true;
+    }
+
+    @Override
+    public Optional<ActorRole> findActorRoleByRoleId(String roleId) {
+        return this.actorRoleRepository.findById(UUID.fromString(roleId));
     }
 }

@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.Optional;
+import java.util.UUID;
 
 import static bg.softuni.movieapp.util.FilePaths.DIRECTOR_PICTURE_SAVE_URI;
 
@@ -96,5 +98,10 @@ public class DirectorServiceImpl implements DirectorService {
     @Override
     public Object getAllDirectors() {
         return this.directorRepository.findAll();
+    }
+
+    @Override
+    public Optional<Director> findDirectorByDirectorID(String directorIDs) {
+        return this.directorRepository.findById(UUID.fromString(directorIDs));
     }
 }

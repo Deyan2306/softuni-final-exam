@@ -1,8 +1,8 @@
 package bg.softuni.movieapp.services.impl;
 
 import bg.softuni.movieapp.model.dto.admin.AdminMovieAddDTO;
-import bg.softuni.movieapp.model.entity.Actor;
 import bg.softuni.movieapp.model.entity.ActorRole;
+import bg.softuni.movieapp.model.entity.Director;
 import bg.softuni.movieapp.model.entity.Movie;
 import bg.softuni.movieapp.model.entity.sections.CommentSection;
 import bg.softuni.movieapp.model.entity.sections.QuoteSection;
@@ -13,8 +13,16 @@ import bg.softuni.movieapp.repository.MovieRepository;
 import bg.softuni.movieapp.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.*;
+
+import static bg.softuni.movieapp.util.FilePaths.DIRECTOR_PICTURE_SAVE_URI;
+import static bg.softuni.movieapp.util.FilePaths.MOVIE_PICTURE_SAVE_URI;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -23,16 +31,16 @@ public class MovieServiceImpl implements MovieService {
     private final CommentSectionService commentSectionService;
     private final RatingSectionService ratingSectionService;
     private final ActorRoleService actorRoleService;
-    private final ActorService actorService;
+    private final DirectorService directorService;
     private final QuoteSectionService quoteSectionService;
 
     @Autowired
-    public MovieServiceImpl(MovieRepository movieRepository, CommentSectionService commentSectionService, RatingSectionService ratingService, ActorRoleService actorRoleService, ActorService actorService, QuoteSectionService quoteSectionService) {
+    public MovieServiceImpl(MovieRepository movieRepository, CommentSectionService commentSectionService, RatingSectionService ratingService, ActorRoleService actorRoleService, DirectorService directorService, QuoteSectionService quoteSectionService) {
         this.movieRepository = movieRepository;
         this.commentSectionService = commentSectionService;
         this.ratingSectionService = ratingService;
         this.actorRoleService = actorRoleService;
-        this.actorService = actorService;
+        this.directorService = directorService;
         this.quoteSectionService = quoteSectionService;
     }
 
@@ -84,30 +92,31 @@ public class MovieServiceImpl implements MovieService {
             current.setSummary("There was no summary provided for this movie.");
         }
 
-        if (!adminMovieAddDTO.getActorIDs().isEmpty()) {
+
+        if (!adminMovieAddDTO.getActorRoleIDs().isEmpty()) {
             List<ActorRole> roles = new ArrayList<>();
 
-//            for (String actorID : adminMovieAddDTO.getActorIDs()) {
-//
-//                ActorRole currentActorRole = new ActorRole();
-//                currentActorRole.get
-//
-//                Optional<Actor> actorWithActorId = this.actorService.getActorByActorId(actorID);
-//
-//                if (actorWithActorId.isEmpty()) {
-//                    // This actor is not existing D:
-//                    continue;
-//                } else {
-//                    currentActorRole.setActor(actorWithActorId.get());
-//                    currentActorRole.setMovieRolesPlayedAt();
-//                }
-//
-//            }
-            // TODO: FIX
+            for (String roleId : adminMovieAddDTO.getActorRoleIDs()) {
+                Optional<ActorRole> role = this.actorRoleService.findActorRoleByRoleId(roleId);
+                role.ifPresent(roles::add);
+            }
 
             current.setMovieCast(roles);
         }
 
+        if (!adminMovieAddDTO.getDirectorIDs().trim().isEmpty()) {
+            Optional<Director> director = this.directorService.findDirectorByDirectorID(adminMovieAddDTO.getDirectorIDs());
+            director.ifPresent(current::setDirector);
+        }
+
+
+        if (!adminMovieAddDTO.getReleaseDate().trim().isEmpty()) {
+            current.setReleaseDate(LocalDate.parse(adminMovieAddDTO.getReleaseDate()));
+        }
+
+        if (!adminMovieAddDTO.getYoutubeTrailerID().trim().isEmpty()) {
+            current.setYoutubeTrailerID(adminMovieAddDTO.getYoutubeTrailerID());
+        }
 
 
         CommentSection commentSection = new CommentSection();
@@ -124,6 +133,28 @@ public class MovieServiceImpl implements MovieService {
 
         this.movieRepository.save(current);
 
-        return false;
+        if (adminMovieAddDTO.getTitlePicture() != null) {
+
+            MultipartFile file = adminMovieAddDTO.getTitlePicture();
+            Movie currentMovie = this.movieRepository
+                    .findByTitle(title).get();
+
+            String id = String.valueOf(currentMovie.getId());
+
+            Path path = Path.of(MOVIE_PICTURE_SAVE_URI);
+            String fileName = id + ".png";
+            Path targetPath = path.resolve(fileName);
+
+            try {
+                Files.write(targetPath, file.getBytes());
+                currentMovie.setTitlePictureURI(MOVIE_PICTURE_SAVE_URI + fileName);
+                this.movieRepository.save(currentMovie);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+
+        return true;
     }
 }

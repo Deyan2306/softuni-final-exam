@@ -29,7 +29,7 @@ public class AdminMovieAddDTO {
     private MultipartFile titlePicture;
     private String youtubeTrailerID;
     private String studioId;
-    private List<String> directorIDs;
-    private List<String> actorIDs;
+    private String directorIDs;
+    private List<String> actorRoleIDs;
 
 }
