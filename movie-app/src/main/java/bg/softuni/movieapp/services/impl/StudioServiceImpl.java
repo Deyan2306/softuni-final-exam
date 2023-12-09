@@ -79,6 +79,7 @@ public class StudioServiceImpl implements StudioService {
             Path targetPath = path.resolve(fileName);
 
             try {
+                Files.createDirectories(targetPath.getParent());
                 Files.write(targetPath, file.getBytes());
                 currentDirector.setStudioPictureURI(STUDIO_PICTURE_SAVE_URI + fileName);
                 this.studioRepository.save(currentDirector);
