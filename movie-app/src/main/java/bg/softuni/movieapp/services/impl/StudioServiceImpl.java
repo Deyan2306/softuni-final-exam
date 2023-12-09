@@ -15,7 +15,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static bg.softuni.movieapp.util.FilePaths.STUDIO_PICTURE_SAVE_URI;
 
@@ -90,5 +92,15 @@ public class StudioServiceImpl implements StudioService {
         }
 
         return true;
+    }
+
+    @Override
+    public List<Studio> getAllStudios() {
+        return this.studioRepository.findAll();
+    }
+
+    @Override
+    public void deleteStudioById(String studioId) {
+        this.studioRepository.deleteById(UUID.fromString(studioId));
     }
 }

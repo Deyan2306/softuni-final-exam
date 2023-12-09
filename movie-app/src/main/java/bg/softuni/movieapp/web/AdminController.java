@@ -2,6 +2,7 @@ package bg.softuni.movieapp.web;
 
 import bg.softuni.movieapp.model.dto.admin.*;
 import bg.softuni.movieapp.model.entity.Actor;
+import bg.softuni.movieapp.model.entity.Studio;
 import bg.softuni.movieapp.services.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -245,6 +246,26 @@ public class AdminController {
         return new ModelAndView("add-studio")
                 .addObject("profilePhotoUri", imageUrl);
     }
+
+    @GetMapping("/admin/studio/edit/all")
+    public ModelAndView allStudios() {
+
+        List<Studio> studios = this.studioService.getAllStudios();
+
+        String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        return new ModelAndView("all-studios-edit")
+                .addObject("studios", studios)
+                .addObject("profilePhotoUri", imageUrl);
+    }
+
+    @GetMapping("/admin/studio/delete/{id}")
+    public ModelAndView deleteStudio(@PathVariable("id") String studioId) {
+        this.studioService.deleteStudioById(studioId);
+
+        return new ModelAndView("redirect:../../studio/edit/all");
+    }
+
 
     @PostMapping("/admin/add/studio")
     public ModelAndView addStudioPage(

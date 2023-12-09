@@ -33,9 +33,24 @@
                     <div class="col-md-4 mb-4" th:each="actor : ${actors}">
                         <div class="card" style="border: none;">
                             <div class="card-body" style="background-color: #263143;">
-                                <h5 class="card-title" th:text="${actor.firstName + ' ' + actor.lastName}"></h5>
-                                <p class="card-text">ID: <span th:text="${actor.id}"></span></p>
-                                <a th:href="@{'/admin/editActor/' + ${actor.id}}" class="btn btn-primary">Edit</a>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="card-title" th:text="${actor.firstName + ' ' + actor.lastName}"></h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p class="card-text">ID: <span th:text="${actor.id}"></span></p>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <div class="btn-group" role="group" aria-label="Actor Actions">
+                                            <a th:href="@{'/admin/actor/edit/' + ${actor.id}}" class="btn btn-primary rounded mr-2">Edit</a>
+                                            <a th:href="@{'/admin/actor/delete/' + ${actor.id}}" class="btn btn-danger rounded">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
