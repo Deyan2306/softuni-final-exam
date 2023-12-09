@@ -1,7 +1,6 @@
-# MovieApp
-### Embark on an Interstellar Journey with Our Cutting-edge Spring Boot Web App: Your Personal Cinematic Universe Manager.
+# MovieApp <img src="resources/logo.png" alt="logo" width="200">
+Embark on an Interstellar Journey with Our Cutting-edge Spring Boot Web App: Your Personal Cinematic Universe Manager.
 <br/>
-<img src="resources/logo.png" alt="logo" width="200">
 
 ## Table of Contents
 
