@@ -20,17 +20,15 @@
     color: #263143;
 }
 
-/* Resetting default list styles */
 .nav-item {
-    list-style: none; /* Remove bullet points */
-    margin: 0; /* Reset margin */
-    padding: 0; /* Reset padding */
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-/* Remove default anchor styles */
 .nav-item a {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit text color */
+    text-decoration: none;
+    color: inherit;
 }
 
 #pfp-wrapper-element {
@@ -38,7 +36,7 @@
 }
 
 #pfp-wrapper-element:hover {
-    background-color: #111927; /* Change background color on hover */
-    border-radius: 10px; /* Rounded background */
-    transition: background-color 0.3s ease; /* Smooth color transition */
+    background-color: #111927;
+    border-radius: 10px;
+    transition: background-color 0.3s ease-in-out;
 }

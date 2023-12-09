@@ -53,18 +53,26 @@ public class AdminController {
         int numberOfComments = this.commentService.getNumberOfComments();
         int numberOfQuotes = this.quoteService.getNumberOfQuotes();
 
+        String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+
         return new ModelAndView("admin")
                 .addObject("number_of_actors", numberOfActors)
                 .addObject("number_of_movies", numberOfMovies)
                 .addObject("number_of_tv_series", numberOfTVSeries)
                 .addObject("number_of_tv_series_episodes", numberOfTVSeriesEpisodes)
                 .addObject("number_of_comments", numberOfComments)
-                .addObject("number_of_quotes", numberOfQuotes);
+                .addObject("number_of_quotes", numberOfQuotes)
+                .addObject("profilePhotoUri", imageUrl);
     }
 
     @GetMapping("/admin/add/movie")
     public ModelAndView addMoviePage(@ModelAttribute("movieAddDataTransferObject") AdminMovieAddDTO adminMovieAddDTO) {
-        return new ModelAndView("add-movie");
+
+        String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        return new ModelAndView("add-movie")
+                .addObject("profilePhotoUri", imageUrl);
     }
 
     @PostMapping("/admin/add/movie")
@@ -92,7 +100,11 @@ public class AdminController {
 
     @GetMapping("/admin/add/tv-series")
     public ModelAndView addTVSeriesPage(@ModelAttribute("tvSeriesAddDataTransferObject") AdminTVSeriesAddDTO adminTVSeriesAddDTO) {
-        return new ModelAndView("add-tv-series");
+
+        String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        return new ModelAndView("add-tv-series")
+                .addObject("profilePhotoUri", imageUrl);
     }
 
     @PostMapping("/admin/add/tv-series")
@@ -105,7 +117,11 @@ public class AdminController {
 
     @GetMapping("/admin/add/tv-series-episode")
     public ModelAndView addTVSeriesEpisodePage(@ModelAttribute("tvSeriesEpisodeAddDataTransferObject") AdminTVSeriesEpisodeDTO adminTVSeriesEpisodeDTO) {
-        return new ModelAndView("add-tv-series-episode");
+
+        String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        return new ModelAndView("add-tv-series-episode")
+                .addObject("profilePhotoUri", imageUrl);
     }
 
     @PostMapping("/admin/add/tv-series-episode")
@@ -129,7 +145,11 @@ public class AdminController {
 
     @GetMapping("/admin/add/actor")
     public ModelAndView addActorPage(@ModelAttribute("actorAddDataTransferObject") AdminActorAddDTO adminActorAddDTO) {
-        return new ModelAndView("/add-actor");
+
+        String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        return new ModelAndView("/add-actor")
+                .addObject("profilePhotoUri", imageUrl);
     }
 
     @PostMapping("/admin/add/actor")
@@ -165,7 +185,11 @@ public class AdminController {
 
     @GetMapping("/admin/add/actor-role")
     public ModelAndView addActorRolePage(@ModelAttribute("actorRoleAddDataTransferObject") AdminAddActorRoleDTO adminAddActorRoleDTO) {
-        return new ModelAndView("add-actor-role");
+
+        String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        return new ModelAndView("add-actor-role")
+                .addObject("profilePhotoUri", imageUrl);
     }
 
     @PostMapping("/admin/add/actor-role")
@@ -186,7 +210,11 @@ public class AdminController {
 
     @GetMapping("/admin/add/director")
     public ModelAndView addDirectorPage(@ModelAttribute("directorAddDataTransferObject") AdminDirectorAddDTO adminDirectorAddDTO) {
-        return new ModelAndView("add-director");
+
+        String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        return new ModelAndView("add-director")
+                .addObject("profilePhotoUri", imageUrl);
     }
 
     @PostMapping("/admin/add/director")
@@ -211,7 +239,11 @@ public class AdminController {
 
     @GetMapping("/admin/add/studio")
     public ModelAndView addStudioPage(@ModelAttribute("studioAddDataTransferObject") AdminAddStudioDTO adminAddStudioDTO) {
-        return new ModelAndView("add-studio");
+
+        String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        return new ModelAndView("add-studio")
+                .addObject("profilePhotoUri", imageUrl);
     }
 
     @PostMapping("/admin/add/studio")
