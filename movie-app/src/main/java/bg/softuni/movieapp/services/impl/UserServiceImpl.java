@@ -147,6 +147,11 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    @Override
+    public String getPhotoURIforUser(String username) {
+        return this.userRepository.findByUsername(username).getAvatarPictureURI();
+    }
+
     private boolean saveProfilePicture(String username, MultipartFile file, UserEntity currentUser) throws IOException {
 
         if (file.isEmpty()) {

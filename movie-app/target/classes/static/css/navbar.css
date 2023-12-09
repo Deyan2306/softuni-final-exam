@@ -32,3 +32,13 @@
     text-decoration: none; /* Remove underline */
     color: inherit; /* Inherit text color */
 }
+
+#pfp-wrapper-element {
+    padding: 5px 15px;
+}
+
+#pfp-wrapper-element:hover {
+    background-color: #111927; /* Change background color on hover */
+    border-radius: 10px; /* Rounded background */
+    transition: background-color 0.3s ease; /* Smooth color transition */
+}

@@ -5,6 +5,7 @@ import bg.softuni.movieapp.model.entity.Actor;
 import bg.softuni.movieapp.services.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -26,10 +27,10 @@ public class AdminController {
     private final TVSeriesEpisodeService tvSeriesEpisodeService;
     private final CommentService commentService;
     private final QuoteService quoteService;
-
+    private final UserService userService;
 
     @Autowired
-    public AdminController(ActorService actorService, DirectorService directorService1, StudioService studioService, MovieService movieService, TVSeriesService tvSeriesService, ActorRoleService actorRoleService, TVSeriesEpisodeService tvSeriesEpisodeService, CommentService commentService, QuoteService quoteService) {
+    public AdminController(ActorService actorService, DirectorService directorService1, StudioService studioService, MovieService movieService, TVSeriesService tvSeriesService, ActorRoleService actorRoleService, TVSeriesEpisodeService tvSeriesEpisodeService, CommentService commentService, QuoteService quoteService, UserService userService) {
         this.actorService = actorService;
         this.directorService = directorService1;
         this.studioService = studioService;
@@ -39,6 +40,7 @@ public class AdminController {
         this.tvSeriesEpisodeService = tvSeriesEpisodeService;
         this.commentService = commentService;
         this.quoteService = quoteService;
+        this.userService = userService;
     }
 
     @GetMapping("/admin")
@@ -154,8 +156,11 @@ public class AdminController {
 
         List<Actor> actors = this.actorService.getAllActors();
 
+        String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
         return new ModelAndView("all-actors-edit")
-                .addObject("actors", actors);
+                .addObject("actors", actors)
+                .addObject("profilePhotoUri", imageUrl);
     }
 
     @GetMapping("/admin/add/actor-role")

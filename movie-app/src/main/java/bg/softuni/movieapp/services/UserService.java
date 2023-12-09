@@ -15,4 +15,6 @@ public interface UserService {
 
     UserEntity getUserByUsername(String name);
     boolean isUserActive(UserEntity user);
+
+    String getPhotoURIforUser(String username);
 }

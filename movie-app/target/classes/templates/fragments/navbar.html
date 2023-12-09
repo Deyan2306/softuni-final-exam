@@ -76,10 +76,16 @@
     </div>
 
     <!-- Admin Navbar fragment -->
-    <nav th:fragment="admin-navbar"
-            class="navbar navbar-expand-lg navbar-styling">
+    <nav th:fragment="admin-navbar" class="navbar navbar-expand-lg navbar-styling">
         <div class="container-fluid">
-            <div class="navbar-brand navbar-txt">Welcome, <th:block sec:authentication="name"></th:block>!</div>
+            <div class="navbar-brand navbar-txt">
+                <a th:href="@{/profile}" target="_blank" id="profile-link" style="text-decoration: none;">
+                    <div id="pfp-wrapper-element" style="display: flex; align-items: center;">
+                        <img th:src="@{${profilePhotoUri}}" alt="Admin Profile Image" id="profile-image" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
+                        <span sec:authentication="name" id="profile-name" style="color: #fff;"></span>
+                    </div>
+                </a>
+            </div>
             <div class="ml-auto">
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                     <a th:href="@{/home}" class="btn return-button rounded mr-2">Homepage</a>
