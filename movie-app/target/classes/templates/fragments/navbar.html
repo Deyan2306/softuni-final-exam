@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>MovieApp - Home</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/images/static-images/logo.png}"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
     <link th:href="@{/css/app.css}" rel="stylesheet">
     <link th:href="@{/css/navbar.css}" rel="stylesheet">
 </head>
@@ -19,13 +19,35 @@
             <h2 class="mt-4 mb-4 text-center">Admin Panel</h2>
             <ul class="list-group">
                 <a th:href="@{/admin}" class="list-group-item list-group-item-action sidebar-link rounded">Dashboard</a>
-                <a th:href="@{/admin/add/movie}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Movie</a>
-                <a th:href="@{/admin/add/tv-series}" class="list-group-item list-group-item-action sidebar-link rounded">Add a TV Series</a>
-                <a th:href="@{/admin/add/tv-series-episode}" class="list-group-item list-group-item-action sidebar-link rounded">Add a TV Series Episode</a>
-                <a th:href="@{/admin/add/actor}" class="list-group-item list-group-item-action sidebar-link rounded">Add an Actor</a>
-                <a th:href="@{/admin/add/actor-role}" class="list-group-item list-group-item-action sidebar-link rounded">Add an Actor Role</a>
-                <a th:href="@{/admin/add/studio}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Studio</a>
-                <a th:href="@{/admin/add/director}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Director</a>
+                <div class="list-group-item sidebar-link rounded">
+                    <a th:href="@{/admin/add/movie}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Movie</a>
+                    <a th:href="@{/admin/movie/edit/all}" class="list-group-item list-group-item-action sidebar-link rounded" style="width: 30%; margin-left: 10px; background-color: #e7505a !important; color: white !important;">Edit</a>
+                </div>
+                <div class="list-group-item sidebar-link rounded">
+                    <a th:href="@{/admin/add/tv-series}" class="list-group-item list-group-item-action sidebar-link rounded">Add a TV Series</a>
+                    <a th:href="@{/admin/tv-series/edit/all}" class="list-group-item list-group-item-action sidebar-link rounded" style="width: 30%; margin-left: 10px; background-color: #e7505a !important; color: white !important;">Edit</a>
+                </div>
+                <div class="list-group-item sidebar-link rounded">
+                    <a th:href="@{/admin/add/tv-series-episode}" class="list-group-item list-group-item-action sidebar-link rounded">Add a TV Series Episode</a>
+                    <a th:href="@{/admin/tv-series-episode/edit/all}" class="list-group-item list-group-item-action sidebar-link rounded" style="width: 30%; margin-left: 10px; background-color: #e7505a !important; color: white !important;">Edit</a>
+                </div>
+                <div class="list-group-item sidebar-link rounded">
+                    <a th:href="@{/admin/add/actor}" class="list-group-item list-group-item-action sidebar-link rounded">Add an Actor</a>
+                    <a th:href="@{/admin/actor/edit/all}" class="list-group-item list-group-item-action sidebar-link rounded" style="width: 30%; margin-left: 10px; background-color: #e7505a !important; color: white !important;">Edit</a>
+                </div>
+                <div class="list-group-item sidebar-link rounded">
+                    <a th:href="@{/admin/add/actor-role}" class="list-group-item list-group-item-action sidebar-link rounded">Add an Actor Role</a>
+                    <a th:href="@{/admin/actor-role/edit/all}" class="list-group-item list-group-item-action sidebar-link rounded" style="width: 30%; margin-left: 10px; background-color: #e7505a !important; color: white !important;">Edit</a>
+                </div>
+                <div class="list-group-item sidebar-link rounded">
+                    <a th:href="@{/admin/add/studio}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Studio</a>
+                    <a th:href="@{/admin/studio/edit/all}" class="list-group-item list-group-item-action sidebar-link rounded" style="width: 30%; margin-left: 10px; background-color: #e7505a !important; color: white !important;">Edit</a>
+                </div>
+                <div class="list-group-item sidebar-link rounded">
+                    <a th:href="@{/admin/add/director}" class="list-group-item list-group-item-action sidebar-link rounded">Add a Director</a>
+                    <a th:href="@{/admin/director/edit/all}" class="list-group-item list-group-item-action sidebar-link rounded" style="width: 30%; margin-left: 10px; background-color: #e7505a !important; color: white !important;">Edit</a>
+                </div>
+
             </ul>
             <div class="sidebar-footer">
                 Admin Panel @ 2023
