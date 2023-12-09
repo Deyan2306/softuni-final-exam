@@ -9,6 +9,7 @@ import bg.softuni.movieapp.model.entity.sections.QuoteSection;
 import bg.softuni.movieapp.model.entity.sections.RatingSection;
 import bg.softuni.movieapp.model.enums.LanguageEnum;
 import bg.softuni.movieapp.model.enums.MovieGenreEnum;
+import bg.softuni.movieapp.model.enums.PGRatingEnum;
 import bg.softuni.movieapp.repository.MovieRepository;
 import bg.softuni.movieapp.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +87,11 @@ public class MovieServiceImpl implements MovieService {
         // Add the language
         if (!adminMovieAddDTO.getLanguage().trim().isEmpty()) {
             current.setLanguage(LanguageEnum.valueOf(adminMovieAddDTO.getLanguage()));
+        }
+
+        // Set the PG Rating
+        if (!adminMovieAddDTO.getPgRating().trim().isEmpty()) {
+            current.setPgRating(PGRatingEnum.valueOf(adminMovieAddDTO.getPgRating()));
         }
 
         if (!adminMovieAddDTO.getSummary().trim().isEmpty()) {
@@ -173,5 +179,10 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Optional<Movie> findMovieById(String id) {
         return this.movieRepository.findById(UUID.fromString(id));
+    }
+
+    @Override
+    public List<Movie> getAllMovies() {
+        return this.movieRepository.findAll();
     }
 }

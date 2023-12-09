@@ -1,10 +1,7 @@
 package bg.softuni.movieapp.web;
 
 import bg.softuni.movieapp.model.dto.admin.*;
-import bg.softuni.movieapp.model.entity.Actor;
-import bg.softuni.movieapp.model.entity.ActorRole;
-import bg.softuni.movieapp.model.entity.Director;
-import bg.softuni.movieapp.model.entity.Studio;
+import bg.softuni.movieapp.model.entity.*;
 import bg.softuni.movieapp.services.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,6 +99,18 @@ public class AdminController {
         }
 
         return new ModelAndView("redirect:../../admin");
+    }
+
+    @GetMapping("/admin/movie/edit/all")
+    public ModelAndView allMovies() {
+
+        List<Movie> movies = this.movieService.getAllMovies();
+
+        String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        return new ModelAndView("all-movies-edit")
+                .addObject("movies", movies)
+                .addObject("profilePhotoUri", imageUrl);
     }
 
     @GetMapping("/admin/movie/delete/{id}")
