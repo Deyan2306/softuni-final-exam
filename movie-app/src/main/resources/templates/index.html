@@ -8,8 +8,6 @@
 </head>
 <body>
 
-    <div th:replace="fragments/navbar :: navbar"></div>
-
     <div class="container">
         <div class="jumbotron text-center background-form-container">
             <h1 class="header-heading">Welcome to MovieApp</h1>
@@ -21,6 +19,19 @@
                 <a th:href="@{/users/login}" class="btn btn-primary mr-2 button-heading" id="loginButton">Login</a>
                 <a th:href="@{/users/register}" class="btn btn-secondary button-heading" id="registerButton">Register</a>
             </div>
+
+            <div class="films-holder">
+
+                <div class="info-holder-films">
+                    <h3 class="first">See what we got to offer.</h3>
+                    <h3 class="second">Track your movies.</h3>
+                    <h3 class="third">Share your thoughts.</h3>
+                </div>
+
+                <!-- TODO: Get 3 random movies from the movie repo and use them  -->
+
+            </div>
+
         </div>
     </div>
 
