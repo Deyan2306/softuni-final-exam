@@ -31,7 +31,8 @@
                         <form class="register-form"
                               th:action="@{/admin/add/actor-role}"
                               th:method="POST"
-                              th:object="${actorRoleAddDataTransferObject}">
+                              th:object="${actorRoleAddDataTransferObject}"
+                              enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <input type="text"

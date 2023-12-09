@@ -137,11 +137,6 @@ public class AdminController {
 
         adminActorAddDTO.setActorPhoto(actorPhoto);
 
-        // TODO: FIX
-//        if (bindingResult.hasErrors()) {
-//            return new ModelAndView("/add-actor");
-//        }
-
         boolean successfulActorAdding = this.actorService.addActor(adminActorAddDTO);
 
         if (!successfulActorAdding) {

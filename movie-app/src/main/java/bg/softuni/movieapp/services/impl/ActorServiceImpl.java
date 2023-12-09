@@ -20,6 +20,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 
+import static bg.softuni.movieapp.util.FilePaths.ACTOR_PICTURE_SAVE_URI;
 import static bg.softuni.movieapp.util.FilePaths.STUDIO_PICTURE_SAVE_URI;
 
 @Service
@@ -87,13 +88,13 @@ public class ActorServiceImpl implements ActorService {
 
             String id = String.valueOf(currentActor.getId());
 
-            Path path = Path.of(STUDIO_PICTURE_SAVE_URI);
+            Path path = Path.of(ACTOR_PICTURE_SAVE_URI);
             String fileName = id + ".png";
             Path targetPath = path.resolve(fileName);
 
             try {
                 Files.write(targetPath, file.getBytes());
-                currentActor.setActorPhotoURI(STUDIO_PICTURE_SAVE_URI + fileName);
+                currentActor.setActorPhotoURI(ACTOR_PICTURE_SAVE_URI + fileName);
                 this.actorRepository.save(currentActor);
             } catch (IOException e) {
                 e.printStackTrace();
