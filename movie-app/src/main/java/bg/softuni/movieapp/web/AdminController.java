@@ -1,6 +1,7 @@
 package bg.softuni.movieapp.web;
 
 import bg.softuni.movieapp.model.dto.admin.*;
+import bg.softuni.movieapp.model.entity.Actor;
 import bg.softuni.movieapp.services.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -148,6 +149,15 @@ public class AdminController {
         return new ModelAndView("redirect:../../admin");
     }
 
+    @GetMapping("/admin/actor/edit/all")
+    public ModelAndView allActors() {
+
+        List<Actor> actors = this.actorService.getAllActors();
+
+        return new ModelAndView("all-actors-edit")
+                .addObject("actors", actors);
+    }
+
     @GetMapping("/admin/add/actor-role")
     public ModelAndView addActorRolePage(@ModelAttribute("actorRoleAddDataTransferObject") AdminAddActorRoleDTO adminAddActorRoleDTO) {
         return new ModelAndView("add-actor-role");
@@ -182,9 +192,6 @@ public class AdminController {
 
         adminDirectorAddDTO.setDirectorPicture(directorPhoto);
 
-//        if (bindingResult.hasErrors()) {
-//            return new ModelAndView("/add-director");
-//        }
 
         boolean successfulDirectorAdding = this.directorService.addDirector(adminDirectorAddDTO);
 
