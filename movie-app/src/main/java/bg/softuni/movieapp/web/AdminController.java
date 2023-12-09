@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class AdminController {
@@ -306,6 +307,21 @@ public class AdminController {
         this.studioService.deleteStudioById(studioId);
 
         return new ModelAndView("redirect:../../studio/edit/all");
+    }
+
+    @GetMapping("/admin/studio/edit/{id}")
+    public ModelAndView editStudio(
+            @ModelAttribute("studioAddDataTransferObject") AdminAddStudioDTO adminAddStudioDTO,
+            @PathVariable("id") String studioId) {
+
+        String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        Optional<Studio> studio = this.studioService.getStudioById(studioId);
+
+        return new ModelAndView("edit-studio")
+                .addObject("studio", studio.get())
+                .addObject("profilePhotoUri", imageUrl);
+
     }
 
 

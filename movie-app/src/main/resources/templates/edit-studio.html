@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - Add Studio</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+  <link th:href="@{/css/app.css}" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" th:href="@{/images/static-images/logo.png}"/>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div th:replace="fragments/navbar :: admin-sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="col-md-9 main-content">
+      <div th:replace="fragments/navbar :: admin-navbar"></div>
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+
+            <h2 class="mb-4 text-center">Edit a Studio</h2>
+
+            <form class="register-form"
+                  th:action="@{/admin/studio/edit/${studio.id}}"
+                  th:method="POST"
+                  th:object="${studioAddDataTransferObject}"
+                  enctype="multipart/form-data">
+
+              <div class="form-group">
+                <input type="text"
+                       placeholder="Name..."
+                       class="form-control register-form-input"
+                       id="name" name="name"
+                       th:value="${studio.name}"
+                       th:field="*{name}" required>
+              </div>
+
+              <div class="form-group">
+                        <textarea
+                                placeholder="Info..."
+                                class="form-control register-form-input"
+                                id="info"
+                                name="info"
+                                th:value="${studio.info}"
+                                th:field="*{info}">
+
+                        </textarea>
+              </div>
+
+              <div class="form-group">
+                <input type="date"
+                       placeholder="Established at..."
+                       class="form-control register-form-input"
+                       id="establishedAt" name="establishedAt"
+                       th:value="${studio.established}"
+                       th:field="*{establishedAt}">
+              </div>
+
+              <div class="form-group">
+                <label for="studioPhoto" class="custom-file-upload">Add Studio photo</label>
+                <input type="file" class="form-control-file input-file" id="studioPhoto" name="studioPhoto" accept="image/*">
+              </div>
+
+              <button id="addStudioButton" type="submit" class="btn btn-primary" disabled>Add the Studio</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <script th:src="@{/js/registrations.js}"></script>
+  <script th:src="@{/js/loadBirthAndDeathDateStudio.js}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -103,4 +103,9 @@ public class StudioServiceImpl implements StudioService {
     public void deleteStudioById(String studioId) {
         this.studioRepository.deleteById(UUID.fromString(studioId));
     }
+
+    @Override
+    public Optional<Studio> getStudioById(String studioId) {
+        return this.studioRepository.findById(UUID.fromString(studioId));
+    }
 }
