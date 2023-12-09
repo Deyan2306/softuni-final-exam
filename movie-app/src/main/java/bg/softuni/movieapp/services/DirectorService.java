@@ -13,4 +13,6 @@ public interface DirectorService {
     Object getAllDirectors();
 
     Optional<Director> findDirectorByDirectorID(String directorIDs);
+
+    void deleteDirectorByDirectorId(String directorId);
 }

@@ -6,4 +6,6 @@ public interface TVSeriesEpisodeService {
     int getNumberOfTVSeriesEpisodes();
 
     boolean addEpisode(AdminTVSeriesEpisodeDTO adminTVSeriesEpisodeDTO);
+
+    void deleteTVSeriesEpisodeById(String tvSeriesEpisodeId);
 }

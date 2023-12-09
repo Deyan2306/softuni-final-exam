@@ -18,4 +18,6 @@ public interface ActorService {
     Page<Actor> getActorsBySearchAndSort(String searchName, String sort, String order, Pageable pageable);
 
     List<Actor> getAllActors();
+
+    void deleteActorById(String actorId);
 }

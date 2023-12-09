@@ -104,4 +104,9 @@ public class DirectorServiceImpl implements DirectorService {
     public Optional<Director> findDirectorByDirectorID(String directorIDs) {
         return this.directorRepository.findById(UUID.fromString(directorIDs));
     }
+
+    @Override
+    public void deleteDirectorByDirectorId(String directorId) {
+        this.directorRepository.deleteById(UUID.fromString(directorId));
+    }
 }

@@ -99,6 +99,13 @@ public class AdminController {
         return new ModelAndView("redirect:../../admin");
     }
 
+    @GetMapping("/admin/movie/delete/{id}")
+    public ModelAndView deleteMovie(@PathVariable("id") String movieID) {
+        this.movieService.deleteMovieByMovieId(movieID);
+
+        return new ModelAndView("redirect:../../movie/edit/all");
+    }
+
     @GetMapping("/admin/add/tv-series")
     public ModelAndView addTVSeriesPage(@ModelAttribute("tvSeriesAddDataTransferObject") AdminTVSeriesAddDTO adminTVSeriesAddDTO) {
 
@@ -114,6 +121,13 @@ public class AdminController {
             BindingResult bindingResult) {
 
         return new ModelAndView("add-tv-series");
+    }
+
+    @GetMapping("/admin/tv-series/delete/{id}")
+    public ModelAndView deleteTvSeries(@PathVariable("id") String tvSeriesId) {
+        this.tvSeriesService.deleteTVSeriesById(tvSeriesId);
+
+        return new ModelAndView("redirect:../../tv-series/edit/all");
     }
 
     @GetMapping("/admin/add/tv-series-episode")
@@ -142,6 +156,13 @@ public class AdminController {
         }
 
         return new ModelAndView("redirect:../../admin");
+    }
+
+    @GetMapping("/admin/tv-series-episode/delete/{id}")
+    public ModelAndView deleteTvSeriesEpisode(@PathVariable("id") String tvSeriesEpisodeId) {
+        this.tvSeriesEpisodeService.deleteTVSeriesEpisodeById(tvSeriesEpisodeId);
+
+        return new ModelAndView("redirect:../../tv-series-episode/edit/all");
     }
 
     @GetMapping("/admin/add/actor")
@@ -184,6 +205,13 @@ public class AdminController {
                 .addObject("profilePhotoUri", imageUrl);
     }
 
+    @GetMapping("/admin/actor/delete/{id}")
+    public ModelAndView deleteActor(@PathVariable("id") String actorId) {
+        this.actorService.deleteActorById(actorId);
+
+        return new ModelAndView("redirect:../../actor/edit/all");
+    }
+
     @GetMapping("/admin/add/actor-role")
     public ModelAndView addActorRolePage(@ModelAttribute("actorRoleAddDataTransferObject") AdminAddActorRoleDTO adminAddActorRoleDTO) {
 
@@ -207,6 +235,13 @@ public class AdminController {
         }
 
         return new ModelAndView("redirect:../../admin");
+    }
+
+    @GetMapping("/admin/actor-role/delete/{id}")
+    public ModelAndView deleteActorRole(@PathVariable("id") String actorRoleId) {
+        this.actorRoleService.deleteActorRoleById(actorRoleId);
+
+        return new ModelAndView("redirect:../../actor-role/edit/all");
     }
 
     @GetMapping("/admin/add/director")
@@ -236,6 +271,13 @@ public class AdminController {
         }
 
         return new ModelAndView("redirect:../../admin");
+    }
+
+    @GetMapping("/admin/director/delete/{id}")
+    public ModelAndView deleteDirector(@PathVariable("id") String directorId) {
+        this.directorService.deleteDirectorByDirectorId(directorId);
+
+        return new ModelAndView("redirect:../../director/edit/all");
     }
 
     @GetMapping("/admin/add/studio")

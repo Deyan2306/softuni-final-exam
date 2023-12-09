@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Optional;
+import java.util.UUID;
 
 import static bg.softuni.movieapp.util.FilePaths.STUDIO_PICTURE_SAVE_URI;
 import static bg.softuni.movieapp.util.FilePaths.TV_SERIES_EPISODE_PICTURE_SAVE_URI;
@@ -100,5 +101,10 @@ public class TVSeriesEpisodeServiceImpl implements TVSeriesEpisodeService {
         }
 
         return false;
+    }
+
+    @Override
+    public void deleteTVSeriesEpisodeById(String tvSeriesEpisodeId) {
+        this.tvSeriesEpisodeRepository.deleteById(UUID.fromString(tvSeriesEpisodeId));
     }
 }

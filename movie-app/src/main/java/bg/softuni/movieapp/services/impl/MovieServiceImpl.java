@@ -157,4 +157,9 @@ public class MovieServiceImpl implements MovieService {
 
         return true;
     }
+
+    @Override
+    public void deleteMovieByMovieId(String movieID) {
+        this.movieRepository.deleteById(UUID.fromString(movieID));
+    }
 }

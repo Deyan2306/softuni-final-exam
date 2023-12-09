@@ -125,4 +125,9 @@ public class ActorServiceImpl implements ActorService {
     public List<Actor> getAllActors() {
         return this.actorRepository.findAll();
     }
+
+    @Override
+    public void deleteActorById(String actorId) {
+        this.actorRepository.deleteById(UUID.fromString(actorId));
+    }
 }

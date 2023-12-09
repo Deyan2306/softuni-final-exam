@@ -5,6 +5,8 @@ import bg.softuni.movieapp.services.TVSeriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class TVSeriesServiceImpl implements TVSeriesService {
 
@@ -18,5 +20,10 @@ public class TVSeriesServiceImpl implements TVSeriesService {
     @Override
     public int getNumberOfTVSeries() {
         return (int) this.tvSeriesRepository.count();
+    }
+
+    @Override
+    public void deleteTVSeriesById(String tvSeriesId) {
+        this.tvSeriesRepository.deleteById(UUID.fromString(tvSeriesId));
     }
 }

@@ -77,4 +77,9 @@ public class ActorRoleServiceImpl implements ActorRoleService {
     public Optional<ActorRole> findActorRoleByRoleId(String roleId) {
         return this.actorRoleRepository.findById(UUID.fromString(roleId));
     }
+
+    @Override
+    public void deleteActorRoleById(String actorRoleId) {
+        this.actorRoleRepository.deleteById(UUID.fromString(actorRoleId));
+    }
 }

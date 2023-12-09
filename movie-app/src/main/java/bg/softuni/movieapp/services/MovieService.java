@@ -6,4 +6,6 @@ public interface MovieService {
     int getNumberOfMovies();
 
     boolean addMovie(AdminMovieAddDTO adminMovieAddDTO);
+
+    void deleteMovieByMovieId(String movieID);
 }

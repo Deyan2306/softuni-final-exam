@@ -9,4 +9,6 @@ public interface ActorRoleService {
     boolean addActorRole(AdminAddActorRoleDTO adminAddActorRoleDTO);
 
     Optional<ActorRole> findActorRoleByRoleId(String roleId);
+
+    void deleteActorRoleById(String actorRoleId);
 }
