@@ -1,4 +1,4 @@
-# MovieApp <img src="resources/logo.png" alt="logo" width="30">
+# <img src="resources/logo.png" alt="logo" width="45"> MovieApp
 Embark on an Interstellar Journey with Our Cutting-edge Spring Boot Web App: Your Personal Cinematic Universe Manager.
 <br/>
 
