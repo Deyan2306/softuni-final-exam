@@ -1,5 +1,6 @@
 # MovieApp
-Spring Boot Web App for Managing your watched movies.
+### Embark on an Interstellar Journey with Our Cutting-edge Spring Boot Web App: Your Personal Cinematic Universe Manager.
+<br/>
 <img src="resources/logo.png" alt="logo" width="200">
 
 ## Table of Contents
