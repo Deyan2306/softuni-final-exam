@@ -1,6 +1,6 @@
 # MovieApp
 Spring Boot Web App for Managing your watched movies.
-<img src="resources/logo.png" alt="logo" styles="width: 250px;">
+<img src="resources/logo.png" alt="logo" styles="width: 50px;">
 
 ## Table of Contents
 
