@@ -6,6 +6,7 @@ import bg.softuni.movieapp.model.entity.objects.Rating;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -53,8 +54,8 @@ public class UserEntity extends BaseEntity {
     @Column(name = "discord_username")
     private String discordUsername;
 
-    @OneToMany(mappedBy = "commentedBy")
-    private List<Comment> createdComments;
+    @OneToMany(mappedBy = "commentedBy", fetch = FetchType.EAGER)
+    private List<Comment> createdComments = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

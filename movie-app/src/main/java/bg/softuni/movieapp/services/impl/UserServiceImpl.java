@@ -4,6 +4,7 @@ import bg.softuni.movieapp.model.binding.UserRegisterBindingModel;
 import bg.softuni.movieapp.model.dto.UserChangeInformationDTO;
 import bg.softuni.movieapp.model.entity.UserEntity;
 import bg.softuni.movieapp.model.entity.UserRoleEntity;
+import bg.softuni.movieapp.model.entity.objects.Comment;
 import bg.softuni.movieapp.repository.UserRepository;
 import bg.softuni.movieapp.repository.UserRoleRepository;
 import bg.softuni.movieapp.services.UserService;
@@ -150,6 +151,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getPhotoURIforUser(String username) {
         return this.userRepository.findByUsername(username).getAvatarPictureURI();
+    }
+
+    @Override
+    public List<Comment> getLatestCreatedComments(UserEntity currentUser) {
+        return currentUser.getCreatedComments().stream().limit(5).toList();
     }
 
     private boolean saveProfilePicture(String username, MultipartFile file, UserEntity currentUser) throws IOException {

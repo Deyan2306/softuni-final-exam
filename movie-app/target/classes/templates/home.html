@@ -13,13 +13,51 @@
 
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<div class="content mt-4">
-    <h2>Welcome to the Admin Panel</h2>
-    <p>Manage your movies, TV series, actors, and more!</p>
-</div>
-<!-- Main content here -->
-<h1>Welcome :D</h1>
+<div class="container">
+    <h1>Welcome to the Homepage!</h1>
 
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Watched TV Series</h5>
+                    <!-- Populate with watched TV series content -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Watched Movies</h5>
+                    <!-- Populate with watched movies content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>Latest Comments</h2>
+    <!-- Display latest comments -->
+    <ul>
+        <li th:each="comment : ${latestComments}">
+            <p th:text="${'Commented at: ' + comment.getCommentedAt()}"></p>
+            <p th:text="${comment.getContent()}"></p>
+            <p th:text="${'Upvotes: ' + comment.getUpVotedBy().size()}"></p>
+            <p th:text="${'Downvotes: ' + comment.getDownVotedBy().size()}"></p>
+            <!-- Add more comment details if needed -->
+        </li>
+    </ul>
+
+    <hr>
+
+    <!-- Buttons for redirection -->
+    <div>
+        <a th:href="@{/movies}" class="btn btn-primary">Movies</a>
+        <a th:href="@{/tv-series}" class="btn btn-primary">TV Series</a>
+        <a th:href="@{/users}" class="btn btn-primary">All Users</a>
+    </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
