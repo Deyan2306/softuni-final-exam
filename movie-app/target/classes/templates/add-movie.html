@@ -32,7 +32,8 @@
                             <form class="register-form"
                                   th:action="@{/admin/add/movie}"
                                   th:method="POST"
-                                  th:object="${movieAddDataTransferObject}">
+                                  th:object="${movieAddDataTransferObject}"
+                                  enctype="multipart/form-data">
 
                                 <div class="form-group">
                                     <input type="text"

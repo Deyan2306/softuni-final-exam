@@ -36,7 +36,7 @@ public class ActorRole extends Likeable {
     @Column(name = "character_birth_date")
     private LocalDate characterBirthDate;
 
-    @Size(min = 2, max = 100)
+    @Size(min = 2, max = 1000)
     @Column(name = "character_bio", columnDefinition = "TEXT")
     private String characterBio;
 

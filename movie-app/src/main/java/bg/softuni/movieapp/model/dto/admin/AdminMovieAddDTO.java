@@ -23,7 +23,6 @@ public class AdminMovieAddDTO {
     @NotBlank(message = "The release date should not be blank.")
     private String releaseDate;
 
-    @Size(min = 0, message = "Movie's length should be a positive number.")
     private int length;
     private String pgRating;
     private MultipartFile titlePicture;

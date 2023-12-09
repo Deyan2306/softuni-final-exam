@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -81,5 +82,10 @@ public class ActorRoleServiceImpl implements ActorRoleService {
     @Override
     public void deleteActorRoleById(String actorRoleId) {
         this.actorRoleRepository.deleteById(UUID.fromString(actorRoleId));
+    }
+
+    @Override
+    public List<ActorRole> getAllActorRoles() {
+        return this.actorRoleRepository.findAll();
     }
 }
