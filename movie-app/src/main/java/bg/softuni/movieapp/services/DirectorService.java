@@ -5,12 +5,13 @@ import bg.softuni.movieapp.model.entity.Director;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.List;
 
 public interface DirectorService {
 
     boolean addDirector(AdminDirectorAddDTO adminDirectorAddDTO) throws IOException;
 
-    Object getAllDirectors();
+    List<Director> getAllDirectors();
 
     Optional<Director> findDirectorByDirectorID(String directorIDs);
 

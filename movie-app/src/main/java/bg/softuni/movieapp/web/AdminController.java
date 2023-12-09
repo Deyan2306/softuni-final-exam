@@ -2,6 +2,7 @@ package bg.softuni.movieapp.web;
 
 import bg.softuni.movieapp.model.dto.admin.*;
 import bg.softuni.movieapp.model.entity.Actor;
+import bg.softuni.movieapp.model.entity.Director;
 import bg.softuni.movieapp.model.entity.Studio;
 import bg.softuni.movieapp.services.*;
 import jakarta.validation.Valid;
@@ -279,6 +280,18 @@ public class AdminController {
         this.directorService.deleteDirectorByDirectorId(directorId);
 
         return new ModelAndView("redirect:../../director/edit/all");
+    }
+
+    @GetMapping("/admin/director/edit/all")
+    public ModelAndView allDirectors() {
+
+        List<Director> directors = this.directorService.getAllDirectors();
+
+        String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        return new ModelAndView("all-directors-edit")
+                .addObject("directors", directors)
+                .addObject("profilePhotoUri", imageUrl);
     }
 
     @GetMapping("/admin/add/studio")

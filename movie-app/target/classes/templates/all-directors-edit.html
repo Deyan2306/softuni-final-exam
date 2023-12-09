@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Actors</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/app.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" th:href="@{/images/static-images/logo.png}"/>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div th:replace="fragments/navbar :: admin-sidebar"></div>
+
+        <!-- Main Content -->
+        <div class="col-md-9 main-content">
+            <div th:replace="fragments/navbar :: admin-navbar"></div>
+
+            <!-- Search Bar -->
+            <div class="row mt-4">
+                <div class="col-lg-12">
+                    <h2>All Actors</h2>
+                    <input type="text" id="searchInput" placeholder="Search actors..." class="form-control mb-3" style="border: none;">
+                </div>
+            </div>
+
+            <!-- directors List -->
+            <div class="row" id="directorsList">
+                <div class="col-md-4 mb-4" th:each="director : ${directors}">
+                    <div class="card" style="border: none;">
+                        <div class="card-body" style="background-color: #263143;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="card-title" th:text="${director.getFirstName() + ' ' + director.getLastName()}"></h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="card-text">ID: <span th:text="${director.id}"></span></p>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <div class="btn-group" role="group" aria-label="Director Actions">
+                                        <a th:href="@{'/admin/director/edit/' + ${director.id}}" class="btn btn-primary rounded mr-2">Edit</a>
+                                        <a th:href="@{'/admin/director/delete/' + ${director.id}}" class="btn btn-danger rounded">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#directorsList').on('input', function(){
+            var searchText = $(this).val().toLowerCase();
+            var $list = $('#directorsList');
+            $list.children().detach().sort(function(a, b) {
+                var aText = $(a).text().toLowerCase();
+                var bText = $(b).text().toLowerCase();
+                return (aText.includes(searchText) && !bText.includes(searchText)) ? -1 : (bText.includes(searchText) && !aText.includes(searchText)) ? 1 : 0;
+            }).appendTo($list);
+        });
+    });
+</script>
+
+</body>
+</html>
