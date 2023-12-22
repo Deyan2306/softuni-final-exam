@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-import static bg.softuni.movieapp.util.FilePaths.DEFAULT_PROFILE_PICTURE_URI;
+import static bg.softuni.movieapp.util.FilePathConstants.DEFAULT_PROFILE_PICTURE_URI;
 
 @Component
 public class AdminProfileInit implements CommandLineRunner {

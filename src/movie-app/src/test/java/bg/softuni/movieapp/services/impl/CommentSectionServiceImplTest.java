@@ -2,17 +2,13 @@ package bg.softuni.movieapp.services.impl;
 
 import bg.softuni.movieapp.model.entity.sections.CommentSection;
 import bg.softuni.movieapp.repository.sections.CommentSectionRepository;
-import bg.softuni.movieapp.services.CommentSectionService;
-import jakarta.inject.Inject;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class CommentSectionServiceImplTest {

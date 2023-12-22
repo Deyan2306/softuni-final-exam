@@ -5,17 +5,13 @@ import bg.softuni.movieapp.model.entity.Studio;
 import bg.softuni.movieapp.model.entity.sections.CommentSection;
 import bg.softuni.movieapp.repository.StudioRepository;
 import bg.softuni.movieapp.services.CommentSectionService;
-import bg.softuni.movieapp.services.StudioService;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;

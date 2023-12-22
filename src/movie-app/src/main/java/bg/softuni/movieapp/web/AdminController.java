@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+import static bg.softuni.movieapp.util.FilePathConstants.DEFAULT_PROFILE_PICTURE_URI;
+import static bg.softuni.movieapp.util.FilePathConstants.USER_PICTURE_GET_URI;
+
 @Controller
 public class AdminController {
 
@@ -58,6 +61,9 @@ public class AdminController {
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
 
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
 
         return new ModelAndView("admin")
                 .addObject("number_of_actors", numberOfActors)
@@ -73,6 +79,10 @@ public class AdminController {
     public ModelAndView addMoviePage(@ModelAttribute("movieAddDataTransferObject") AdminMovieAddDTO adminMovieAddDTO) {
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
 
         return new ModelAndView("add-movie")
                 .addObject("profilePhotoUri", imageUrl);
@@ -108,6 +118,10 @@ public class AdminController {
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
 
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
+
         return new ModelAndView("all-movies-edit")
                 .addObject("movies", movies)
                 .addObject("profilePhotoUri", imageUrl);
@@ -124,6 +138,10 @@ public class AdminController {
     public ModelAndView addTVSeriesPage(@ModelAttribute("tvSeriesAddDataTransferObject") AdminTVSeriesAddDTO adminTVSeriesAddDTO) {
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
 
         return new ModelAndView("add-tv-series")
                 .addObject("profilePhotoUri", imageUrl);
@@ -148,6 +166,10 @@ public class AdminController {
     public ModelAndView addTVSeriesEpisodePage(@ModelAttribute("tvSeriesEpisodeAddDataTransferObject") AdminTVSeriesEpisodeDTO adminTVSeriesEpisodeDTO) {
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
 
         return new ModelAndView("add-tv-series-episode")
                 .addObject("profilePhotoUri", imageUrl);
@@ -184,6 +206,10 @@ public class AdminController {
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
 
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
+
         return new ModelAndView("/add-actor")
                 .addObject("profilePhotoUri", imageUrl);
     }
@@ -214,6 +240,10 @@ public class AdminController {
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
 
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
+
         return new ModelAndView("all-actors-edit")
                 .addObject("actors", actors)
                 .addObject("profilePhotoUri", imageUrl);
@@ -230,6 +260,10 @@ public class AdminController {
     public ModelAndView addActorRolePage(@ModelAttribute("actorRoleAddDataTransferObject") AdminAddActorRoleDTO adminAddActorRoleDTO) {
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
 
         return new ModelAndView("add-actor-role")
                 .addObject("profilePhotoUri", imageUrl);
@@ -258,6 +292,10 @@ public class AdminController {
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
 
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
+
         return new ModelAndView("all-role-actors-edit")
                 .addObject("actor_roles", actorRoles)
                 .addObject("profilePhotoUri", imageUrl);
@@ -274,6 +312,10 @@ public class AdminController {
     public ModelAndView addDirectorPage(@ModelAttribute("directorAddDataTransferObject") AdminDirectorAddDTO adminDirectorAddDTO) {
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
 
         return new ModelAndView("add-director")
                 .addObject("profilePhotoUri", imageUrl);
@@ -313,6 +355,10 @@ public class AdminController {
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
 
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
+
         return new ModelAndView("all-directors-edit")
                 .addObject("directors", directors)
                 .addObject("profilePhotoUri", imageUrl);
@@ -322,6 +368,10 @@ public class AdminController {
     public ModelAndView addStudioPage(@ModelAttribute("studioAddDataTransferObject") AdminAddStudioDTO adminAddStudioDTO) {
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
 
         return new ModelAndView("add-studio")
                 .addObject("profilePhotoUri", imageUrl);
@@ -333,6 +383,10 @@ public class AdminController {
         List<Studio> studios = this.studioService.getAllStudios();
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
 
         return new ModelAndView("all-studios-edit")
                 .addObject("studios", studios)
@@ -352,6 +406,10 @@ public class AdminController {
             @PathVariable("id") String studioId) {
 
         String imageUrl = this.userService.getPhotoURIforUser(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        if (!imageUrl.equals(DEFAULT_PROFILE_PICTURE_URI)) {
+            imageUrl = USER_PICTURE_GET_URI + this.userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId() + ".png";
+        }
 
         Optional<Studio> studio = this.studioService.getStudioById(studioId);
 

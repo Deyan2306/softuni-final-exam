@@ -3,18 +3,15 @@ package bg.softuni.movieapp.services.impl;
 import bg.softuni.movieapp.model.dto.admin.AdminAddActorRoleDTO;
 import bg.softuni.movieapp.model.entity.Actor;
 import bg.softuni.movieapp.model.entity.ActorRole;
-import bg.softuni.movieapp.model.entity.sections.CommentSection;
 import bg.softuni.movieapp.repository.ActorRoleRepository;
 import bg.softuni.movieapp.services.ActorService;
 import bg.softuni.movieapp.services.CommentSectionService;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +19,8 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 class ActorRoleServiceImplTest {
 

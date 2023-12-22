@@ -4,7 +4,6 @@ import bg.softuni.movieapp.model.dto.admin.AdminDirectorAddDTO;
 import bg.softuni.movieapp.model.entity.Director;
 import bg.softuni.movieapp.model.entity.sections.CommentSection;
 import bg.softuni.movieapp.repository.DirectorRepository;
-import bg.softuni.movieapp.repository.sections.CommentSectionRepository;
 import bg.softuni.movieapp.services.CommentSectionService;
 import bg.softuni.movieapp.services.DirectorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static bg.softuni.movieapp.util.FilePaths.DIRECTOR_PICTURE_SAVE_URI;
+import static bg.softuni.movieapp.util.FilePathConstants.DIRECTOR_PICTURE_SAVE_URI;
 
 @Service
 public class DirectorServiceImpl implements DirectorService {
@@ -53,7 +52,7 @@ public class DirectorServiceImpl implements DirectorService {
         director.setFirstName(firstName);
         director.setLastName(lastName);
 
-        if (!adminDirectorAddDTO.getBiography().trim().isEmpty()) {
+        if (adminDirectorAddDTO.getBiography() != null && !adminDirectorAddDTO.getBiography().trim().isEmpty()) {
             director.setBio(adminDirectorAddDTO.getBiography());
         } else {
             director.setBio("No biography provided for this director");
@@ -61,7 +60,7 @@ public class DirectorServiceImpl implements DirectorService {
 
         director.setBirthDate(LocalDate.parse(adminDirectorAddDTO.getBirthDate()));
 
-        if (!adminDirectorAddDTO.getDeathDate().trim().isEmpty()) {
+        if (adminDirectorAddDTO.getDeathDate() != null && !adminDirectorAddDTO.getDeathDate().trim().isEmpty()) {
             director.setDeathDate(LocalDate.parse(adminDirectorAddDTO.getDeathDate()));
         }
 
@@ -109,5 +108,10 @@ public class DirectorServiceImpl implements DirectorService {
     @Override
     public void deleteDirectorByDirectorId(String directorId) {
         this.directorRepository.deleteById(UUID.fromString(directorId));
+    }
+
+    @Override
+    public Optional<Director> findDirectorByFirstNameAndLastName(String firstName, String lastName) {
+        return this.directorRepository.findDirectorByFirstNameAndLastName(firstName, lastName);
     }
 }

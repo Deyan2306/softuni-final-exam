@@ -2,7 +2,6 @@ package bg.softuni.movieapp.services.impl;
 
 import bg.softuni.movieapp.model.dto.admin.AdminActorAddDTO;
 import bg.softuni.movieapp.model.entity.Actor;
-import bg.softuni.movieapp.model.entity.Studio;
 import bg.softuni.movieapp.model.entity.sections.CommentSection;
 import bg.softuni.movieapp.repository.ActorRepository;
 import bg.softuni.movieapp.services.ActorService;
@@ -21,8 +20,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static bg.softuni.movieapp.util.FilePaths.ACTOR_PICTURE_SAVE_URI;
-import static bg.softuni.movieapp.util.FilePaths.STUDIO_PICTURE_SAVE_URI;
+import static bg.softuni.movieapp.util.FilePathConstants.ACTOR_PICTURE_SAVE_URI;
 
 @Service
 public class ActorServiceImpl implements ActorService {
@@ -63,7 +61,7 @@ public class ActorServiceImpl implements ActorService {
 
         actor.setBirthdate(LocalDate.parse(adminActorAddDTO.getBirthDate()));
 
-        if (!adminActorAddDTO.getDeathDate().trim().isEmpty()) {
+        if (adminActorAddDTO.getDeathDate() != null && !adminActorAddDTO.getDeathDate().trim().isEmpty()) {
             actor.setDeathDate(LocalDate.parse(adminActorAddDTO.getDeathDate()));
         }
 
@@ -71,7 +69,7 @@ public class ActorServiceImpl implements ActorService {
             actor.setHeight(adminActorAddDTO.getHeight());
         }
 
-        if (!adminActorAddDTO.getYoutubeVideoId().trim().isEmpty()) {
+        if (adminActorAddDTO.getYoutubeVideoId() != null && !adminActorAddDTO.getYoutubeVideoId().trim().isEmpty()) {
             actor.setPersonalYoutubeVideoID(adminActorAddDTO.getYoutubeVideoId());
         }
 

@@ -16,4 +16,6 @@ public interface DirectorService {
     Optional<Director> findDirectorByDirectorID(String directorIDs);
 
     void deleteDirectorByDirectorId(String directorId);
+
+    Optional<Director> findDirectorByFirstNameAndLastName (String firstName, String lastName);
 }

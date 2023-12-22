@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MovieApp - Activate Account</title>
+</head>
+<body>
+<h1>Hello, <th:block th:text="${username}">user</th:block></h1>
+Welcome to MovieApp!
+Please follow the  <a class="card-link" th:href="@{http://localhost:8080/user/activate(activation_code=*{activation_code})}">link</a> in order to activate your account.
+</body>
+</html>

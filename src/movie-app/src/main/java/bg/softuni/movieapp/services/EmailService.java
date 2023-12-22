@@ -2,6 +2,6 @@ package bg.softuni.movieapp.services;
 
 public interface EmailService {
 
-    void sendOtpEmail(String recipientEmail, String otp);
+    void sendRegistrationEmail(String userEmail, String userName, String activationCode);
 
 }

@@ -1,7 +1,6 @@
 package bg.softuni.movieapp.services.impl;
 
 import bg.softuni.movieapp.model.dto.admin.AdminTVSeriesEpisodeDTO;
-import bg.softuni.movieapp.model.entity.Studio;
 import bg.softuni.movieapp.model.entity.TVSeriesEpisode;
 import bg.softuni.movieapp.model.entity.sections.CommentSection;
 import bg.softuni.movieapp.repository.TVSeriesEpisodeRepository;
@@ -18,8 +17,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 
-import static bg.softuni.movieapp.util.FilePaths.STUDIO_PICTURE_SAVE_URI;
-import static bg.softuni.movieapp.util.FilePaths.TV_SERIES_EPISODE_PICTURE_SAVE_URI;
+import static bg.softuni.movieapp.util.FilePathConstants.TV_SERIES_EPISODE_PICTURE_SAVE_URI;
 
 @Service
 public class TVSeriesEpisodeServiceImpl implements TVSeriesEpisodeService {

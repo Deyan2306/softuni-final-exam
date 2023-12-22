@@ -4,8 +4,6 @@ import bg.softuni.movieapp.model.dto.admin.AdminDirectorAddDTO;
 import bg.softuni.movieapp.model.entity.Director;
 import bg.softuni.movieapp.repository.DirectorRepository;
 import bg.softuni.movieapp.services.CommentSectionService;
-import bg.softuni.movieapp.services.DirectorService;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

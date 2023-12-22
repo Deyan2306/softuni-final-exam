@@ -2,14 +2,12 @@ package bg.softuni.movieapp.services.impl;
 
 import bg.softuni.movieapp.model.entity.sections.QuoteSection;
 import bg.softuni.movieapp.repository.sections.QuoteSectionRepository;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 

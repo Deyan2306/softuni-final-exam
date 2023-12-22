@@ -2,7 +2,6 @@ package bg.softuni.movieapp.web;
 
 import bg.softuni.movieapp.model.entity.Actor;
 import bg.softuni.movieapp.services.ActorService;
-import ch.qos.logback.core.model.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

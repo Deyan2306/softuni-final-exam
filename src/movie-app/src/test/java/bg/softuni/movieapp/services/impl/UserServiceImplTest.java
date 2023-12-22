@@ -3,35 +3,32 @@ package bg.softuni.movieapp.services.impl;
 import bg.softuni.movieapp.model.binding.UserRegisterBindingModel;
 import bg.softuni.movieapp.model.entity.UserEntity;
 import bg.softuni.movieapp.model.entity.UserRoleEntity;
-import bg.softuni.movieapp.model.entity.objects.Comment;
 import bg.softuni.movieapp.model.enums.UserRoleEnum;
+import bg.softuni.movieapp.model.events.UserRegistrationEvent;
 import bg.softuni.movieapp.repository.UserRepository;
 import bg.softuni.movieapp.repository.UserRoleRepository;
-import bg.softuni.movieapp.services.UserService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceImplTest {
 
-    @Value("${movieapp.upload.picture}") String profilePictureUri;
-    private UserService userServiceToTest;
+    //@Value("${movieapp.upload.picture}") String profilePictureUri;
+    @InjectMocks
+    private UserServiceImpl userServiceToTest;
 
     @Mock
     private PasswordEncoder passwordEncoder;
@@ -40,18 +37,14 @@ class UserServiceImplTest {
     private UserRepository mockUserRepository;
 
     @Mock
+    private ApplicationEventPublisher appEventPublisher;
+
+    @Mock
     private UserRoleRepository mockUserRoleRepository;
 
 
     @BeforeEach
     void setUp() {
-
-        userServiceToTest = new UserServiceImpl(
-                profilePictureUri,
-                mockUserRepository,
-                mockUserRoleRepository,
-                passwordEncoder
-        );
 
     }
 
@@ -68,7 +61,6 @@ class UserServiceImplTest {
 
     @Test
     void testSuccessfulRegistration() {
-
         // Arrange
         UserRegisterBindingModel testRegister = createDummyUser();
 
@@ -83,6 +75,27 @@ class UserServiceImplTest {
 
         // Assert
         Assertions.assertTrue(testRegistration);
+
+        // Verify if publishEvent method is called with any UserRegistrationEvent
+        verify(appEventPublisher, times(1)).publishEvent(any(UserRegistrationEvent.class));
+    }
+
+    @Test
+    void testGetUserByUsername() {
+
+        String username = "testUser";
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUsername(username);
+
+        when(mockUserRepository.findByUsername(username))
+                .thenReturn(userEntity);
+
+        UserEntity retrievedUser = userServiceToTest.getUserByUsername(username);
+
+        verify(mockUserRepository, times(1)).findByUsername(username);
+
+        Assertions.assertNotNull(retrievedUser);
+        Assertions.assertEquals(username, retrievedUser.getUsername());
     }
 
     @Test

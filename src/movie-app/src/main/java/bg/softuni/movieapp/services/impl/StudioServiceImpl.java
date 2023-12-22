@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static bg.softuni.movieapp.util.FilePaths.STUDIO_PICTURE_SAVE_URI;
+import static bg.softuni.movieapp.util.FilePathConstants.STUDIO_PICTURE_SAVE_URI;
 
 @Service
 public class StudioServiceImpl implements StudioService {
@@ -53,13 +53,13 @@ public class StudioServiceImpl implements StudioService {
 
         studio.setName(name);
 
-        if (!adminAddStudioDTO.getInfo().trim().isEmpty()) {
+        if (adminAddStudioDTO.getInfo() != null && !adminAddStudioDTO.getInfo().trim().isEmpty()) {
             studio.setInfo(adminAddStudioDTO.getInfo());
         } else {
             studio.setInfo("No information about the studio is provided.");
         }
 
-        if (!adminAddStudioDTO.getEstablishedAt().trim().isEmpty()) {
+        if (adminAddStudioDTO.getEstablishedAt() != null && !adminAddStudioDTO.getEstablishedAt().trim().isEmpty()) {
             studio.setEstablished(LocalDate.parse(adminAddStudioDTO.getEstablishedAt()));
         }
 

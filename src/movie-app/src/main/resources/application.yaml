@@ -1,16 +1,4 @@
 spring:
-  mail: #MailHog configuration
-    host: localhost
-    port: 1025
-    username: user
-    password: password
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-            required: true
   jpa:
     properties:
       hibernate:
@@ -58,3 +46,11 @@ movieapp:
     email: ${MOVIEAPP_ADMIN_EMAIL:admin.adminov@movie.app}
   upload:
     picture: src/main/resources/static/images/avatars/
+
+mail: #MailHog configuration
+  host: localhost
+  port: 1025
+  username: ${MAIL_USER:user}
+  password: ${MAIL_PASSWORD:password}
+  movieapp: ${MOVIE_APP_EMAIL:"app@movieapp.com"}
+

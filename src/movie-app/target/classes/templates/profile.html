@@ -142,7 +142,7 @@
 <div class="container">
     <div class="main-data">
         <div class="pfp-picture" onclick="redirectToEditProfile()">
-            <img th:src="@{${user.getAvatarPictureURI()}}" alt="profile picture"/>
+            <img th:src="@{${profilePicture}}" alt="profile picture"/>
             <i class="fas fa-cog settings-icon"></i> <!-- Settings icon -->
             <span th:if="${isActive}" class="green-dot"></span>
         </div>

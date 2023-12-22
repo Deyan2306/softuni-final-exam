@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static bg.softuni.movieapp.util.FilePaths.MOVIE_PICTURE_SAVE_URI;
+import static bg.softuni.movieapp.util.FilePathConstants.MOVIE_PICTURE_SAVE_URI;
 
 @Service
 public class MovieServiceImpl implements MovieService {

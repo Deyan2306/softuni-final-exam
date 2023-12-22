@@ -5,12 +5,13 @@ import bg.softuni.movieapp.model.dto.UserChangeInformationDTO;
 import bg.softuni.movieapp.model.entity.UserEntity;
 import bg.softuni.movieapp.model.entity.UserRoleEntity;
 import bg.softuni.movieapp.model.entity.objects.Comment;
+import bg.softuni.movieapp.model.events.UserRegistrationEvent;
 import bg.softuni.movieapp.repository.UserRepository;
 import bg.softuni.movieapp.repository.UserRoleRepository;
 import bg.softuni.movieapp.services.UserService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,13 +21,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import static bg.softuni.movieapp.model.enums.UserRoleEnum.USER;
-import static bg.softuni.movieapp.util.FilePaths.DEFAULT_PROFILE_PICTURE_URI;
+import static bg.softuni.movieapp.util.FilePathConstants.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -34,6 +33,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserRoleRepository userRoleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final ApplicationEventPublisher appEventPublisher;
 
     private final String profilePictureUploadURI;
 
@@ -41,12 +41,14 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(@Value("${movieapp.upload.picture}") String profilePictureUploadURI,
                            UserRepository userRepository,
                            UserRoleRepository userRoleRepository,
-                           PasswordEncoder passwordEncoder) {
+                           PasswordEncoder passwordEncoder,
+                           ApplicationEventPublisher appEventPublisher) {
 
         this.profilePictureUploadURI = profilePictureUploadURI;
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.appEventPublisher = appEventPublisher;
     }
 
     @Override
@@ -79,6 +81,13 @@ public class UserServiceImpl implements UserService {
         userEntity.setRoles(List.of(userRole));
 
         this.userRepository.save(userEntity);
+
+        String email = userEntity.getEmail();
+
+        // Publish the event
+        appEventPublisher.publishEvent(new UserRegistrationEvent(
+                "UserService", username, email
+        ));
 
         return true;
     }
@@ -121,15 +130,31 @@ public class UserServiceImpl implements UserService {
             currentUser.setDiscordUsername(userChangeInformationDTO.getDiscord()); changedSomething = true;
         }
 
-        MultipartFile file = userChangeInformationDTO.getAvatar();
-        boolean savedPicture = false;
-        if (!file.isEmpty()) {
-            savedPicture = saveProfilePicture(username, file, currentUser);
+        boolean changedProfilePicture = false;
+
+        if (userChangeInformationDTO.getAvatar() != null) {
+            MultipartFile file = userChangeInformationDTO.getAvatar();
+
+            Path path = Path.of(USER_PICTURE_SAVE_URI);
+
+            String id = String.valueOf(currentUser.getId());
+            String fileName = id + ".png";
+            Path targetPath = path.resolve(fileName);
+
+            try {
+                Files.write(targetPath, file.getBytes());
+                currentUser.setAvatarPictureURI(DIRECTOR_PICTURE_SAVE_URI + fileName);
+                changedProfilePicture = true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
         }
+
 
         userRepository.save(currentUser);
 
-        return changedSomething || savedPicture;
+        return changedSomething || changedProfilePicture;
     }
 
     @Override
@@ -161,35 +186,5 @@ public class UserServiceImpl implements UserService {
     @Override
     public int getNumberOfUsers() {
         return (int) this.userRepository.count();
-    }
-
-    private boolean saveProfilePicture(String username, MultipartFile file, UserEntity currentUser) throws IOException {
-
-        if (file.isEmpty()) {
-            return false;
-        }
-
-        String projectPath = System.getProperty("user.dir");
-        String fileName = username + ".png";
-        String filePath = projectPath + profilePictureUploadURI;
-
-        try {
-            Path directory = Paths.get(filePath);
-            if (!Files.exists(directory)) {
-                Files.createDirectories(directory);
-            }
-
-            Path movedFile = Paths.get(filePath, fileName);
-            Files.createFile(movedFile);
-            currentUser.setAvatarPictureURI(profilePictureUploadURI + username + ".png");
-        } catch (IOException e) {
-            return false;
-        }
-
-        return true;
-    }
-
-    private long getUploadedPicturesCount(String folderPath) throws IOException {
-        return Files.list(Paths.get(folderPath)).count();
     }
 }
